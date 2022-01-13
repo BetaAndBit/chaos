@@ -79,38 +79,191 @@ Plots.plot!(rect(0+2/3+2/9, 0+2/3+2/9, 1/9+2/3+2/9, 1/9+2/3+2/9), seriestype=:sh
 ## Rekurencja
 
 ```julia
+using Plots
 
+function rect(x1,y1, x2,y2)
+    return [(x1,y1),(x2,y1),(x2,y2),(x1,y2),(x1,y1)]
+end
+
+# czyścimy ekran
+E = 0.05
+Plots.plot(0,xlim=(0-E,1+E),ylim=(0-E,1+E))
+
+function rysuj_dywan(x, y, szerokosc, iteracja)
+  if iteracja == 0
+    Plots.plot!(rect(x, y, x + szerokosc, y + szerokosc), seriestype=:shape, color=:black, legend=:false)
+  else
+    rysuj_dywan(x, y, szerokosc / 3, iteracja - 1)
+    rysuj_dywan(x+szerokosc*2 / 3, y, szerokosc / 3, iteracja - 1)
+    rysuj_dywan(x, y+szerokosc*2 / 3, szerokosc / 3, iteracja - 1)
+    rysuj_dywan(x+szerokosc*2 / 3, y+szerokosc*2 / 3, szerokosc / 3, iteracja - 1)
+  end
+current()
+end
+
+rysuj_dywan(0, 0, 1, 2)
 ```
+<figure>
+<center>
+<img alt="png" src="dywan_2_jl.png">
+</center>
+</figure>
+
+```julia
+using Plots
+
+# czyścimy ekran
+E = 0.05
+Plots.plot(0,xlim=(0-E,1+E),ylim=(0-E,1+E))
+rysuj_dywan(0, 0, 1, 3)
+```
+<figure>
+<center>
+<img alt="png" src="dywan_3_jl.png">
+</center>
+</figure>
+
+```julia
+using Plots
+
+# czyścimy ekran
+E = 0.05
+Plots.plot(0,xlim=(0-E,1+E),ylim=(0-E,1+E))
+rysuj_dywan(0, 0, 1, 5)
+```
+<figure>
+<center>
+<img alt="png" src="dywan_5_jl.png">
+</center>
+</figure>
 
 ## Prawdziwy dywan
 
 ```julia
+using Plots
 
+# czyścimy ekran
+E = 0.05
+Plots.plot(0,xlim=(0-E,1+E),ylim=(0-E,1+E))
+
+function rysuj_dywan(x, y, szerokosc, iteracja)
+  if iteracja == 0
+    Plots.plot!(rect(x, y, x + szerokosc, y + szerokosc), seriestype=:shape, color=:black, legend=:false)
+  else
+    rysuj_dywan(x, y, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x+szerokosc*1/3, y, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x+szerokosc*2/3, y, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x, y+szerokosc*1/3, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x+szerokosc*2/3, y+szerokosc*1/3, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x, y+szerokosc*2/3, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x+szerokosc*1/3, y+szerokosc*2/3, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x+szerokosc*2/3, y+szerokosc*2/3, szerokosc/3, iteracja - 1)
+  end
+current()
+end
+
+rysuj_dywan(0, 0, 1, 5)
 ```
+<figure>
+<center>
+<img alt="png" src="dywan_prawdziwy_jl.png">
+</center>
+</figure>
 
 ## Bardzo bardzo mały kwadrat wygląda jak punkt
 
 ```julia
+using Plots
 
+# czyścimy ekran
+E = 0.05
+Plots.plot(0,xlim=(0-E,1+E),ylim=(0-E,1+E))
+
+function rysuj_dywan(x, y, szerokosc, iteracja)
+  if iteracja == 0
+    Plots.scatter!([x], [y], markerstrokecolor=:white, markersize=3, color=:black, legend=:false)
+  else
+    rysuj_dywan(x, y, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x+szerokosc*1/3, y, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x+szerokosc*2/3, y, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x, y+szerokosc*1/3, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x+szerokosc*2/3, y+szerokosc*1/3, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x, y+szerokosc*2/3, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x+szerokosc*1/3, y+szerokosc*2/3, szerokosc/3, iteracja - 1)
+    rysuj_dywan(x+szerokosc*2/3, y+szerokosc*2/3, szerokosc/3, iteracja - 1)
+  end
+current()
+end
+
+rysuj_dywan(0, 0, 1, 5)
 ```
+<figure>
+<center>
+<img alt="png" src="dywan_kropki_jl.png">
+</center>
+</figure>
 
 # Trójkąt Sierpińskiego
 
 ## Zróbmy to w R!
 
 ```julia
+using Plots
+
 function trojkat(x, y, bok)
     return [(x+bok*0,y+bok*0),(x+bok*1,y+bok*0),(x+bok*1/2,y+bok*sqrt(2)/2),(x+bok*0,y+bok*0)]
 end
 
+# czyścimy ekran
+E = 0.05
+Plots.plot(0,xlim=(0-E,1+E),ylim=(0-E,1+E-0.1))
+
+function rysuj_uszczelke(x, y, szerokosc, iteracja)
+  if iteracja == 0
+      Plots.plot!(trojkat(x, y, szerokosc), seriestype=:shape, color=:black, legend=:false)
+  else
+      rysuj_uszczelke(x, y, szerokosc / 2, iteracja - 1)
+      rysuj_uszczelke(x+szerokosc / 2, y, szerokosc / 2, iteracja - 1)
+      rysuj_uszczelke(x+szerokosc / 4, y+sqrt(3)*szerokosc/4, szerokosc / 2, iteracja - 1)
+  end
+current()
+end
+
+rysuj_uszczelke(0, 0, 1, 5)
 ```
+<figure>
+<center>
+<img alt="png" src="uszczelka_5_jl.png">
+</center>
+</figure>
 
 ## Bardzo bardzo mały trójkąt wygląda jak punkt
 
 ```julia
+using Plots
 
+# czyścimy ekran
+E = 0.05
+Plots.plot(0,xlim=(0-E,1+E),ylim=(0-E,1+E-0.1))
+
+function rysuj_uszczelke(x, y, szerokosc, iteracja)
+  if iteracja == 0
+      Plots.scatter!([x], [y], markerstrokecolor=:white, markersize=3, color=:black, legend=:false)
+  else
+    rysuj_uszczelke(x, y, szerokosc/2, iteracja - 1)
+    rysuj_uszczelke(x+szerokosc/2, y, szerokosc/2, iteracja - 1)
+    rysuj_uszczelke(x+szerokosc/4, y+sqrt(3)*szerokosc/4, szerokosc/2, iteracja - 1)
+  end
+current()
+end
+
+rysuj_uszczelke(0, 0, 1, 8)
 ```
-
+<figure>
+<center>
+<img alt="png" src="uszczelka_8_jl.png">
+</center>
+</figure>
 
 # Gra w chaos
 
