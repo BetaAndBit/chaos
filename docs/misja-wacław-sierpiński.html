@@ -141,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="misja-wacław-sierpiński.html"><a href="misja-wacław-sierpiński.html#story"><i class="fa fa-check"></i><b>1.1</b> Story<span></span></a></li>
 <li class="chapter" data-level="1.2" data-path="misja-wacław-sierpiński.html"><a href="misja-wacław-sierpiński.html#teoria"><i class="fa fa-check"></i><b>1.2</b> Teoria<span></span></a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="misja-wacław-sierpiński.html"><a href="misja-wacław-sierpiński.html#kurz-kantora"><i class="fa fa-check"></i><b>1.2.1</b> Kurz Kantora<span></span></a></li>
+<li class="chapter" data-level="1.2.1" data-path="misja-wacław-sierpiński.html"><a href="misja-wacław-sierpiński.html#kurz-cantora"><i class="fa fa-check"></i><b>1.2.1</b> Kurz Cantora<span></span></a></li>
 <li class="chapter" data-level="1.2.2" data-path="misja-wacław-sierpiński.html"><a href="misja-wacław-sierpiński.html#trójkąt-sierpińskiego"><i class="fa fa-check"></i><b>1.2.2</b> Trójkąt Sierpińskiego<span></span></a></li>
 <li class="chapter" data-level="1.2.3" data-path="misja-wacław-sierpiński.html"><a href="misja-wacław-sierpiński.html#wymiar-hausdorfa"><i class="fa fa-check"></i><b>1.2.3</b> Wymiar Hausdorfa<span></span></a></li>
 <li class="chapter" data-level="1.2.4" data-path="misja-wacław-sierpiński.html"><a href="misja-wacław-sierpiński.html#dywan-sierpińskiego"><i class="fa fa-check"></i><b>1.2.4</b> Dywan Sierpińskiego<span></span></a></li>
@@ -194,24 +194,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.2</span> Teoria<a href="misja-wacław-sierpiński.html#teoria" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To fascynujące, że powtarzanie w nieskończoność tych samych czynności może prowadzić to arcyciekawych figur - fraktali.</p>
 <p>Taką figurę może narysować każdy, wystarczy podstawowa znajomość programowania. Krok po kroku pokażemy jak skonstruować różne klasy fraktali. Znajomość podstaw algebry, prawdopodobieństwa lub topologii pozwala dokładniej zrozumieć skąd się te zaskakujące figury biorą.</p>
-<div id="kurz-kantora" class="section level3 hasAnchor" number="1.2.1">
-<h3><span class="header-section-number">1.2.1</span> Kurz Kantora<a href="misja-wacław-sierpiński.html#kurz-kantora" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="kurz-cantora" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Kurz Cantora<a href="misja-wacław-sierpiński.html#kurz-cantora" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Jedną z ciekawszych metod konstrukcji fraktali jest metoda ,,przez wygryzanie’’. Bierzemy pewną figurę a następnie usuwamy z niej (wygryzamy) kawałki. To co zostaje jest fraktalem, często o zaskakujących właściwościach.</p>
-<p>Zilustrujmy to na przykładzie fraktalu nazywanego kurzem Kantora.</p>
-<p>Receptura na konstrukcje kurzu Kantora jest prosta:</p>
+<p>Zilustrujmy to na przykładzie fraktalu nazywanego kurzem Cantora.</p>
+<p>Receptura na konstrukcje kurzu Cantora jest prosta:</p>
 <ol style="list-style-type: decimal">
 <li>Weź odcinek o dowolnej długości (ale dla uproszczenia nasz będzie miał długość 1).</li>
 <li>Podziel ten odcinek na trzy równe części.</li>
 <li>Usuń wnętrze środkowej części, przez co otrzymasz dwa odcinki, oba o długości 1/3 wyjściowego odcinka.</li>
 <li>Dla każdego z otrzymanych odcinków kontynuuj dzielenie idąc do kroku 2.</li>
 </ol>
-<p>Ilustracja czterech kolejnych kroków algorytmu wygryzania znajduje się na <a href="images/kurz_Kantora.png" title="Rysunek 1: Pierwsze 5 iteracji w konstrukcji kurzu Kantora">Rysunku 1</a>.</p>
+<p>Ilustracja czterech kolejnych kroków algorytmu wygryzania znajduje się na <a href="images/kurz_Kantora.png" title="Rysunek 1: Pierwsze 5 iteracji w konstrukcji kurzu Cantora">Rysunku 1</a>.</p>
 <div class="figure">
 <img src="images/kurz_Kantora.png" alt="" />
-<p class="caption">Rysunek 1: Pierwsze 5 iteracji w konstrukcji kurzu Kantora</p>
+<p class="caption">Rysunek 1: Pierwsze 5 iteracji w konstrukcji kurzu Cantora</p>
 </div>
 <p>Powyższy algorytm ma kilka elementów typowych dla fraktali. Po pierwsze nigdy się nie kończy, całą procedurę należy (przynajmniej w teorii) powtarzać nieskończenie wiele razy. Po drugie, mamy do czynienia z rekurencją, pewien krok prowadzi do powstania zbioru obiektów a następnie każdy z tych obiektów jest ponownie przekształcany w ten sam sposób.</p>
-<p>W bardzo podobny sposób można otrzymać wiele ciekawych fraktali, ale przyjrzyjmy się jeszcze przez chwilę kurzowi Kantora. Zobaczmy co my właściwie otrzymaliśmy w wyniku tej procedury.</p>
+<p>W bardzo podobny sposób można otrzymać wiele ciekawych fraktali, ale przyjrzyjmy się jeszcze przez chwilę kurzowi Cantora. Zobaczmy co my właściwie otrzymaliśmy w wyniku tej procedury.</p>
 <p>Sprawdźmy może jak duży jest ten obiekt lub jaką ma długość.</p>
 <p>Początkowo odcinek miał długość <span class="math inline">\(1\)</span>, ale w pierwszym kroku usunęliśmy <span class="math inline">\(1/3\)</span>. W drugim kroku usunęliśmy <span class="math inline">\(2\)</span> razy po <span class="math inline">\((1/3)^2\)</span>. Powtarzając to kilkukrotnie w kroku <span class="math inline">\(k\)</span> usuwamy <span class="math inline">\(2^{k-1}\)</span> odcinków, każdy o długości <span class="math inline">\((1/3)^k\)</span>. A więc długość tego tworu w kroku <span class="math inline">\(k\)</span> to</p>
 <p><span class="math display">\[
@@ -221,20 +221,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
 \lim_{k \rightarrow \infty} (2/3)^k = 0
 \]</span></p>
-<p>Nie ma więc wątpliwości, zbiór Kantora ma długość równą <span class="math inline">\(0\)</span>. Ale ewidentnie nie jest zbiorem pustym, bo ma wiele punktów. Jak wiele? Okazuje się, że tyle samo co cały odcinek, a więc nieprzeliczalnie wiele. Pokażmy to za pomocą pewnego sprytnego dowodu.</p>
+<p>Nie ma więc wątpliwości, zbiór Cantora ma długość równą <span class="math inline">\(0\)</span>. Ale ewidentnie nie jest zbiorem pustym, bo ma wiele punktów. Jak wiele? Okazuje się, że tyle samo co cały odcinek, a więc nieprzeliczalnie wiele. Pokażmy to za pomocą pewnego sprytnego dowodu.</p>
 <p><strong>Twierdzenie:</strong>
-Zbiór Kantora jest równoliczny z odcinkiem [0-1).</p>
+Zbiór Cantora jest równoliczny z odcinkiem [0-1).</p>
 <p><strong>Dowód:</strong>
-Aby policzyć punkty w zbiorze Kantora, potrzebujemy dla każdego punktu skonstruować rodowód, a więc zapis pozwalający jednoznacznie zidentyfikować każdy punkt. Rodowodem jednoznacznie identyfikującym punkt nazwiemy zbiór decyzji, określających jak do tego punktu dotrzeć w kolejnych krokach procedury generującej kurz Kantora.<br />
-Pamiętamy, że w każdym kroku usuwane są środku z odcinków, więc punkt, który należy do kurzu będzie leżał albo w lewym albo w prawym odcinku. Ten wybór (lewy/prawy) trzeba podjąć w każdym kroku konstrukcji kurzu. Taki rodowód możemy zapisać przez nieskończoną sekwencje cyfr 0/1, jeżeli w sekwencji na pozycji k występuje 0 to punkt należy do lewego pododcinka, jeżeli 1 to do prawego. Zauważmy, jednoznaczność -&gt; każdy punkt z kurzu Kantora może być opisany przez nieskończoną sekwencje cyfr 0/1. Jednocześnie każda nieskończona sekwencja cyfr opisuje jakiś punkt ze zbioru Kantora, a różne sekwencje opisują różne punkty. Ile jest takich sekwencji? Kontinuum. Wystarczy bowiem myśleć o tych sekwencjach jak o rozwinięciach dwójkowych liczb z przedziału [0,1].</p>
+Aby policzyć punkty w zbiorze Cantora, potrzebujemy dla każdego punktu skonstruować rodowód, a więc zapis pozwalający jednoznacznie zidentyfikować każdy punkt. Rodowodem jednoznacznie identyfikującym punkt nazwiemy zbiór decyzji, określających jak do tego punktu dotrzeć w kolejnych krokach procedury generującej kurz Cantora.<br />
+Pamiętamy, że w każdym kroku usuwane są środku z odcinków, więc punkt, który należy do kurzu będzie leżał albo w lewym albo w prawym odcinku. Ten wybór (lewy/prawy) trzeba podjąć w każdym kroku konstrukcji kurzu. Taki rodowód możemy zapisać przez nieskończoną sekwencje cyfr 0/1, jeżeli w sekwencji na pozycji k występuje 0 to punkt należy do lewego pododcinka, jeżeli 1 to do prawego. Zauważmy, jednoznaczność -&gt; każdy punkt z kurzu Cantora może być opisany przez nieskończoną sekwencje cyfr 0/1. Jednocześnie każda nieskończona sekwencja cyfr opisuje jakiś punkt ze zbioru Cantora, a różne sekwencje opisują różne punkty. Ile jest takich sekwencji? Kontinuum. Wystarczy bowiem myśleć o tych sekwencjach jak o rozwinięciach dwójkowych liczb z przedziału [0,1].</p>
 <p>Co więc mamy?
-Kurz Kantora ma tyle samo punktów co odcinek [0,1]. Ale jednocześnie ma długość 0, choć odcinek ma oczywiście długość 1.</p>
+Kurz Cantora ma tyle samo punktów co odcinek [0,1]. Ale jednocześnie ma długość 0, choć odcinek ma oczywiście długość 1.</p>
 <p>Jak to możliwe? To jedna z wielu zagadek kryjących się w krainie fraktali malowanych nieskończonością.</p>
 </div>
 <div id="trójkąt-sierpińskiego" class="section level3 hasAnchor" number="1.2.2">
 <h3><span class="header-section-number">1.2.2</span> Trójkąt Sierpińskiego<a href="misja-wacław-sierpiński.html#trójkąt-sierpińskiego" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Jeden z najbardziej znanych fraktali to trójkąt Sierpińskiego.</p>
-<p>Receptura na konstrukcje tego trójkąt jest dosyć podobna do kurzu Kantora. Oto dokładny przepis:</p>
+<p>Receptura na konstrukcje tego trójkąt jest dosyć podobna do kurzu Cantora. Oto dokładny przepis:</p>
 <ol style="list-style-type: decimal">
 <li>Weź trójkąt równoboczny o dowolnej wielkości (ale dla uproszczenia nasz trójkąt będzie miał długość boku 1).</li>
 <li>Podziel ten trójkąt na cztery równe trójkąty równoboczne.</li>
@@ -285,7 +285,7 @@ d_F = \lim_{k \rightarrow \infty} \frac{\log 3^{k}}{\log 1/2^{-k}} = \frac{\log 
 <img src="images/trojkat_Sierpinskiego_pokrycie.png" alt="" />
 <p class="caption">Rysunek 3: Pokrycie trójkąta Sierpińskiego kostkmi o boku 1/4 (lewy panel) i 1/8 (prawy panel)</p>
 </div>
-<p>A jak to wygląda dla kurzu Kantora? Tym razem mamy obiekt zanurzony w przestrzeni jednowymiarowej, więc będziemy go przykrywać odcinkami. Przyjmijmy, że mamy odcinki o długości <span class="math inline">\(\varepsilon = 3^{-k}\)</span>, aby pokryć cały kurz Kantora wystarczy nam takich odcinków <span class="math inline">\(N(\varepsilon) = 2^k\)</span>, czyli wymiar Hausdorfa dla kurzu Kantora</p>
+<p>A jak to wygląda dla kurzu Cantora? Tym razem mamy obiekt zanurzony w przestrzeni jednowymiarowej, więc będziemy go przykrywać odcinkami. Przyjmijmy, że mamy odcinki o długości <span class="math inline">\(\varepsilon = 3^{-k}\)</span>, aby pokryć cały kurz Cantora wystarczy nam takich odcinków <span class="math inline">\(N(\varepsilon) = 2^k\)</span>, czyli wymiar Hausdorfa dla kurzu Cantora</p>
 <p><span class="math display">\[
 d_F = \lim_{k \rightarrow \infty} \frac{\log 2^{k}}{\log 1/3^{-k}} = \frac{\log 2}{\log 3} = 0,6309...
 \]</span></p>
