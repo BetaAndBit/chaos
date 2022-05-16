@@ -1,7 +1,7 @@
 misja-wacław-sierpiński
 story
 teoria
-kurz-kantora
+kurz-cantora
 trójkąt-sierpińskiego
 wymiar-hausdorfa
 dywan-sierpińskiego
@@ -10,4 +10,8 @@ trójkąt-sierpińskiego-w-r
 trójkąt-sierpińskiego-w-python
 trójkąt-sierpińskiego-w-julia
 misja-stefan-banach
+story-1
+teoria-1
 misja-hugon-steinhaus
+story-2
+teoria-2

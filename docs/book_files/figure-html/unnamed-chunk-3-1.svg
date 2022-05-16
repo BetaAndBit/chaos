@@ -9,6 +9,9 @@
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
+    .svglite text {
+      white-space: pre;
+    }
   ]]></style>
 </defs>
 <rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
@@ -25,8 +28,6 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpNTkuMDR8NDAxLjc2fDU5LjA0fDM1OC41Ng==)'>
-<polygon points='71.73,347.47 230.40,347.47 151.07,227.38 ' style='stroke-width: 0.75; fill: #000000;' />
-<polygon points='230.40,347.47 389.07,347.47 309.73,227.38 ' style='stroke-width: 0.75; fill: #000000;' />
-<polygon points='151.07,227.38 309.73,227.38 230.40,107.29 ' style='stroke-width: 0.75; fill: #000000;' />
+<polygon points='71.73,347.47 389.07,347.47 230.40,107.29 ' style='stroke-width: 0.75; fill: #000000;' />
 </g>
 </svg>
