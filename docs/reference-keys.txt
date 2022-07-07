@@ -19,7 +19,17 @@ trójkąt-sierpińskiego-w-julia
 misja-stefan-banach
 story-1
 teoria-1
+przestrzeń-metryczna
+odległość-hausdorffa
+ciąg-cauchyego
+przestrzeń-zupełna
+kontrakcja
+punkt-stały
+twierdzenie-banacha-o-punkcie-stałym
+kosinus
 algebra-wszędzie-algebra
+czym-jest-kontrakcja
+twierdzenie-banacha-o-punkcie-stałym-1
 zakoduj-mi-fraktal-1
 smok-heighwaya
 do-it-yourself
