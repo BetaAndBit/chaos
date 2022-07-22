@@ -1129,3 +1129,88 @@ for i in range(N):
 
 plt.scatter(x_vec, y_vec, s=0.2)
 plt.show()
+
+
+
+
+
+
+
+
+
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+
+# przesunięcie punktu x o delta
+def shift(x, delta):
+    return np.add(x, delta)
+
+# przeskalowanie punktu x razy ratio
+def scale(x, ratio):
+    return np.multiply(x, ratio)
+
+# rysujemy pentagon
+def pentagon(x, depth, color = "black"):
+    if depth > 1: 
+        x1 = shift(scale(x, [0.382, 0.382]), [0, 0])
+        pentagon(x1, depth - 1, color = "red")
+        x2 = shift(scale(x, [0.382, 0.382]), [0.618, 0])
+        pentagon(x2, depth - 1, color = "green")
+        x3 = shift(scale(x, [0.382, 0.382]), [0.809, 0.588])
+        pentagon(x3, depth - 1, color = "blue")
+        x4 = shift(scale(x, [0.382, 0.382]), [0.309, 0.951])
+        pentagon(x4, depth - 1, color = "black")
+        x5 = shift(scale(x, [0.382, 0.382]), [-0.191, 0.588])
+        pentagon(x5, depth - 1, color = "orange")
+    else:
+        plt.plot(x[0],x[1], marker='o', color = color, markersize=3)
+
+fig = plt.figure()
+pentagon([0,0], depth = 6)
+plt.show()
+
+
+
+
+
+
+
+
+
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+
+# przesunięcie punktu x o delta
+def shift(x, delta):
+    return np.add(x, delta)
+
+# przeskalowanie punktu x razy ratio
+def scale(x, ratio):
+    return np.multiply(x, ratio)
+
+# obrót wokół punktu 0,0 o kąt alpha
+def rotate(x, alpha):
+    return np.matmul(x,[[math.cos(alpha), -math.sin(alpha)],[math.sin(alpha), math.cos(alpha)]])
+
+# rysujemy paproć
+def fern(x, depth, color = "black"):
+    if depth > 1: 
+        x1 = shift(scale(rotate(x, -math.pi * 10 / 180), [0.5, 0.3]), [0, 0])
+        fern(x1, depth - 1, color = "red")
+        x2 = shift(scale(rotate(x, math.pi * 15 / 180), [0.45, 0.25]), [0, 0])
+        fern(x2, depth - 1, color = "blue")
+        x3 = shift(scale(rotate(x, -math.pi * 1 / 180), [0.9, 0.9]), [0.01, 0])
+        fern(x3, depth - 1, color = "black")
+        x4 = scale(rotate(x, -math.pi * 1 / 180), [0.25, 0.01])
+        fern(x4, depth - 1, color = "orange")
+    else:
+        plt.plot(x[0],x[1], marker='o', color = color, markersize=3)
+
+fig = plt.figure()
+fern([0,0], depth = 11)
+plt.show()
+
+
+
