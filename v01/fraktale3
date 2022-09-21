@@ -1,0 +1,88 @@
+using Plots, Images
+
+# TODO convert this code to something that is easy to include and an example
+
+# Different values of C provide different fractals
+const C = complex(-0.1, 0.651)#-.08im
+const MAX_ITER = 750
+
+const XRANGE = -2:0.001:2
+const YRANGE = -1.5:0.001:1.5
+const PLANE = complex.(XRANGE', YRANGE)
+
+function Julia()
+    """Mandelbrot was Right"""
+    z = 0 
+    for _=1:MAX_ITER
+        z = z^2 + C
+    end
+    return z
+end
+
+function Fatou(z, c)
+    """The fatouset are the outerlines"""
+    n = 0
+    while abs(z) <= 2 && n < MAX_ITER
+        z = z^2 + c
+        n += 1
+    end
+    return n
+end
+
+function to_img(data, display=true, save=false)
+    """Data -> img"""
+    img = plot_color(data)
+    if display==true
+        display(img)
+    end
+    if save!=false
+        save("julia_$save.png", img)
+    end
+    return img
+end
+
+function to_anim(data, display=true, save=false)
+    nothing
+end
+# while true
+#     z = C = rand(PLANE)
+#     i = 0
+#     for i in 1:MAX_ITER
+#         if abs(z) > 2
+#             break
+#         end
+#         z = z^2 + C
+#     end
+#     if i > 10 && i < 100
+#         break
+#     end
+# end
+
+# plot_color.([abs.(Fatou.(PLANE, 0.66exp(im*ϕ*pi))) for ϕ=0:1:2pi])
+
+
+@time data2 = abs.(Fatou.(PLANE, C))
+img2 = plot_color(data2)
+display(img2)
+
+frames = []
+for ϕ in 0:1:2pi
+    c = 0.66 * exp(im*ϕ*pi)
+    println(c)
+    fatou = abs.(Fatou.(PLANE, c))
+    plot = plot_color(fatou)
+    append!(frames, plot)
+    
+    # data2 = abs.(Fatou.(PLANE, c))
+
+    # implot_color(data2)
+    # append!(x,[img2])
+end
+println("dibe")
+
+
+@time data2 = abs.(Fatou.(PLANE))
+img2 = plot_color(data2)
+
+display(x[end])
+
