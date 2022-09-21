@@ -1,5 +1,5 @@
-# Chaos
+# Gra w Chaos
 
-BetaBit i fraktale -- IFS
+Beta, Bit i fraktale z użyciem IFS
 
 https://betaandbit.github.io/chaos
