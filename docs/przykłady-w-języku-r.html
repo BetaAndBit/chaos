@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1.5 Przykłady w języku R | Gra w chaos</title>
   <meta name="description" content="1.5 Przykłady w języku R | Gra w chaos" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1.5 Przykłady w języku R | Gra w chaos" />
   <meta property="og:type" content="book" />
-  
   <meta property="og:image" content="/images/rozkladowka_00.png" />
   
   
@@ -32,8 +31,8 @@
   
 <link rel="prev" href="przykłady-w-języku-python.html"/>
 <link rel="next" href="przykłady-w-języku-julia.html"/>
-<script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,8 +48,8 @@
 
 
 
-
 <link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections/anchor-sections.js"></script>
 
 
@@ -158,88 +157,88 @@ div.csl-indent {
 <li><a href="./"><h3>Gra w chaos</h3></a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#okładka" id="toc-okładka">Okładka</a></li>
-<li><a href="jak-czytać-tę-książkę.html#jak-czytać-tę-książkę" id="toc-jak-czytać-tę-książkę">Jak czytać tę książkę?</a></li>
-<li><a href="witajcie-fraktale.html#witajcie-fraktale" id="toc-witajcie-fraktale"><span class="toc-section-number">1</span> Witajcie, fraktale!</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Okładka</a></li>
+<li class="chapter" data-level="" data-path="jak-czytać-tę-książkę.html"><a href="jak-czytać-tę-książkę.html"><i class="fa fa-check"></i>Jak czytać tę książkę?</a></li>
+<li class="chapter" data-level="1" data-path="witajcie-fraktale.html"><a href="witajcie-fraktale.html"><i class="fa fa-check"></i><b>1</b> Witajcie, fraktale!</a>
 <ul>
-<li><a href="wacław-sierpiński.html#wacław-sierpiński" id="toc-wacław-sierpiński"><span class="toc-section-number">1.1</span> Wacław Sierpiński</a></li>
-<li><a href="witajcie-fraktale-1.html#witajcie-fraktale-1" id="toc-witajcie-fraktale-1"><span class="toc-section-number">1.2</span> Witajcie, fraktale!</a>
+<li class="chapter" data-level="1.1" data-path="wacław-sierpiński.html"><a href="wacław-sierpiński.html"><i class="fa fa-check"></i><b>1.1</b> Wacław Sierpiński</a></li>
+<li class="chapter" data-level="1.2" data-path="witajcie-fraktale-1.html"><a href="witajcie-fraktale-1.html"><i class="fa fa-check"></i><b>1.2</b> Witajcie, fraktale!</a>
 <ul>
-<li><a href="witajcie-fraktale-1.html#kurz-cantora" id="toc-kurz-cantora"><span class="toc-section-number">1.2.1</span> Kurz Cantora</a></li>
-<li><a href="witajcie-fraktale-1.html#trójkąt-sierpińskiego" id="toc-trójkąt-sierpińskiego"><span class="toc-section-number">1.2.2</span> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="1.2.1" data-path="witajcie-fraktale-1.html"><a href="witajcie-fraktale-1.html#kurz-cantora"><i class="fa fa-check"></i><b>1.2.1</b> Kurz Cantora</a></li>
+<li class="chapter" data-level="1.2.2" data-path="witajcie-fraktale-1.html"><a href="witajcie-fraktale-1.html#trójkąt-sierpińskiego"><i class="fa fa-check"></i><b>1.2.2</b> Trójkąt Sierpińskiego</a></li>
 </ul></li>
-<li><a href="ale-dlaczego-to-działa.html#ale-dlaczego-to-działa" id="toc-ale-dlaczego-to-działa"><span class="toc-section-number">1.3</span> Ale dlaczego to działa?</a>
+<li class="chapter" data-level="1.3" data-path="ale-dlaczego-to-działa.html"><a href="ale-dlaczego-to-działa.html"><i class="fa fa-check"></i><b>1.3</b> Ale dlaczego to działa?</a>
 <ul>
-<li><a href="ale-dlaczego-to-działa.html#wymiar-topologiczny" id="toc-wymiar-topologiczny"><span class="toc-section-number">1.3.1</span> Wymiar topologiczny</a></li>
-<li><a href="ale-dlaczego-to-działa.html#wymiar-minkowskiego-czyli-fraktalny-wymiar-pudełkowy" id="toc-wymiar-minkowskiego-czyli-fraktalny-wymiar-pudełkowy"><span class="toc-section-number">1.3.2</span> Wymiar Minkowskiego, czyli fraktalny wymiar pudełkowy</a></li>
-<li><a href="ale-dlaczego-to-działa.html#dywan-sierpińskiego" id="toc-dywan-sierpińskiego"><span class="toc-section-number">1.3.3</span> Dywan Sierpińskiego</a></li>
+<li class="chapter" data-level="1.3.1" data-path="ale-dlaczego-to-działa.html"><a href="ale-dlaczego-to-działa.html#wymiar-topologiczny"><i class="fa fa-check"></i><b>1.3.1</b> Wymiar topologiczny</a></li>
+<li class="chapter" data-level="1.3.2" data-path="ale-dlaczego-to-działa.html"><a href="ale-dlaczego-to-działa.html#wymiar-minkowskiego-czyli-fraktalny-wymiar-pudełkowy"><i class="fa fa-check"></i><b>1.3.2</b> Wymiar Minkowskiego, czyli fraktalny wymiar pudełkowy</a></li>
+<li class="chapter" data-level="1.3.3" data-path="ale-dlaczego-to-działa.html"><a href="ale-dlaczego-to-działa.html#dywan-sierpińskiego"><i class="fa fa-check"></i><b>1.3.3</b> Dywan Sierpińskiego</a></li>
 </ul></li>
-<li><a href="przykłady-w-języku-python.html#przykłady-w-języku-python" id="toc-przykłady-w-języku-python"><span class="toc-section-number">1.4</span> Przykłady w języku Python</a>
+<li class="chapter" data-level="1.4" data-path="przykłady-w-języku-python.html"><a href="przykłady-w-języku-python.html"><i class="fa fa-check"></i><b>1.4</b> Przykłady w języku Python</a>
 <ul>
-<li><a href="przykłady-w-języku-python.html#kurz-cantora-1" id="toc-kurz-cantora-1"><span class="toc-section-number">1.4.1</span> Kurz Cantora</a></li>
-<li><a href="przykłady-w-języku-python.html#trójkąt-sierpińskiego-1" id="toc-trójkąt-sierpińskiego-1"><span class="toc-section-number">1.4.2</span> Trójkąt Sierpińskiego</a></li>
-<li><a href="przykłady-w-języku-python.html#dywan-sierpińskiego-1" id="toc-dywan-sierpińskiego-1"><span class="toc-section-number">1.4.3</span> Dywan Sierpińskiego</a></li>
+<li class="chapter" data-level="1.4.1" data-path="przykłady-w-języku-python.html"><a href="przykłady-w-języku-python.html#kurz-cantora-1"><i class="fa fa-check"></i><b>1.4.1</b> Kurz Cantora</a></li>
+<li class="chapter" data-level="1.4.2" data-path="przykłady-w-języku-python.html"><a href="przykłady-w-języku-python.html#trójkąt-sierpińskiego-1"><i class="fa fa-check"></i><b>1.4.2</b> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="1.4.3" data-path="przykłady-w-języku-python.html"><a href="przykłady-w-języku-python.html#dywan-sierpińskiego-1"><i class="fa fa-check"></i><b>1.4.3</b> Dywan Sierpińskiego</a></li>
 </ul></li>
-<li><a href="przykłady-w-języku-r.html#przykłady-w-języku-r" id="toc-przykłady-w-języku-r"><span class="toc-section-number">1.5</span> Przykłady w języku R</a>
+<li class="chapter" data-level="1.5" data-path="przykłady-w-języku-r.html"><a href="przykłady-w-języku-r.html"><i class="fa fa-check"></i><b>1.5</b> Przykłady w języku R</a>
 <ul>
-<li><a href="przykłady-w-języku-r.html#kurz-cantora-2" id="toc-kurz-cantora-2"><span class="toc-section-number">1.5.1</span> Kurz Cantora</a></li>
-<li><a href="przykłady-w-języku-r.html#trójkąt-sierpińskiego-2" id="toc-trójkąt-sierpińskiego-2"><span class="toc-section-number">1.5.2</span> Trójkąt Sierpińskiego</a></li>
-<li><a href="przykłady-w-języku-r.html#dywan-sierpińskiego-2" id="toc-dywan-sierpińskiego-2"><span class="toc-section-number">1.5.3</span> Dywan Sierpińskiego</a></li>
+<li class="chapter" data-level="1.5.1" data-path="przykłady-w-języku-r.html"><a href="przykłady-w-języku-r.html#kurz-cantora-2"><i class="fa fa-check"></i><b>1.5.1</b> Kurz Cantora</a></li>
+<li class="chapter" data-level="1.5.2" data-path="przykłady-w-języku-r.html"><a href="przykłady-w-języku-r.html#trójkąt-sierpińskiego-2"><i class="fa fa-check"></i><b>1.5.2</b> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="1.5.3" data-path="przykłady-w-języku-r.html"><a href="przykłady-w-języku-r.html#dywan-sierpińskiego-2"><i class="fa fa-check"></i><b>1.5.3</b> Dywan Sierpińskiego</a></li>
 </ul></li>
-<li><a href="przykłady-w-języku-julia.html#przykłady-w-języku-julia" id="toc-przykłady-w-języku-julia"><span class="toc-section-number">1.6</span> Przykłady w języku Julia</a>
+<li class="chapter" data-level="1.6" data-path="przykłady-w-języku-julia.html"><a href="przykłady-w-języku-julia.html"><i class="fa fa-check"></i><b>1.6</b> Przykłady w języku Julia</a>
 <ul>
-<li><a href="przykłady-w-języku-julia.html#kurz-cantora-3" id="toc-kurz-cantora-3"><span class="toc-section-number">1.6.1</span> Kurz Cantora</a></li>
-<li><a href="przykłady-w-języku-julia.html#trójkąt-sierpińskiego-3" id="toc-trójkąt-sierpińskiego-3"><span class="toc-section-number">1.6.2</span> Trójkąt Sierpińskiego</a></li>
-<li><a href="przykłady-w-języku-julia.html#dywan-sierpińskiego-3" id="toc-dywan-sierpińskiego-3"><span class="toc-section-number">1.6.3</span> Dywan Sierpińskiego</a></li>
-</ul></li>
-</ul></li>
-<li><a href="fraktal-czyli-punkt-stały.html#fraktal-czyli-punkt-stały" id="toc-fraktal-czyli-punkt-stały"><span class="toc-section-number">2</span> Fraktal, czyli punkt stały</a>
-<ul>
-<li><a href="stefan-banach.html#stefan-banach" id="toc-stefan-banach"><span class="toc-section-number">2.1</span> Stefan Banach</a></li>
-<li><a href="fraktal-czyli-punkt-stały-1.html#fraktal-czyli-punkt-stały-1" id="toc-fraktal-czyli-punkt-stały-1"><span class="toc-section-number">2.2</span> Fraktal, czyli punkt stały</a>
-<ul>
-<li><a href="fraktal-czyli-punkt-stały-1.html#smoki-i-paprocie" id="toc-smoki-i-paprocie"><span class="toc-section-number">2.2.1</span> Smoki i paprocie</a></li>
-<li><a href="fraktal-czyli-punkt-stały-1.html#pięciokąt-sierpińskiego-ang.-sierpiński-pentagon" id="toc-pięciokąt-sierpińskiego-ang.-sierpiński-pentagon"><span class="toc-section-number">2.2.2</span> Pięciokąt Sierpińskiego (ang. Sierpiński pentagon)</a></li>
-<li><a href="fraktal-czyli-punkt-stały-1.html#drzewo-pitagorasa" id="toc-drzewo-pitagorasa"><span class="toc-section-number">2.2.3</span> Drzewo Pitagorasa</a></li>
-<li><a href="fraktal-czyli-punkt-stały-1.html#smok-heighwaya" id="toc-smok-heighwaya"><span class="toc-section-number">2.2.4</span> Smok Heighwaya</a></li>
-<li><a href="fraktal-czyli-punkt-stały-1.html#paproć-bernseya" id="toc-paproć-bernseya"><span class="toc-section-number">2.2.5</span> Paproć Bernseya</a></li>
-</ul></li>
-<li><a href="ale-dlaczego-to-działa-1.html#ale-dlaczego-to-działa-1" id="toc-ale-dlaczego-to-działa-1"><span class="toc-section-number">2.3</span> Ale dlaczego to działa?</a>
-<ul>
-<li><a href="ale-dlaczego-to-działa-1.html#przestrzeń-metryczna" id="toc-przestrzeń-metryczna"><span class="toc-section-number">2.3.1</span> Przestrzeń metryczna</a></li>
-<li><a href="ale-dlaczego-to-działa-1.html#odległość-hausdorffa" id="toc-odległość-hausdorffa"><span class="toc-section-number">2.3.2</span> Odległość Hausdorffa</a></li>
-<li><a href="ale-dlaczego-to-działa-1.html#ciąg-cauchyego" id="toc-ciąg-cauchyego"><span class="toc-section-number">2.3.3</span> Ciąg Cauchy’ego</a></li>
-<li><a href="ale-dlaczego-to-działa-1.html#przestrzeń-zupełna" id="toc-przestrzeń-zupełna"><span class="toc-section-number">2.3.4</span> Przestrzeń zupełna</a></li>
-<li><a href="ale-dlaczego-to-działa-1.html#kontrakcja" id="toc-kontrakcja"><span class="toc-section-number">2.3.5</span> Kontrakcja</a></li>
-<li><a href="ale-dlaczego-to-działa-1.html#przekształcenie-afiniczne" id="toc-przekształcenie-afiniczne"><span class="toc-section-number">2.3.6</span> Przekształcenie afiniczne</a></li>
-<li><a href="ale-dlaczego-to-działa-1.html#twierdzenie-hutchinsona" id="toc-twierdzenie-hutchinsona"><span class="toc-section-number">2.3.7</span> Twierdzenie Hutchinsona</a></li>
-<li><a href="ale-dlaczego-to-działa-1.html#twierdzenie-banacha-o-punkcie-stałym" id="toc-twierdzenie-banacha-o-punkcie-stałym"><span class="toc-section-number">2.3.8</span> Twierdzenie Banacha o punkcie stałym</a></li>
-</ul></li>
-<li><a href="przykłady-w-języku-python-1.html#przykłady-w-języku-python-1" id="toc-przykłady-w-języku-python-1"><span class="toc-section-number">2.4</span> Przykłady w języku Python</a>
-<ul>
-<li><a href="przykłady-w-języku-python-1.html#trójkąt-sierpińskiego-4" id="toc-trójkąt-sierpińskiego-4"><span class="toc-section-number">2.4.1</span> Trójkąt Sierpińskiego</a></li>
-<li><a href="przykłady-w-języku-python-1.html#pięciokąt-sierpińskiego" id="toc-pięciokąt-sierpińskiego"><span class="toc-section-number">2.4.2</span> Pięciokąt Sierpińskiego</a></li>
-<li><a href="przykłady-w-języku-python-1.html#smok-heighwaya-1" id="toc-smok-heighwaya-1"><span class="toc-section-number">2.4.3</span> Smok Heighwaya</a></li>
-<li><a href="przykłady-w-języku-python-1.html#drzewo-pitagorasa-1" id="toc-drzewo-pitagorasa-1"><span class="toc-section-number">2.4.4</span> Drzewo Pitagorasa</a></li>
-</ul></li>
-<li><a href="przykłady-w-języku-r-1.html#przykłady-w-języku-r-1" id="toc-przykłady-w-języku-r-1"><span class="toc-section-number">2.5</span> Przykłady w języku R</a>
-<ul>
-<li><a href="przykłady-w-języku-r-1.html#trójkąt-sierpińskiego-5" id="toc-trójkąt-sierpińskiego-5"><span class="toc-section-number">2.5.1</span> Trójkąt Sierpińskiego</a></li>
-<li><a href="przykłady-w-języku-r-1.html#pięciokąt-sierpińskiego-1" id="toc-pięciokąt-sierpińskiego-1"><span class="toc-section-number">2.5.2</span> Pięciokąt Sierpińskiego</a></li>
-<li><a href="przykłady-w-języku-r-1.html#smok-heighwaya-2" id="toc-smok-heighwaya-2"><span class="toc-section-number">2.5.3</span> Smok Heighwaya</a></li>
-<li><a href="przykłady-w-języku-r-1.html#symetryczne-drzewo-binarne-drzewo-pitagorasa" id="toc-symetryczne-drzewo-binarne-drzewo-pitagorasa"><span class="toc-section-number">2.5.4</span> Symetryczne drzewo binarne / drzewo Pitagorasa</a></li>
-</ul></li>
-<li><a href="przykłady-w-języku-julia-1.html#przykłady-w-języku-julia-1" id="toc-przykłady-w-języku-julia-1"><span class="toc-section-number">2.6</span> Przykłady w języku Julia</a>
-<ul>
-<li><a href="przykłady-w-języku-julia-1.html#trójkąt-sierpińskiego-6" id="toc-trójkąt-sierpińskiego-6"><span class="toc-section-number">2.6.1</span> Trójkąt Sierpińskiego</a></li>
-<li><a href="przykłady-w-języku-julia-1.html#pięciokąt-sierpińskiego-2" id="toc-pięciokąt-sierpińskiego-2"><span class="toc-section-number">2.6.2</span> Pięciokąt Sierpińskiego</a></li>
-<li><a href="przykłady-w-języku-julia-1.html#smok-heighwaya-3" id="toc-smok-heighwaya-3"><span class="toc-section-number">2.6.3</span> Smok Heighwaya</a></li>
-<li><a href="przykłady-w-języku-julia-1.html#drzewo-pitagorasa-2" id="toc-drzewo-pitagorasa-2"><span class="toc-section-number">2.6.4</span> Drzewo Pitagorasa</a></li>
+<li class="chapter" data-level="1.6.1" data-path="przykłady-w-języku-julia.html"><a href="przykłady-w-języku-julia.html#kurz-cantora-3"><i class="fa fa-check"></i><b>1.6.1</b> Kurz Cantora</a></li>
+<li class="chapter" data-level="1.6.2" data-path="przykłady-w-języku-julia.html"><a href="przykłady-w-języku-julia.html#trójkąt-sierpińskiego-3"><i class="fa fa-check"></i><b>1.6.2</b> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="1.6.3" data-path="przykłady-w-języku-julia.html"><a href="przykłady-w-języku-julia.html#dywan-sierpińskiego-3"><i class="fa fa-check"></i><b>1.6.3</b> Dywan Sierpińskiego</a></li>
 </ul></li>
 </ul></li>
-<li><a href="gra-w-chaos.html#gra-w-chaos" id="toc-gra-w-chaos"><span class="toc-section-number">3</span> Gra w chaos</a></li>
-<li><a href="kieszonkowy-atlas-fraktali.html#kieszonkowy-atlas-fraktali" id="toc-kieszonkowy-atlas-fraktali"><span class="toc-section-number">4</span> Kieszonkowy atlas fraktali</a></li>
-<li><a href="bibliografia.html#bibliografia" id="toc-bibliografia">Bibliografia</a></li>
+<li class="chapter" data-level="2" data-path="fraktal-czyli-punkt-stały.html"><a href="fraktal-czyli-punkt-stały.html"><i class="fa fa-check"></i><b>2</b> Fraktal, czyli punkt stały</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="stefan-banach.html"><a href="stefan-banach.html"><i class="fa fa-check"></i><b>2.1</b> Stefan Banach</a></li>
+<li class="chapter" data-level="2.2" data-path="fraktal-czyli-punkt-stały-1.html"><a href="fraktal-czyli-punkt-stały-1.html"><i class="fa fa-check"></i><b>2.2</b> Fraktal, czyli punkt stały</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="fraktal-czyli-punkt-stały-1.html"><a href="fraktal-czyli-punkt-stały-1.html#smoki-i-paprocie"><i class="fa fa-check"></i><b>2.2.1</b> Smoki i paprocie</a></li>
+<li class="chapter" data-level="2.2.2" data-path="fraktal-czyli-punkt-stały-1.html"><a href="fraktal-czyli-punkt-stały-1.html#pięciokąt-sierpińskiego-ang.-sierpiński-pentagon"><i class="fa fa-check"></i><b>2.2.2</b> Pięciokąt Sierpińskiego (ang. Sierpiński pentagon)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="fraktal-czyli-punkt-stały-1.html"><a href="fraktal-czyli-punkt-stały-1.html#drzewo-pitagorasa"><i class="fa fa-check"></i><b>2.2.3</b> Drzewo Pitagorasa</a></li>
+<li class="chapter" data-level="2.2.4" data-path="fraktal-czyli-punkt-stały-1.html"><a href="fraktal-czyli-punkt-stały-1.html#smok-heighwaya"><i class="fa fa-check"></i><b>2.2.4</b> Smok Heighwaya</a></li>
+<li class="chapter" data-level="2.2.5" data-path="fraktal-czyli-punkt-stały-1.html"><a href="fraktal-czyli-punkt-stały-1.html#paproć-bernseya"><i class="fa fa-check"></i><b>2.2.5</b> Paproć Bernseya</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html"><i class="fa fa-check"></i><b>2.3</b> Ale dlaczego to działa?</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#przestrzeń-metryczna"><i class="fa fa-check"></i><b>2.3.1</b> Przestrzeń metryczna</a></li>
+<li class="chapter" data-level="2.3.2" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#odległość-hausdorffa"><i class="fa fa-check"></i><b>2.3.2</b> Odległość Hausdorffa</a></li>
+<li class="chapter" data-level="2.3.3" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#ciąg-cauchyego"><i class="fa fa-check"></i><b>2.3.3</b> Ciąg Cauchy’ego</a></li>
+<li class="chapter" data-level="2.3.4" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#przestrzeń-zupełna"><i class="fa fa-check"></i><b>2.3.4</b> Przestrzeń zupełna</a></li>
+<li class="chapter" data-level="2.3.5" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#kontrakcja"><i class="fa fa-check"></i><b>2.3.5</b> Kontrakcja</a></li>
+<li class="chapter" data-level="2.3.6" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#przekształcenie-afiniczne"><i class="fa fa-check"></i><b>2.3.6</b> Przekształcenie afiniczne</a></li>
+<li class="chapter" data-level="2.3.7" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#twierdzenie-hutchinsona"><i class="fa fa-check"></i><b>2.3.7</b> Twierdzenie Hutchinsona</a></li>
+<li class="chapter" data-level="2.3.8" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#twierdzenie-banacha-o-punkcie-stałym"><i class="fa fa-check"></i><b>2.3.8</b> Twierdzenie Banacha o punkcie stałym</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="przykłady-w-języku-python-1.html"><a href="przykłady-w-języku-python-1.html"><i class="fa fa-check"></i><b>2.4</b> Przykłady w języku Python</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="przykłady-w-języku-python-1.html"><a href="przykłady-w-języku-python-1.html#trójkąt-sierpińskiego-4"><i class="fa fa-check"></i><b>2.4.1</b> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="2.4.2" data-path="przykłady-w-języku-python-1.html"><a href="przykłady-w-języku-python-1.html#pięciokąt-sierpińskiego"><i class="fa fa-check"></i><b>2.4.2</b> Pięciokąt Sierpińskiego</a></li>
+<li class="chapter" data-level="2.4.3" data-path="przykłady-w-języku-python-1.html"><a href="przykłady-w-języku-python-1.html#smok-heighwaya-1"><i class="fa fa-check"></i><b>2.4.3</b> Smok Heighwaya</a></li>
+<li class="chapter" data-level="2.4.4" data-path="przykłady-w-języku-python-1.html"><a href="przykłady-w-języku-python-1.html#drzewo-pitagorasa-1"><i class="fa fa-check"></i><b>2.4.4</b> Drzewo Pitagorasa</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="przykłady-w-języku-r-1.html"><a href="przykłady-w-języku-r-1.html"><i class="fa fa-check"></i><b>2.5</b> Przykłady w języku R</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="przykłady-w-języku-r-1.html"><a href="przykłady-w-języku-r-1.html#trójkąt-sierpińskiego-5"><i class="fa fa-check"></i><b>2.5.1</b> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="2.5.2" data-path="przykłady-w-języku-r-1.html"><a href="przykłady-w-języku-r-1.html#pięciokąt-sierpińskiego-1"><i class="fa fa-check"></i><b>2.5.2</b> Pięciokąt Sierpińskiego</a></li>
+<li class="chapter" data-level="2.5.3" data-path="przykłady-w-języku-r-1.html"><a href="przykłady-w-języku-r-1.html#smok-heighwaya-2"><i class="fa fa-check"></i><b>2.5.3</b> Smok Heighwaya</a></li>
+<li class="chapter" data-level="2.5.4" data-path="przykłady-w-języku-r-1.html"><a href="przykłady-w-języku-r-1.html#symetryczne-drzewo-binarne-drzewo-pitagorasa"><i class="fa fa-check"></i><b>2.5.4</b> Symetryczne drzewo binarne / drzewo Pitagorasa</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="przykłady-w-języku-julia-1.html"><a href="przykłady-w-języku-julia-1.html"><i class="fa fa-check"></i><b>2.6</b> Przykłady w języku Julia</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="przykłady-w-języku-julia-1.html"><a href="przykłady-w-języku-julia-1.html#trójkąt-sierpińskiego-6"><i class="fa fa-check"></i><b>2.6.1</b> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="2.6.2" data-path="przykłady-w-języku-julia-1.html"><a href="przykłady-w-języku-julia-1.html#pięciokąt-sierpińskiego-2"><i class="fa fa-check"></i><b>2.6.2</b> Pięciokąt Sierpińskiego</a></li>
+<li class="chapter" data-level="2.6.3" data-path="przykłady-w-języku-julia-1.html"><a href="przykłady-w-języku-julia-1.html#smok-heighwaya-3"><i class="fa fa-check"></i><b>2.6.3</b> Smok Heighwaya</a></li>
+<li class="chapter" data-level="2.6.4" data-path="przykłady-w-języku-julia-1.html"><a href="przykłady-w-języku-julia-1.html#drzewo-pitagorasa-2"><i class="fa fa-check"></i><b>2.6.4</b> Drzewo Pitagorasa</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="gra-w-chaos.html"><a href="gra-w-chaos.html"><i class="fa fa-check"></i><b>3</b> Gra w chaos</a></li>
+<li class="chapter" data-level="4" data-path="kieszonkowy-atlas-fraktali.html"><a href="kieszonkowy-atlas-fraktali.html"><i class="fa fa-check"></i><b>4</b> Kieszonkowy atlas fraktali</a></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
 <li class="divider"></li>
 <li><a href="https://www.mi2.ai/beta-bit.html" target="_blank">Inne pozycje z serii Beta i Bit</a></li>
 
@@ -260,8 +259,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="przykłady-w-języku-r" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Przykłady w języku R</h2>
+<div id="przykłady-w-języku-r" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Przykłady w języku R<a href="przykłady-w-języku-r.html#przykłady-w-języku-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Drogi Czytelniku, możesz opisywane fraktale odtworzyć na swoim komputerze, wystarczy tylko zainstalowany interpreter języka R, który można bezpłatnie pobrać i zainstalować ze strony [<a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>]. Nie jest niezbędna wcześniejsza znajomość tego języka, choć oczywiście byłaby przydatna.
 Poniżej kilka informacji, które pomogą w zrozumieniu tego kodu.</p>
 <ol style="list-style-type: decimal">
@@ -270,8 +269,8 @@ Poniżej kilka informacji, które pomogą w zrozumieniu tego kodu.</p>
 <li>Program R działa natywnie na wektorach, co znaczy, że możemy używać arytmetycznych operatorów takich jak <code>+</code> czy <code>/</code> zarówno do liczb, jak i do wektorów.</li>
 <li>Aby kod był bardziej czytelny, korzystamy z rekurencji, a więc konstrukcji, w której funkcja sama się wywołuje. Nowe funkcje definiuje się z użyciem słowa kluczowego <code>function</code>. Przedstawione funkcje mają argument <code>depth</code>, określający, ile jeszcze razy funkcja ma wywołać samą siebie.</li>
 </ol>
-<div id="kurz-cantora-2" class="section level3" number="1.5.1">
-<h3><span class="header-section-number">1.5.1</span> Kurz Cantora</h3>
+<div id="kurz-cantora-2" class="section level3 hasAnchor" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Kurz Cantora<a href="przykłady-w-języku-r.html#kurz-cantora-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Rysowanie fraktali rozpocznijmy od kurzu Cantora. Wykorzystamy do tego rekurencyjną funkcję <code>dust</code>, która przyjmuje trzy argumenty: <code>x</code> – miejsce, od którego należy rysować fraktal, <code>scale</code> – informację o wielkości fraktala oraz <code>depth</code> – aktualny poziom zagnieżdżenia fraktala.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="przykłady-w-języku-r.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rekurencyjna funkcja do rysowania kurzu. Jeżeli depth=1 </span></span>
 <span id="cb4-2"><a href="przykłady-w-języku-r.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to rysuje odcinek, jeżeli depth&gt;1 to rysujemy dwa </span></span>
@@ -293,8 +292,8 @@ Poniżej kilka informacji, które pomogą w zrozumieniu tego kodu.</p>
 <p class="caption">Wynik wykonania powyższych instrukcji</p>
 </div>
 </div>
-<div id="trójkąt-sierpińskiego-2" class="section level3" number="1.5.2">
-<h3><span class="header-section-number">1.5.2</span> Trójkąt Sierpińskiego</h3>
+<div id="trójkąt-sierpińskiego-2" class="section level3 hasAnchor" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Trójkąt Sierpińskiego<a href="przykłady-w-języku-r.html#trójkąt-sierpińskiego-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Czas na kultowy trójkąt Sierpińskiego. Aby go narysować, wykorzystamy rekurencyjną funkcję <code>sierpinski()</code>, która przyjmuje trzy argumenty: <code>x</code> – miejsce, od którego należy rysować fraktal, <code>scale</code> – informację o wielkości fraktala oraz <code>depth</code> – aktualny poziom zagnieżdżenia fraktala.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="przykłady-w-języku-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a>triangle <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, scale) {</span>
 <span id="cb5-2"><a href="przykłady-w-języku-r.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polygon</span>(x <span class="sc">+</span> scale<span class="sc">*</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>), </span>
@@ -321,8 +320,8 @@ Poniżej kilka informacji, które pomogą w zrozumieniu tego kodu.</p>
 <p class="caption">Wynik wykonania powyższych instrukcji</p>
 </div>
 </div>
-<div id="dywan-sierpińskiego-2" class="section level3" number="1.5.3">
-<h3><span class="header-section-number">1.5.3</span> Dywan Sierpińskiego</h3>
+<div id="dywan-sierpińskiego-2" class="section level3 hasAnchor" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> Dywan Sierpińskiego<a href="przykłady-w-języku-r.html#dywan-sierpińskiego-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Konstrukcja fraktala zaproponowana przez Wacława Sierpińskiego może być powtórzona dla innych kształtów.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="przykłady-w-języku-r.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rekurencyjna funkcja do rysowania dywanu. </span></span>
 <span id="cb6-2"><a href="przykłady-w-języku-r.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># W zależności od aktualnej głębokości albo rysuje kwadrat </span></span>
@@ -360,7 +359,6 @@ Poniżej kilka informacji, które pomogą w zrozumieniu tego kodu.</p>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -400,14 +398,14 @@ gitbook.start({
 "text": null
 },
 "download": null,
-"toc": {
-"collapse": "section",
-"split_by": "chapter",
-"toc_depth": 3
+"search": {
+"engine": "fuse",
+"options": null
 },
-"split_by": "section",
-"collapse": "section",
+"toc": {
+"collapse": "subsection",
 "toc_depth": 3
+}
 });
 });
 </script>
@@ -418,7 +416,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

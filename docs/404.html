@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.3 Ale dlaczego to działa? | Gra w chaos</title>
-  <meta name="description" content="2.3 Ale dlaczego to działa? | Gra w chaos" />
+  <title>Page not found | Gra w chaos</title>
+  <meta name="description" content="Page not found | Gra w chaos" />
   <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.3 Ale dlaczego to działa? | Gra w chaos" />
+  <meta property="og:title" content="Page not found | Gra w chaos" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/rozkladowka_00.png" />
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.3 Ale dlaczego to działa? | Gra w chaos" />
+  <meta name="twitter:title" content="Page not found | Gra w chaos" />
   
   
   <meta name="twitter:image" content="/images/rozkladowka_00.png" />
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="fraktal-czyli-punkt-stały-1.html"/>
-<link rel="next" href="przykłady-w-języku-python-1.html"/>
+
+
 <script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -259,127 +259,19 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ale-dlaczego-to-działa-1" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Ale dlaczego to działa?<a href="ale-dlaczego-to-działa-1.html#ale-dlaczego-to-działa-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Pokazane figury mają bardzo ciekawy opis matematyczny. Przedstawiamy go poniżej na poziomie szczegółowości pierwszych lat studiów matematycznych. Najpierw zdefiniujemy kilka niezbędnych pojęć, w oparciu o które będziemy mogli przedstawić twierdzenie o punkcie stałym.</p>
-<p>Zazwyczaj, myśląc o figurach i odległościach, skupiamy się na bardzo klasycznej płaszczyźnie z dwiema osiami i zwykłą euklidesową odległością. Ale na potrzeby zbliżającego się twierdzenia musimy spojrzeć na pewne rzeczy nieco bardziej abstrakcyjnie.</p>
-<div id="przestrzeń-metryczna" class="section level3 hasAnchor" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Przestrzeń metryczna<a href="ale-dlaczego-to-działa-1.html#przestrzeń-metryczna" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>W naszej historii bardzo ważną rolę będą odgrywały odległości pomiędzy punktami. Dlatego w dalszej części tego rozdziału często będziemy pisać o przestrzeni metrycznej. Co to takiego?</p>
-<p><strong>Definicja</strong> (przestrzeń metryczna).
-Przestrzeń metryczna to zbiór <span class="math inline">\(X\)</span> z określoną metryką (odległością) <span class="math inline">\(d\)</span> pomiędzy punktami tego zbioru.</p>
-<p>Inaczej mówiąc, jeżeli pracujemy z przestrzenią metryczną, to dla każdej pary punktów <span class="math inline">\(a\)</span> i <span class="math inline">\(b\)</span> potrafimy wyznaczyć ich odległość <span class="math inline">\(d(a,b)\)</span>.</p>
-<p><strong>Definicja</strong> (odległość).
-Odległość to funkcja <span class="math inline">\(d(a,b)\)</span> określona dla każdych dwóch punktów <span class="math inline">\(a, b \in X\)</span> spełniająca jednocześnie trzy warunki:</p>
-<ul>
-<li><span class="math inline">\(d(a,b) = 0 \Leftrightarrow a = b\)</span>, odległość wynosi zero wtedy i tylko wtedy, gdy punkty są sobie równe,</li>
-<li><span class="math inline">\(d(a,b) = d(b,a)\)</span>, odległość jest symetryczna,</li>
-<li><span class="math inline">\(d(a,b) \leq d(a,c) + d(c,b)\)</span>, warunek trójkąta, czyli odległość pomiędzy dowolnymi dwoma punktami jest zawsze mniejsza lub równa niż suma odległości tych punktów od dowolnego innego punktu <span class="math inline">\(c\)</span>.</li>
-</ul>
-<p>Większość z nas w codziennym życiu operuje w przestrzeni euklidesowej, ze zwykłą ,,linijkową’’ odległością. Ale aby pracować z fraktalami, potrzebujemy bardziej wyrafinowanych linijek.</p>
-</div>
-<div id="odległość-hausdorffa" class="section level3 hasAnchor" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> Odległość Hausdorffa<a href="ale-dlaczego-to-działa-1.html#odległość-hausdorffa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>W świecie fraktali odległość pomiędzy punktami mierzy się bardzo przewrotnie – stosując odległość <a href="https://pl.wikipedia.org/wiki/Felix_Hausdorff">Hausdorffa</a>. Ta odległość określa, jak daleko od siebie są dwie figury (w sensie: zbiory punktów).</p>
-<p>Mamy dwa zbiory punktów A i B w przestrzeni metrycznej z metryką <span class="math inline">\(d\)</span> i chcemy określić, jak daleko od siebie są te zbiory. Intuicja stojąca za tą metryką jest następująca: zbiory są blisko siebie, jeżeli dla każdego punktu z jednego zbioru można znaleźć jakiś punkt z drugiego zbioru, który jest do niego bliski. Jeżeli każdy punkt ze zbioru <span class="math inline">\(A\)</span> ma takiego ,,towarzysza’’ ze zbioru <span class="math inline">\(B\)</span>, to są one blisko.</p>
-<p>Spróbujmy to zapisać formalnie.</p>
-<p><strong>Definicja</strong> (odległość Hausdorffa).
-Odległość Hausdorffa pomiędzy dwoma niepustymi zbiorami <span class="math inline">\(A\)</span> i <span class="math inline">\(B\)</span> określona jest jako</p>
-<p><span class="math display">\[
-d_H(A, B) = \max \left\{ \sup_{a\in A} \inf_{b\in B} d(a, b); \sup_{b \in B} \inf_{a \in A} d(a, b) \right\}.
-\]</span></p>
-<p><em>Technicznie rzecz biorąc, odległość Hausdorffa jest określona dla zwartych niepustych zbiorów. Można ją stosować też dla zbiorów domkniętych, ale wtedy może przyjmować wartości nieskończone. My będziemy pracować na zbiorach zwartych, ale można nie mówić tego na głos i pewnie wiele osób nawet nie zauważy różnicy.</em></p>
-<div class="figure">
-<img src="images/gruszka_jablko.png" alt="" />
-<p class="caption">Ilustracja odległości Hausdorffa</p>
-</div>
-<p>Zapis może przerazić, ale jeżeli rozłożyć go na części, to okaże się bardzo intuicyjny. Cześć <span class="math inline">\(\inf_{b\in B} d(a, b)\)</span> oznacza najmniejszą odległość od punktu <span class="math inline">\(a\)</span> do dowolnego punktu ze zbioru <span class="math inline">\(B\)</span>. W takim razie <span class="math inline">\(\sup_{a\in A} \inf_{b\in B} d(a, b)\)</span> to odległość najbardziej odstającego punktu ze zbioru <span class="math inline">\(A\)</span>. Odległość musi być symetryczna, więc we wzorze <span class="math inline">\(d_H(A, B)\)</span> mamy maksimum z odstawiania zbioru <span class="math inline">\(A\)</span> od <span class="math inline">\(B\)</span> i odwrotnie.</p>
-</div>
-<div id="ciąg-cauchyego" class="section level3 hasAnchor" number="2.3.3">
-<h3><span class="header-section-number">2.3.3</span> Ciąg Cauchy’ego<a href="ale-dlaczego-to-działa-1.html#ciąg-cauchyego" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Drogi Czytelniku, jak już pewnie zauważyłeś, konstruując fraktale, powtarzamy pewne czynności w kółko. Tu i tam pojawia się sugestia, że należy to robić w nieskończoność. Zabawa w nieskończoność jest jednak ryzykowna, szczególnie, jeżeli nie mamy gwarancji, że gdzieś zbiegniemy. Skąd wziąć te gwarancje?</p>
-<p><strong>Definicja</strong> (ciąg Cauchy’ego).
-Ciąg Cauchy’ego to ciąg punktów <span class="math inline">\(a_n\)</span>, w którym dla dowolnej większej od zera liczby <span class="math inline">\(\varepsilon\)</span> można znaleźć taki element ciągu <span class="math inline">\(N\)</span>, że odległość pomiędzy wszystkimi dalszymi elementami jest mniejsza od <span class="math inline">\(\varepsilon\)</span>.</p>
-<p><span class="math display">\[
-\forall_{\varepsilon &gt;0} \exists_N \forall_{m,n&gt;N} d(a_m,a_n) \leq  \varepsilon.
-\]</span></p>
-</div>
-<div id="przestrzeń-zupełna" class="section level3 hasAnchor" number="2.3.4">
-<h3><span class="header-section-number">2.3.4</span> Przestrzeń zupełna<a href="ale-dlaczego-to-działa-1.html#przestrzeń-zupełna" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Ciągi zbieżne spełniają warunek Cauchy’ego, ale są też takie przestrzenie, w których ciągi Cauchy’ego nie są zbieżne. To nie są porządne przestrzenie, więc dalej będziemy operować tylko na porządnych przestrzeniach, czyli przestrzeniach zupełnych.</p>
-<p><strong>Definicja</strong> (przestrzeń zupełna).
-Przestrzeń metryczna <span class="math inline">\((X,d)\)</span> jest zupełna, jeżeli każdy ciąg <span class="math inline">\(a_n \subset X\)</span> spełniający warunek Cauchy’ego jest zbieżny w <span class="math inline">\(X\)</span>.</p>
-<p>I to są właśnie gwarancje ,,porządności’’, których potrzebowaliśmy.</p>
-</div>
-<div id="kontrakcja" class="section level3 hasAnchor" number="2.3.5">
-<h3><span class="header-section-number">2.3.5</span> Kontrakcja<a href="ale-dlaczego-to-działa-1.html#kontrakcja" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Mamy porządną przestrzeń, teraz porozmawiajmy o transformacjach. Do konstrukcji fraktali możemy wykorzystywać specyficzne transformacje, które zbliżają punkty. Będziemy je nazywać przekształceniami zwężającymi lub w skrócie kontrakcjami.</p>
-<p><strong>Definicja</strong> (kontrakcja).
-Przekształcenie <span class="math inline">\(T\)</span> jest przekształceniem zwężającym (kontrakcją), jeżeli istnieje stała <span class="math inline">\(\lambda &lt; 1\)</span> taka, że</p>
-<p><span class="math display">\[
-\forall_{x,y} d(T(x), T(y)) \leq \lambda d(x,y).
-\]</span></p>
-<p>Czyli dla dowolnych dwóch punktów <span class="math inline">\(x\)</span> i <span class="math inline">\(y\)</span> po przekształceniu są one bliżej niż przed.</p>
-<p>W przykładach, o których rozmawialiśmy na początku rozdziału, każda pokazana transformacja była kontrakcją. Dlaczego? Transformacje składały się z obrotów, przesunięć i skalowania. Obrót i przesunięcie nie zmieniają odległości pomiędzy punktami, a wszystkie skalowania były wykonywane ze skalą mniejszą niż 1 dla każdej z osi.</p>
-</div>
-<div id="przekształcenie-afiniczne" class="section level3 hasAnchor" number="2.3.6">
-<h3><span class="header-section-number">2.3.6</span> Przekształcenie afiniczne<a href="ale-dlaczego-to-działa-1.html#przekształcenie-afiniczne" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Kontrakcje to bardzo szeroka klasa transformacji. My ograniczamy się do znacznie węższej klasy transformacji liniowych z przesunięciami, czyli tzw. przekształceń afinicznych.</p>
-<p>Przekształcenie afiniczne to złożenie skalowania, obrotu i przesunięcia.</p>
-<p>Jeżeli skalowanie zmniejsza figurę, to takie przekształcenie afiniczne jest kontrakcją, ponieważ obrót i przesunięcie nie zmienia odległości.</p>
-<p>Przekształcenia afiniczne można łatwo opisać w postaci algebraicznej jako mnożenie punktu przez macierz przekształcenia. Pozwoli nam to skrócić zapis kodu generującego fraktal:</p>
-<p><span class="math display">\[
-T_{rotate, \alpha}(x) =   \begin{bmatrix}
-\cos(\alpha) &amp; -\sin(\alpha) \\
-\sin(\alpha) &amp; \cos(\alpha)  
-\end{bmatrix}  x,
-\]</span></p>
-<p><span class="math display">\[
-T_{scale, a, b}(x) =  \begin{bmatrix}
-a &amp; 0 \\
-0 &amp; b
-\end{bmatrix} x,
-\]</span></p>
-<p><span class="math display">\[
-T_{shift, a, b}(x) =  x + \begin{bmatrix}
-a \\
-b  
-\end{bmatrix}.
-\]</span></p>
-</div>
-<div id="twierdzenie-hutchinsona" class="section level3 hasAnchor" number="2.3.7">
-<h3><span class="header-section-number">2.3.7</span> Twierdzenie Hutchinsona<a href="ale-dlaczego-to-działa-1.html#twierdzenie-hutchinsona" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>W tym miejscu ktoś powie: ,,OK, każda z transformacji jest kontrakcją, ale czy ich złożenie też musi być kontrakcją?’’. Konstruując trójkąt Sierpińskiego, co prawda pomniejszaliśmy figurę, ale później kopiowaliśmy ją trzy razy. Okazuje się, że suma kontrakcji też jest kontrakcją – i dokładnie o tym mówi twierdzenie Hutchinsona.</p>
-<p><strong>Twierdzenie Hutchinsona</strong>.
-Przekształcenie <span class="math inline">\(T = T_1 \cup T_2 \cup ... \cup T_k\)</span> jest zwężające, jeśli wszystkie przekształcenia <span class="math inline">\(T_1, ..., T_k\)</span> użyte do zdefiniowania przekształcenia <span class="math inline">\(T\)</span> są zwężające.</p>
-<p>Dowód tego twierdzenia nie jest długi, można go znaleźć np. w ,,Delcie’’ z lipca 2011 roku <span class="citation">[<a href="#ref-ifsKiciak" role="doc-biblioref">Kici11</a>]</span>.</p>
-</div>
-<div id="twierdzenie-banacha-o-punkcie-stałym" class="section level3 hasAnchor" number="2.3.8">
-<h3><span class="header-section-number">2.3.8</span> Twierdzenie Banacha o punkcie stałym<a href="ale-dlaczego-to-działa-1.html#twierdzenie-banacha-o-punkcie-stałym" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Mamy już wszystko, czego potrzebowaliśmy do pokazania twierdzenia Banacha o punkcie stałym, czyli porządną przestrzeń z porządną odległością, w której używamy operatora <span class="math inline">\(T\)</span>, który jest kontrakcją.
-Precyzyjniej:</p>
-<p><strong>Twierdzenie Banacha o punkcie stałym</strong>.
-Jeśli <span class="math inline">\((X, d)\)</span> jest przestrzenią metryczną zupełną, a <span class="math inline">\(T: X\to X\)</span> jest kontrakcją, to <span class="math inline">\(T\)</span> ma dokładnie jeden punkt stały <span class="math inline">\(x\in X\)</span>.</p>
-<p>Puntem stałym przekształcenia <span class="math inline">\(T\)</span> jest taki punkt <span class="math inline">\(x\)</span>, że <span class="math inline">\(T(x) = x\)</span>.</p>
-<p>Dowód tego twierdzenia Banach przedstawił w swojej pracy doktorskiej. Nie jest on zbyt skomplikowany, można go znaleźć np. w ,,Delcie’’ z lipca 2011 roku. Tutaj ograniczymy się jedynie do pokazania, jak szukać tego punktu stałego.</p>
-<p>Otóż okazuje się, że dla dowolnego punktu <span class="math inline">\(x\)</span> przestrzeni <span class="math inline">\(X\)</span> ciąg <span class="math inline">\(T^n(x)\)</span> zbiega do punktu stałego, gdzie <span class="math inline">\(T^n(x)\)</span> oznacza n-krotne złożenie przekształcenia <span class="math inline">\(T\)</span>, czyli <span class="math inline">\(T(T(T(...T(x)...)))\)</span>.
-Wystarczy zatem w nieskończoność składać kontrakcje, by znaleźć ich punkt stały.</p>
-<p>I takim punktem stałym są konstruowane przez nas fraktale.</p>
-</div>
-</div>
-<h3>Bibliografia<a href="bibliografia.html#bibliografia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body">
-<div id="ref-ifsKiciak" class="csl-entry">
-<div class="csl-left-margin">[Kici11] </div><div class="csl-right-inline"><span class="smallcaps">Kiciak, Przemysław</span>: Układy iterowanych przekształceń. In: <em>Delta</em> Bd. 11 (2011)</div>
-</div>
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="fraktal-czyli-punkt-stały-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="przykłady-w-języku-python-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
