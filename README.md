@@ -2,4 +2,4 @@
 
 Beta, Bit i fraktale z użyciem IFS
 
-https://betaandbit.github.io/chaos
+https://chaos.drwhy.ai/
