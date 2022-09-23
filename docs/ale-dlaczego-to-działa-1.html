@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.3 Ale dlaczego to działa? | Gra w chaos</title>
+  <meta name="description" content="2.3 Ale dlaczego to działa? | Gra w chaos" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.3 Ale dlaczego to działa? | Gra w chaos" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/images/rozkladowka_00.png" />
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.3 Ale dlaczego to działa? | Gra w chaos" />
+  
+  
+  <meta name="twitter:image" content="/images/rozkladowka_00.png" />
+
+
+
+<meta name="date" content="2022-09-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="fraktal-czyli-punkt-stały-1.html"/>
+<link rel="next" href="przykłady-w-języku-python-1.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><h3>Gra w chaos</h3></a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#okładka" id="toc-okładka">Okładka</a></li>
+<li><a href="jak-czytać-tę-książkę.html#jak-czytać-tę-książkę" id="toc-jak-czytać-tę-książkę">Jak czytać tę książkę?</a></li>
+<li><a href="witajcie-fraktale.html#witajcie-fraktale" id="toc-witajcie-fraktale"><span class="toc-section-number">1</span> Witajcie, fraktale!</a>
+<ul>
+<li><a href="wacław-sierpiński.html#wacław-sierpiński" id="toc-wacław-sierpiński"><span class="toc-section-number">1.1</span> Wacław Sierpiński</a></li>
+<li><a href="witajcie-fraktale-1.html#witajcie-fraktale-1" id="toc-witajcie-fraktale-1"><span class="toc-section-number">1.2</span> Witajcie, fraktale!</a>
+<ul>
+<li><a href="witajcie-fraktale-1.html#kurz-cantora" id="toc-kurz-cantora"><span class="toc-section-number">1.2.1</span> Kurz Cantora</a></li>
+<li><a href="witajcie-fraktale-1.html#trójkąt-sierpińskiego" id="toc-trójkąt-sierpińskiego"><span class="toc-section-number">1.2.2</span> Trójkąt Sierpińskiego</a></li>
+</ul></li>
+<li><a href="ale-dlaczego-to-działa.html#ale-dlaczego-to-działa" id="toc-ale-dlaczego-to-działa"><span class="toc-section-number">1.3</span> Ale dlaczego to działa?</a>
+<ul>
+<li><a href="ale-dlaczego-to-działa.html#wymiar-topologiczny" id="toc-wymiar-topologiczny"><span class="toc-section-number">1.3.1</span> Wymiar topologiczny</a></li>
+<li><a href="ale-dlaczego-to-działa.html#wymiar-minkowskiego-czyli-fraktalny-wymiar-pudełkowy" id="toc-wymiar-minkowskiego-czyli-fraktalny-wymiar-pudełkowy"><span class="toc-section-number">1.3.2</span> Wymiar Minkowskiego, czyli fraktalny wymiar pudełkowy</a></li>
+<li><a href="ale-dlaczego-to-działa.html#dywan-sierpińskiego" id="toc-dywan-sierpińskiego"><span class="toc-section-number">1.3.3</span> Dywan Sierpińskiego</a></li>
+</ul></li>
+<li><a href="przykłady-w-języku-python.html#przykłady-w-języku-python" id="toc-przykłady-w-języku-python"><span class="toc-section-number">1.4</span> Przykłady w języku Python</a>
+<ul>
+<li><a href="przykłady-w-języku-python.html#kurz-cantora-1" id="toc-kurz-cantora-1"><span class="toc-section-number">1.4.1</span> Kurz Cantora</a></li>
+<li><a href="przykłady-w-języku-python.html#trójkąt-sierpińskiego-1" id="toc-trójkąt-sierpińskiego-1"><span class="toc-section-number">1.4.2</span> Trójkąt Sierpińskiego</a></li>
+<li><a href="przykłady-w-języku-python.html#dywan-sierpińskiego-1" id="toc-dywan-sierpińskiego-1"><span class="toc-section-number">1.4.3</span> Dywan Sierpińskiego</a></li>
+</ul></li>
+<li><a href="przykłady-w-języku-r.html#przykłady-w-języku-r" id="toc-przykłady-w-języku-r"><span class="toc-section-number">1.5</span> Przykłady w języku R</a>
+<ul>
+<li><a href="przykłady-w-języku-r.html#kurz-cantora-2" id="toc-kurz-cantora-2"><span class="toc-section-number">1.5.1</span> Kurz Cantora</a></li>
+<li><a href="przykłady-w-języku-r.html#trójkąt-sierpińskiego-2" id="toc-trójkąt-sierpińskiego-2"><span class="toc-section-number">1.5.2</span> Trójkąt Sierpińskiego</a></li>
+<li><a href="przykłady-w-języku-r.html#dywan-sierpińskiego-2" id="toc-dywan-sierpińskiego-2"><span class="toc-section-number">1.5.3</span> Dywan Sierpińskiego</a></li>
+</ul></li>
+<li><a href="przykłady-w-języku-julia.html#przykłady-w-języku-julia" id="toc-przykłady-w-języku-julia"><span class="toc-section-number">1.6</span> Przykłady w języku Julia</a>
+<ul>
+<li><a href="przykłady-w-języku-julia.html#kurz-cantora-3" id="toc-kurz-cantora-3"><span class="toc-section-number">1.6.1</span> Kurz Cantora</a></li>
+<li><a href="przykłady-w-języku-julia.html#trójkąt-sierpińskiego-3" id="toc-trójkąt-sierpińskiego-3"><span class="toc-section-number">1.6.2</span> Trójkąt Sierpińskiego</a></li>
+<li><a href="przykłady-w-języku-julia.html#dywan-sierpińskiego-3" id="toc-dywan-sierpińskiego-3"><span class="toc-section-number">1.6.3</span> Dywan Sierpińskiego</a></li>
+</ul></li>
+</ul></li>
+<li><a href="fraktal-czyli-punkt-stały.html#fraktal-czyli-punkt-stały" id="toc-fraktal-czyli-punkt-stały"><span class="toc-section-number">2</span> Fraktal, czyli punkt stały</a>
+<ul>
+<li><a href="stefan-banach.html#stefan-banach" id="toc-stefan-banach"><span class="toc-section-number">2.1</span> Stefan Banach</a></li>
+<li><a href="fraktal-czyli-punkt-stały-1.html#fraktal-czyli-punkt-stały-1" id="toc-fraktal-czyli-punkt-stały-1"><span class="toc-section-number">2.2</span> Fraktal, czyli punkt stały</a>
+<ul>
+<li><a href="fraktal-czyli-punkt-stały-1.html#smoki-i-paprocie" id="toc-smoki-i-paprocie"><span class="toc-section-number">2.2.1</span> Smoki i paprocie</a></li>
+<li><a href="fraktal-czyli-punkt-stały-1.html#pięciokąt-sierpińskiego-ang.-sierpiński-pentagon" id="toc-pięciokąt-sierpińskiego-ang.-sierpiński-pentagon"><span class="toc-section-number">2.2.2</span> Pięciokąt Sierpińskiego (ang. Sierpiński pentagon)</a></li>
+<li><a href="fraktal-czyli-punkt-stały-1.html#drzewo-pitagorasa" id="toc-drzewo-pitagorasa"><span class="toc-section-number">2.2.3</span> Drzewo Pitagorasa</a></li>
+<li><a href="fraktal-czyli-punkt-stały-1.html#smok-heighwaya" id="toc-smok-heighwaya"><span class="toc-section-number">2.2.4</span> Smok Heighwaya</a></li>
+<li><a href="fraktal-czyli-punkt-stały-1.html#paproć-bernseya" id="toc-paproć-bernseya"><span class="toc-section-number">2.2.5</span> Paproć Bernseya</a></li>
+</ul></li>
+<li><a href="ale-dlaczego-to-działa-1.html#ale-dlaczego-to-działa-1" id="toc-ale-dlaczego-to-działa-1"><span class="toc-section-number">2.3</span> Ale dlaczego to działa?</a>
+<ul>
+<li><a href="ale-dlaczego-to-działa-1.html#przestrzeń-metryczna" id="toc-przestrzeń-metryczna"><span class="toc-section-number">2.3.1</span> Przestrzeń metryczna</a></li>
+<li><a href="ale-dlaczego-to-działa-1.html#odległość-hausdorffa" id="toc-odległość-hausdorffa"><span class="toc-section-number">2.3.2</span> Odległość Hausdorffa</a></li>
+<li><a href="ale-dlaczego-to-działa-1.html#ciąg-cauchyego" id="toc-ciąg-cauchyego"><span class="toc-section-number">2.3.3</span> Ciąg Cauchy’ego</a></li>
+<li><a href="ale-dlaczego-to-działa-1.html#przestrzeń-zupełna" id="toc-przestrzeń-zupełna"><span class="toc-section-number">2.3.4</span> Przestrzeń zupełna</a></li>
+<li><a href="ale-dlaczego-to-działa-1.html#kontrakcja" id="toc-kontrakcja"><span class="toc-section-number">2.3.5</span> Kontrakcja</a></li>
+<li><a href="ale-dlaczego-to-działa-1.html#przekształcenie-afiniczne" id="toc-przekształcenie-afiniczne"><span class="toc-section-number">2.3.6</span> Przekształcenie afiniczne</a></li>
+<li><a href="ale-dlaczego-to-działa-1.html#twierdzenie-hutchinsona" id="toc-twierdzenie-hutchinsona"><span class="toc-section-number">2.3.7</span> Twierdzenie Hutchinsona</a></li>
+<li><a href="ale-dlaczego-to-działa-1.html#twierdzenie-banacha-o-punkcie-stałym" id="toc-twierdzenie-banacha-o-punkcie-stałym"><span class="toc-section-number">2.3.8</span> Twierdzenie Banacha o punkcie stałym</a></li>
+</ul></li>
+<li><a href="przykłady-w-języku-python-1.html#przykłady-w-języku-python-1" id="toc-przykłady-w-języku-python-1"><span class="toc-section-number">2.4</span> Przykłady w języku Python</a>
+<ul>
+<li><a href="przykłady-w-języku-python-1.html#trójkąt-sierpińskiego-4" id="toc-trójkąt-sierpińskiego-4"><span class="toc-section-number">2.4.1</span> Trójkąt Sierpińskiego</a></li>
+<li><a href="przykłady-w-języku-python-1.html#pięciokąt-sierpińskiego" id="toc-pięciokąt-sierpińskiego"><span class="toc-section-number">2.4.2</span> Pięciokąt Sierpińskiego</a></li>
+<li><a href="przykłady-w-języku-python-1.html#smok-heighwaya-1" id="toc-smok-heighwaya-1"><span class="toc-section-number">2.4.3</span> Smok Heighwaya</a></li>
+<li><a href="przykłady-w-języku-python-1.html#drzewo-pitagorasa-1" id="toc-drzewo-pitagorasa-1"><span class="toc-section-number">2.4.4</span> Drzewo Pitagorasa</a></li>
+</ul></li>
+<li><a href="przykłady-w-języku-r-1.html#przykłady-w-języku-r-1" id="toc-przykłady-w-języku-r-1"><span class="toc-section-number">2.5</span> Przykłady w języku R</a>
+<ul>
+<li><a href="przykłady-w-języku-r-1.html#trójkąt-sierpińskiego-5" id="toc-trójkąt-sierpińskiego-5"><span class="toc-section-number">2.5.1</span> Trójkąt Sierpińskiego</a></li>
+<li><a href="przykłady-w-języku-r-1.html#pięciokąt-sierpińskiego-1" id="toc-pięciokąt-sierpińskiego-1"><span class="toc-section-number">2.5.2</span> Pięciokąt Sierpińskiego</a></li>
+<li><a href="przykłady-w-języku-r-1.html#smok-heighwaya-2" id="toc-smok-heighwaya-2"><span class="toc-section-number">2.5.3</span> Smok Heighwaya</a></li>
+<li><a href="przykłady-w-języku-r-1.html#symetryczne-drzewo-binarne-drzewo-pitagorasa" id="toc-symetryczne-drzewo-binarne-drzewo-pitagorasa"><span class="toc-section-number">2.5.4</span> Symetryczne drzewo binarne / drzewo Pitagorasa</a></li>
+</ul></li>
+<li><a href="przykłady-w-języku-julia-1.html#przykłady-w-języku-julia-1" id="toc-przykłady-w-języku-julia-1"><span class="toc-section-number">2.6</span> Przykłady w języku Julia</a>
+<ul>
+<li><a href="przykłady-w-języku-julia-1.html#trójkąt-sierpińskiego-6" id="toc-trójkąt-sierpińskiego-6"><span class="toc-section-number">2.6.1</span> Trójkąt Sierpińskiego</a></li>
+<li><a href="przykłady-w-języku-julia-1.html#pięciokąt-sierpińskiego-2" id="toc-pięciokąt-sierpińskiego-2"><span class="toc-section-number">2.6.2</span> Pięciokąt Sierpińskiego</a></li>
+<li><a href="przykłady-w-języku-julia-1.html#smok-heighwaya-3" id="toc-smok-heighwaya-3"><span class="toc-section-number">2.6.3</span> Smok Heighwaya</a></li>
+<li><a href="przykłady-w-języku-julia-1.html#drzewo-pitagorasa-2" id="toc-drzewo-pitagorasa-2"><span class="toc-section-number">2.6.4</span> Drzewo Pitagorasa</a></li>
+</ul></li>
+</ul></li>
+<li><a href="gra-w-chaos.html#gra-w-chaos" id="toc-gra-w-chaos"><span class="toc-section-number">3</span> Gra w chaos</a></li>
+<li><a href="kieszonkowy-atlas-fraktali.html#kieszonkowy-atlas-fraktali" id="toc-kieszonkowy-atlas-fraktali"><span class="toc-section-number">4</span> Kieszonkowy atlas fraktali</a></li>
+<li><a href="bibliografia.html#bibliografia" id="toc-bibliografia">Bibliografia</a></li>
+<li class="divider"></li>
+<li><a href="https://www.mi2.ai/beta-bit.html" target="_blank">Inne pozycje z serii Beta i Bit</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Gra w chaos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ale-dlaczego-to-działa-1" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Ale dlaczego to działa?</h2>
+<p>Pokazane figury mają bardzo ciekawy opis matematyczny. Przedstawiamy go poniżej na poziomie szczegółowości pierwszych lat studiów matematycznych. Najpierw zdefiniujemy kilka niezbędnych pojęć, w oparciu o które będziemy mogli przedstawić twierdzenie o punkcie stałym.</p>
+<p>Zazwyczaj, myśląc o figurach i odległościach, skupiamy się na bardzo klasycznej płaszczyźnie z dwiema osiami i zwykłą euklidesową odległością. Ale na potrzeby zbliżającego się twierdzenia musimy spojrzeć na pewne rzeczy nieco bardziej abstrakcyjnie.</p>
+<div id="przestrzeń-metryczna" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Przestrzeń metryczna</h3>
+<p>W naszej historii bardzo ważną rolę będą odgrywały odległości pomiędzy punktami. Dlatego w dalszej części tego rozdziału często będziemy pisać o przestrzeni metrycznej. Co to takiego?</p>
+<p><strong>Definicja</strong> (przestrzeń metryczna).
+Przestrzeń metryczna to zbiór <span class="math inline">\(X\)</span> z określoną metryką (odległością) <span class="math inline">\(d\)</span> pomiędzy punktami tego zbioru.</p>
+<p>Inaczej mówiąc, jeżeli pracujemy z przestrzenią metryczną, to dla każdej pary punktów <span class="math inline">\(a\)</span> i <span class="math inline">\(b\)</span> potrafimy wyznaczyć ich odległość <span class="math inline">\(d(a,b)\)</span>.</p>
+<p><strong>Definicja</strong> (odległość).
+Odległość to funkcja <span class="math inline">\(d(a,b)\)</span> określona dla każdych dwóch punktów <span class="math inline">\(a, b \in X\)</span> spełniająca jednocześnie trzy warunki:</p>
+<ul>
+<li><span class="math inline">\(d(a,b) = 0 \Leftrightarrow a = b\)</span>, odległość wynosi zero wtedy i tylko wtedy, gdy punkty są sobie równe,</li>
+<li><span class="math inline">\(d(a,b) = d(b,a)\)</span>, odległość jest symetryczna,</li>
+<li><span class="math inline">\(d(a,b) \leq d(a,c) + d(c,b)\)</span>, warunek trójkąta, czyli odległość pomiędzy dowolnymi dwoma punktami jest zawsze mniejsza lub równa niż suma odległości tych punktów od dowolnego innego punktu <span class="math inline">\(c\)</span>.</li>
+</ul>
+<p>Większość z nas w codziennym życiu operuje w przestrzeni euklidesowej, ze zwykłą ,,linijkową’’ odległością. Ale aby pracować z fraktalami, potrzebujemy bardziej wyrafinowanych linijek.</p>
+</div>
+<div id="odległość-hausdorffa" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Odległość Hausdorffa</h3>
+<p>W świecie fraktali odległość pomiędzy punktami mierzy się bardzo przewrotnie – stosując odległość <a href="https://pl.wikipedia.org/wiki/Felix_Hausdorff">Hausdorffa</a>. Ta odległość określa, jak daleko od siebie są dwie figury (w sensie: zbiory punktów).</p>
+<p>Mamy dwa zbiory punktów A i B w przestrzeni metrycznej z metryką <span class="math inline">\(d\)</span> i chcemy określić, jak daleko od siebie są te zbiory. Intuicja stojąca za tą metryką jest następująca: zbiory są blisko siebie, jeżeli dla każdego punktu z jednego zbioru można znaleźć jakiś punkt z drugiego zbioru, który jest do niego bliski. Jeżeli każdy punkt ze zbioru <span class="math inline">\(A\)</span> ma takiego ,,towarzysza’’ ze zbioru <span class="math inline">\(B\)</span>, to są one blisko.</p>
+<p>Spróbujmy to zapisać formalnie.</p>
+<p><strong>Definicja</strong> (odległość Hausdorffa).
+Odległość Hausdorffa pomiędzy dwoma niepustymi zbiorami <span class="math inline">\(A\)</span> i <span class="math inline">\(B\)</span> określona jest jako</p>
+<p><span class="math display">\[
+d_H(A, B) = \max \left\{ \sup_{a\in A} \inf_{b\in B} d(a, b); \sup_{b \in B} \inf_{a \in A} d(a, b) \right\}.
+\]</span></p>
+<p><em>Technicznie rzecz biorąc, odległość Hausdorffa jest określona dla zwartych niepustych zbiorów. Można ją stosować też dla zbiorów domkniętych, ale wtedy może przyjmować wartości nieskończone. My będziemy pracować na zbiorach zwartych, ale można nie mówić tego na głos i pewnie wiele osób nawet nie zauważy różnicy.</em></p>
+<div class="figure">
+<img src="images/gruszka_jablko.png" alt="" />
+<p class="caption">Ilustracja odległości Hausdorffa</p>
+</div>
+<p>Zapis może przerazić, ale jeżeli rozłożyć go na części, to okaże się bardzo intuicyjny. Cześć <span class="math inline">\(\inf_{b\in B} d(a, b)\)</span> oznacza najmniejszą odległość od punktu <span class="math inline">\(a\)</span> do dowolnego punktu ze zbioru <span class="math inline">\(B\)</span>. W takim razie <span class="math inline">\(\sup_{a\in A} \inf_{b\in B} d(a, b)\)</span> to odległość najbardziej odstającego punktu ze zbioru <span class="math inline">\(A\)</span>. Odległość musi być symetryczna, więc we wzorze <span class="math inline">\(d_H(A, B)\)</span> mamy maksimum z odstawiania zbioru <span class="math inline">\(A\)</span> od <span class="math inline">\(B\)</span> i odwrotnie.</p>
+</div>
+<div id="ciąg-cauchyego" class="section level3" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Ciąg Cauchy’ego</h3>
+<p>Drogi Czytelniku, jak już pewnie zauważyłeś, konstruując fraktale, powtarzamy pewne czynności w kółko. Tu i tam pojawia się sugestia, że należy to robić w nieskończoność. Zabawa w nieskończoność jest jednak ryzykowna, szczególnie, jeżeli nie mamy gwarancji, że gdzieś zbiegniemy. Skąd wziąć te gwarancje?</p>
+<p><strong>Definicja</strong> (ciąg Cauchy’ego).
+Ciąg Cauchy’ego to ciąg punktów <span class="math inline">\(a_n\)</span>, w którym dla dowolnej większej od zera liczby <span class="math inline">\(\varepsilon\)</span> można znaleźć taki element ciągu <span class="math inline">\(N\)</span>, że odległość pomiędzy wszystkimi dalszymi elementami jest mniejsza od <span class="math inline">\(\varepsilon\)</span>.</p>
+<p><span class="math display">\[
+\forall_{\varepsilon &gt;0} \exists_N \forall_{m,n&gt;N} d(a_m,a_n) \leq  \varepsilon.
+\]</span></p>
+</div>
+<div id="przestrzeń-zupełna" class="section level3" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Przestrzeń zupełna</h3>
+<p>Ciągi zbieżne spełniają warunek Cauchy’ego, ale są też takie przestrzenie, w których ciągi Cauchy’ego nie są zbieżne. To nie są porządne przestrzenie, więc dalej będziemy operować tylko na porządnych przestrzeniach, czyli przestrzeniach zupełnych.</p>
+<p><strong>Definicja</strong> (przestrzeń zupełna).
+Przestrzeń metryczna <span class="math inline">\((X,d)\)</span> jest zupełna, jeżeli każdy ciąg <span class="math inline">\(a_n \subset X\)</span> spełniający warunek Cauchy’ego jest zbieżny w <span class="math inline">\(X\)</span>.</p>
+<p>I to są właśnie gwarancje ,,porządności’’, których potrzebowaliśmy.</p>
+</div>
+<div id="kontrakcja" class="section level3" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> Kontrakcja</h3>
+<p>Mamy porządną przestrzeń, teraz porozmawiajmy o transformacjach. Do konstrukcji fraktali możemy wykorzystywać specyficzne transformacje, które zbliżają punkty. Będziemy je nazywać przekształceniami zwężającymi lub w skrócie kontrakcjami.</p>
+<p><strong>Definicja</strong> (kontrakcja).
+Przekształcenie <span class="math inline">\(T\)</span> jest przekształceniem zwężającym (kontrakcją), jeżeli istnieje stała <span class="math inline">\(\lambda &lt; 1\)</span> taka, że</p>
+<p><span class="math display">\[
+\forall_{x,y} d(T(x), T(y)) \leq \lambda d(x,y).
+\]</span></p>
+<p>Czyli dla dowolnych dwóch punktów <span class="math inline">\(x\)</span> i <span class="math inline">\(y\)</span> po przekształceniu są one bliżej niż przed.</p>
+<p>W przykładach, o których rozmawialiśmy na początku rozdziału, każda pokazana transformacja była kontrakcją. Dlaczego? Transformacje składały się z obrotów, przesunięć i skalowania. Obrót i przesunięcie nie zmieniają odległości pomiędzy punktami, a wszystkie skalowania były wykonywane ze skalą mniejszą niż 1 dla każdej z osi.</p>
+</div>
+<div id="przekształcenie-afiniczne" class="section level3" number="2.3.6">
+<h3><span class="header-section-number">2.3.6</span> Przekształcenie afiniczne</h3>
+<p>Kontrakcje to bardzo szeroka klasa transformacji. My ograniczamy się do znacznie węższej klasy transformacji liniowych z przesunięciami, czyli tzw. przekształceń afinicznych.</p>
+<p>Przekształcenie afiniczne to złożenie skalowania, obrotu i przesunięcia.</p>
+<p>Jeżeli skalowanie zmniejsza figurę, to takie przekształcenie afiniczne jest kontrakcją, ponieważ obrót i przesunięcie nie zmienia odległości.</p>
+<p>Przekształcenia afiniczne można łatwo opisać w postaci algebraicznej jako mnożenie punktu przez macierz przekształcenia. Pozwoli nam to skrócić zapis kodu generującego fraktal:</p>
+<p><span class="math display">\[
+T_{rotate, \alpha}(x) =   \begin{bmatrix}
+\cos(\alpha) &amp; -\sin(\alpha) \\
+\sin(\alpha) &amp; \cos(\alpha)  
+\end{bmatrix}  x,
+\]</span></p>
+<p><span class="math display">\[
+T_{scale, a, b}(x) =  \begin{bmatrix}
+a &amp; 0 \\
+0 &amp; b
+\end{bmatrix} x,
+\]</span></p>
+<p><span class="math display">\[
+T_{shift, a, b}(x) =  x + \begin{bmatrix}
+a \\
+b  
+\end{bmatrix}.
+\]</span></p>
+</div>
+<div id="twierdzenie-hutchinsona" class="section level3" number="2.3.7">
+<h3><span class="header-section-number">2.3.7</span> Twierdzenie Hutchinsona</h3>
+<p>W tym miejscu ktoś powie: ,,OK, każda z transformacji jest kontrakcją, ale czy ich złożenie też musi być kontrakcją?’’. Konstruując trójkąt Sierpińskiego, co prawda pomniejszaliśmy figurę, ale później kopiowaliśmy ją trzy razy. Okazuje się, że suma kontrakcji też jest kontrakcją – i dokładnie o tym mówi twierdzenie Hutchinsona.</p>
+<p><strong>Twierdzenie Hutchinsona</strong>.
+Przekształcenie <span class="math inline">\(T = T_1 \cup T_2 \cup ... \cup T_k\)</span> jest zwężające, jeśli wszystkie przekształcenia <span class="math inline">\(T_1, ..., T_k\)</span> użyte do zdefiniowania przekształcenia <span class="math inline">\(T\)</span> są zwężające.</p>
+<p>Dowód tego twierdzenia nie jest długi, można go znaleźć np. w ,,Delcie’’ z lipca 2011 roku <span class="citation">[<a href="#ref-ifsKiciak" role="doc-biblioref">Kici11</a>]</span>.</p>
+</div>
+<div id="twierdzenie-banacha-o-punkcie-stałym" class="section level3" number="2.3.8">
+<h3><span class="header-section-number">2.3.8</span> Twierdzenie Banacha o punkcie stałym</h3>
+<p>Mamy już wszystko, czego potrzebowaliśmy do pokazania twierdzenia Banacha o punkcie stałym, czyli porządną przestrzeń z porządną odległością, w której używamy operatora <span class="math inline">\(T\)</span>, który jest kontrakcją.
+Precyzyjniej:</p>
+<p><strong>Twierdzenie Banacha o punkcie stałym</strong>.
+Jeśli <span class="math inline">\((X, d)\)</span> jest przestrzenią metryczną zupełną, a <span class="math inline">\(T: X\to X\)</span> jest kontrakcją, to <span class="math inline">\(T\)</span> ma dokładnie jeden punkt stały <span class="math inline">\(x\in X\)</span>.</p>
+<p>Puntem stałym przekształcenia <span class="math inline">\(T\)</span> jest taki punkt <span class="math inline">\(x\)</span>, że <span class="math inline">\(T(x) = x\)</span>.</p>
+<p>Dowód tego twierdzenia Banach przedstawił w swojej pracy doktorskiej. Nie jest on zbyt skomplikowany, można go znaleźć np. w ,,Delcie’’ z lipca 2011 roku. Tutaj ograniczymy się jedynie do pokazania, jak szukać tego punktu stałego.</p>
+<p>Otóż okazuje się, że dla dowolnego punktu <span class="math inline">\(x\)</span> przestrzeni <span class="math inline">\(X\)</span> ciąg <span class="math inline">\(T^n(x)\)</span> zbiega do punktu stałego, gdzie <span class="math inline">\(T^n(x)\)</span> oznacza n-krotne złożenie przekształcenia <span class="math inline">\(T\)</span>, czyli <span class="math inline">\(T(T(T(...T(x)...)))\)</span>.
+Wystarczy zatem w nieskończoność składać kontrakcje, by znaleźć ich punkt stały.</p>
+<p>I takim punktem stałym są konstruowane przez nas fraktale.</p>
+</div>
+</div>
+<h3>Bibliografia</h3>
+<div id="refs" class="references csl-bib-body">
+<div id="ref-ifsKiciak" class="csl-entry">
+<div class="csl-left-margin">[Kici11] </div><div class="csl-right-inline"><span class="smallcaps">Kiciak, Przemysław</span>: Układy iterowanych przekształceń. In: <em>Delta</em> Bd. 11 (2011)</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fraktal-czyli-punkt-stały-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="przykłady-w-języku-python-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"split_by": "chapter",
+"toc_depth": 3
+},
+"split_by": "section",
+"collapse": "section",
+"toc_depth": 3
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
