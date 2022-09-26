@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.5 Przykłady w języku R | Gra w chaos</title>
-  <meta name="description" content="1.5 Przykłady w języku R | Gra w chaos" />
+  <title>3.6 Przykłady w języku Julia | Gra w chaos</title>
+  <meta name="description" content="3.6 Przykłady w języku Julia | Gra w chaos" />
   <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.5 Przykłady w języku R | Gra w chaos" />
+  <meta property="og:title" content="3.6 Przykłady w języku Julia | Gra w chaos" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/rozkladowka_00.png" />
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.5 Przykłady w języku R | Gra w chaos" />
+  <meta name="twitter:title" content="3.6 Przykłady w języku Julia | Gra w chaos" />
   
   
   <meta name="twitter:image" content="/images/rozkladowka_00.png" />
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="przykłady-w-języku-python.html"/>
-<link rel="next" href="przykłady-w-języku-julia.html"/>
+<link rel="prev" href="przykłady-w-języku-r-2.html"/>
+<link rel="next" href="kieszonkowy-atlas-fraktali.html"/>
 <script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -307,103 +307,130 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="przykłady-w-języku-r" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> Przykłady w języku R<a href="przykłady-w-języku-r.html#przykłady-w-języku-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Drogi Czytelniku, możesz opisywane fraktale odtworzyć na swoim komputerze, wystarczy tylko zainstalowany interpreter języka R, który można bezpłatnie pobrać i zainstalować ze strony [<a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>]. Nie jest niezbędna wcześniejsza znajomość tego języka, choć oczywiście byłaby przydatna.
-Poniżej kilka informacji, które pomogą w zrozumieniu tego kodu.</p>
+<div id="przykłady-w-języku-julia-2" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Przykłady w języku Julia<a href="przykłady-w-języku-julia-2.html#przykłady-w-języku-julia-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="trójkąt-sierpińskiego-raz-jeszcze-2" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Trójkąt Sierpińskiego raz jeszcze<a href="przykłady-w-języku-julia-2.html#trójkąt-sierpińskiego-raz-jeszcze-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Poniższy kod odtwarza konstrukcję trójkąta Sierpińskiego przedstawioną w tym rozdziale. W macierzy <code>triangle</code> definiujemy trzy wierzchołki trójkąta, a w obiekcie <code>point</code> umieszczamy współrzędne punktu startowego dla konstrukcji fraktala. Następnie w pętli przesuwamy punkt w kierunku losowego wierzchołka.</p>
 <ol style="list-style-type: decimal">
-<li>Poniższe przykłady korzystają z podstawowej biblioteki graficznej dla R, czyli <code>graphics</code>. Nie trzeba jej wczytywać, ponieważ jest dostępna od razu po uruchomieniu R. Funkcja <code>plot.new()</code> tworzy pusty wykres. Jest on wypełniany przez użycie funkcji <code>polygon()</code> do rysowania wypełnionych wielokątów, tutaj trójkąta i kwadratu.</li>
-<li>R to język dla matematyków i statystyków, więc większość operacji matematycznych jest dostępna od razu po uruchomieniu konsoli, tak jak funkcja <code>sqrt()</code> potrzebna do wyliczenia wysokości trójkąta równobocznego.</li>
-<li>Program R działa natywnie na wektorach, co znaczy, że możemy używać arytmetycznych operatorów takich jak <code>+</code> czy <code>/</code> zarówno do liczb, jak i do wektorów.</li>
-<li>Aby kod był bardziej czytelny, korzystamy z rekurencji, a więc konstrukcji, w której funkcja sama się wywołuje. Nowe funkcje definiuje się z użyciem słowa kluczowego <code>function</code>. Przedstawione funkcje mają argument <code>depth</code>, określający, ile jeszcze razy funkcja ma wywołać samą siebie.</li>
+<li><span class="math inline">\(x&#39; = x/2\)</span>, <span class="math inline">\(y&#39; = y/2\)</span> (lewy róg)</li>
+<li><span class="math inline">\(x&#39; = x/2 + \frac 12\)</span>, <span class="math inline">\(y&#39; = y/2\)</span> (prawy róg)</li>
+<li><span class="math inline">\(x&#39; = x/2 + \frac 14\)</span>, <span class="math inline">\(y&#39; = y/2 + \frac{\sqrt{3}}2\)</span> (górny róg)</li>
 </ol>
-<div id="kurz-cantora-2" class="section level3 hasAnchor" number="1.5.1">
-<h3><span class="header-section-number">1.5.1</span> Kurz Cantora<a href="przykłady-w-języku-r.html#kurz-cantora-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Rysowanie fraktali rozpocznijmy od kurzu Cantora. Wykorzystamy do tego rekurencyjną funkcję <code>dust</code>, która przyjmuje trzy argumenty: <code>x</code> – miejsce, od którego należy rysować fraktal, <code>scale</code> – informację o wielkości fraktala oraz <code>depth</code> – aktualny poziom zagnieżdżenia fraktala.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="przykłady-w-języku-r.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rekurencyjna funkcja do rysowania kurzu. Jeżeli depth=1 </span></span>
-<span id="cb4-2"><a href="przykłady-w-języku-r.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to rysuje odcinek, jeżeli depth&gt;1 to rysujemy dwa </span></span>
-<span id="cb4-3"><a href="przykłady-w-języku-r.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># kurze Cantora obok siebie.</span></span>
-<span id="cb4-4"><a href="przykłady-w-języku-r.html#cb4-4" aria-hidden="true" tabindex="-1"></a>dust <span class="ot">=</span> <span class="cf">function</span>(x, y, scale, <span class="at">depth =</span> <span class="dv">1</span>) { </span>
-<span id="cb4-5"><a href="przykłady-w-języku-r.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (depth <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb4-6"><a href="przykłady-w-języku-r.html#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(<span class="fu">c</span>(x, x <span class="sc">+</span> scale), <span class="fu">c</span>(y, y))</span>
-<span id="cb4-7"><a href="przykłady-w-języku-r.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb4-8"><a href="przykłady-w-języku-r.html#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dust</span>(x, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb4-9"><a href="przykłady-w-języku-r.html#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dust</span>(x <span class="sc">+</span> scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb4-10"><a href="przykłady-w-języku-r.html#cb4-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-11"><a href="przykłady-w-języku-r.html#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-12"><a href="przykłady-w-języku-r.html#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="przykłady-w-języku-r.html#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Czyścimy ekran i zaczynamy rysowanie kurzu.</span></span>
-<span id="cb4-14"><a href="przykłady-w-języku-r.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>() </span>
-<span id="cb4-15"><a href="przykłady-w-języku-r.html#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dust</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>, <span class="at">depth =</span> <span class="dv">4</span>)</span></code></pre></div>
-<div class="figure">
-<img src="images/r_20_01.png" alt="" />
-<p class="caption">Wynik wykonania powyższych instrukcji</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb32-1"><a href="przykłady-w-języku-julia-2.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb32-2"><a href="przykłady-w-języku-julia-2.html#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="przykłady-w-języku-julia-2.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Liczba kroków, wierzchołki trójkąta i kolory dla transformacji.</span></span>
+<span id="cb32-4"><a href="przykłady-w-języku-julia-2.html#cb32-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="fl">100000</span> </span>
+<span id="cb32-5"><a href="przykłady-w-języku-julia-2.html#cb32-5" aria-hidden="true" tabindex="-1"></a>triangle <span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span>; <span class="fl">0.5</span> <span class="fl">2</span>; <span class="fl">1.5</span> <span class="fl">0.5</span>] </span>
+<span id="cb32-6"><a href="przykłady-w-języku-julia-2.html#cb32-6" aria-hidden="true" tabindex="-1"></a>col <span class="op">=</span> [<span class="st">&quot;red&quot;</span> <span class="st">&quot;green&quot;</span> <span class="st">&quot;blue&quot;</span>]</span>
+<span id="cb32-7"><a href="przykłady-w-języku-julia-2.html#cb32-7" aria-hidden="true" tabindex="-1"></a>point <span class="op">=</span> [<span class="fl">0.1</span> <span class="fl">0</span>]</span>
+<span id="cb32-8"><a href="przykłady-w-języku-julia-2.html#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="przykłady-w-języku-julia-2.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Macierz na kolejne punkty trójkąta Sierpińskiego.</span></span>
+<span id="cb32-10"><a href="przykłady-w-języku-julia-2.html#cb32-10" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> <span class="fu">zeros</span>(N, <span class="fl">2</span>) </span>
+<span id="cb32-11"><a href="przykłady-w-języku-julia-2.html#cb32-11" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> <span class="dt">String</span>[]</span>
+<span id="cb32-12"><a href="przykłady-w-języku-julia-2.html#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="przykłady-w-języku-julia-2.html#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Wektor cols zbiera kolory odpowiadające wylosowanym</span></span>
+<span id="cb32-14"><a href="przykłady-w-języku-julia-2.html#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="co"># transformacjom a macierz coords zbiera współrzędne </span></span>
+<span id="cb32-15"><a href="przykłady-w-języku-julia-2.html#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="co"># pióra po każdym skoku.</span></span>
+<span id="cb32-16"><a href="przykłady-w-języku-julia-2.html#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>N</span>
+<span id="cb32-17"><a href="przykłady-w-języku-julia-2.html#cb32-17" aria-hidden="true" tabindex="-1"></a>  ind <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,<span class="fl">1</span>)</span>
+<span id="cb32-18"><a href="przykłady-w-języku-julia-2.html#cb32-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">append!</span>(cols, col[ind]) </span>
+<span id="cb32-19"><a href="przykłady-w-języku-julia-2.html#cb32-19" aria-hidden="true" tabindex="-1"></a>  point <span class="op">=</span> (point <span class="op">+</span> triangle[ind, <span class="op">:</span>])<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb32-20"><a href="przykłady-w-języku-julia-2.html#cb32-20" aria-hidden="true" tabindex="-1"></a>  coords[i,<span class="op">:</span>] <span class="op">=</span> point</span>
+<span id="cb32-21"><a href="przykłady-w-języku-julia-2.html#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb32-22"><a href="przykłady-w-języku-julia-2.html#cb32-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-23"><a href="przykłady-w-języku-julia-2.html#cb32-23" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(coords[<span class="op">:</span>,<span class="fl">1</span>], coords[<span class="op">:</span>,<span class="fl">2</span>], color<span class="op">=</span>cols, </span>
+<span id="cb32-24"><a href="przykłady-w-języku-julia-2.html#cb32-24" aria-hidden="true" tabindex="-1"></a>        legend<span class="op">=:</span><span class="cn">false</span>, markersize<span class="op">=</span><span class="fl">2</span>, axis<span class="op">=</span><span class="cn">nothing</span>)</span></code></pre></div>
+<p><img src="images/julia_40_07b.png" /></p>
+</div>
+<div id="paproć-barnsleya-2" class="section level3 hasAnchor" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> Paproć Barnsleya<a href="przykłady-w-języku-julia-2.html#paproć-barnsleya-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb33"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb33-1"><a href="przykłady-w-języku-julia-2.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">StatsBase</span></span>
+<span id="cb33-2"><a href="przykłady-w-języku-julia-2.html#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="przykłady-w-języku-julia-2.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Kolejne transformacje są zapisane jako osobne funkcje, </span></span>
+<span id="cb33-4"><a href="przykłady-w-języku-julia-2.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># które później złożą się na wektor funkcji trans.</span></span>
+<span id="cb33-5"><a href="przykłady-w-języku-julia-2.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">trans1</span>(x) <span class="op">=</span> [   <span class="fl">0</span>.   <span class="fl">0</span>.; <span class="fl">0</span>.    <span class="fl">0.16</span>]<span class="op">*</span>x</span>
+<span id="cb33-6"><a href="przykłady-w-języku-julia-2.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">trans2</span>(x) <span class="op">=</span> [<span class="fl">0.85</span>  <span class="fl">0.04</span>; <span class="op">-</span><span class="fl">0.04</span> <span class="fl">0.85</span>]<span class="op">*</span>x <span class="op">+</span> [<span class="fl">0</span>; <span class="fl">1.6</span>]</span>
+<span id="cb33-7"><a href="przykłady-w-języku-julia-2.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">trans3</span>(x) <span class="op">=</span> [<span class="fl">0.2</span>  <span class="op">-</span><span class="fl">0.26</span>;  <span class="fl">0.23</span> <span class="fl">0.22</span>]<span class="op">*</span>x <span class="op">+</span> [<span class="fl">0</span>; <span class="fl">0.8</span>]</span>
+<span id="cb33-8"><a href="przykłady-w-języku-julia-2.html#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">trans4</span>(x) <span class="op">=</span> [<span class="op">-</span><span class="fl">0.15</span> <span class="fl">0.28</span>;  <span class="fl">0.26</span> <span class="fl">0.24</span>]<span class="op">*</span>x <span class="op">+</span> [<span class="fl">0</span>; <span class="fl">0.44</span>]</span>
+<span id="cb33-9"><a href="przykłady-w-języku-julia-2.html#cb33-9" aria-hidden="true" tabindex="-1"></a>trans <span class="op">=</span> [trans1, trans2, trans3, trans4]</span>
+<span id="cb33-10"><a href="przykłady-w-języku-julia-2.html#cb33-10" aria-hidden="true" tabindex="-1"></a>point <span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span>]<span class="ch">&#39;</span></span>
+<span id="cb33-11"><a href="przykłady-w-języku-julia-2.html#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="przykłady-w-języku-julia-2.html#cb33-12" aria-hidden="true" tabindex="-1"></a>col <span class="op">=</span> [<span class="st">&quot;red&quot;</span> <span class="st">&quot;green&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;orange&quot;</span>]</span>
+<span id="cb33-13"><a href="przykłady-w-języku-julia-2.html#cb33-13" aria-hidden="true" tabindex="-1"></a>probs <span class="op">=</span> [<span class="fl">0.01</span>, <span class="fl">0.79</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>]</span>
+<span id="cb33-14"><a href="przykłady-w-języku-julia-2.html#cb33-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-15"><a href="przykłady-w-języku-julia-2.html#cb33-15" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="fl">200000</span></span>
+<span id="cb33-16"><a href="przykłady-w-języku-julia-2.html#cb33-16" aria-hidden="true" tabindex="-1"></a>coords <span class="op">=</span> <span class="fu">zeros</span>(N, <span class="fl">2</span>)</span>
+<span id="cb33-17"><a href="przykłady-w-języku-julia-2.html#cb33-17" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> <span class="dt">String</span>[]</span>
+<span id="cb33-18"><a href="przykłady-w-języku-julia-2.html#cb33-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-19"><a href="przykłady-w-języku-julia-2.html#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>N</span>
+<span id="cb33-20"><a href="przykłady-w-języku-julia-2.html#cb33-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Losujemy transformacje wykorzystując wektor *probs* z częstościami </span></span>
+<span id="cb33-21"><a href="przykłady-w-języku-julia-2.html#cb33-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># występowania poszczególnych transformacji. Funkcja sample </span></span>
+<span id="cb33-22"><a href="przykłady-w-języku-julia-2.html#cb33-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># jest dostępna w bibliotece StatsBase.</span></span>
+<span id="cb33-23"><a href="przykłady-w-języku-julia-2.html#cb33-23" aria-hidden="true" tabindex="-1"></a>  ind <span class="op">=</span> <span class="fu">sample</span>(<span class="fl">1</span><span class="op">:</span><span class="fu">length</span>(probs), <span class="fu">Weights</span>(probs)) </span>
+<span id="cb33-24"><a href="przykłady-w-języku-julia-2.html#cb33-24" aria-hidden="true" tabindex="-1"></a>  selected_trans <span class="op">=</span> trans[ind[<span class="fl">1</span>]]</span>
+<span id="cb33-25"><a href="przykłady-w-języku-julia-2.html#cb33-25" aria-hidden="true" tabindex="-1"></a>  point <span class="op">=</span> <span class="fu">selected_trans</span>(point)</span>
+<span id="cb33-26"><a href="przykłady-w-języku-julia-2.html#cb33-26" aria-hidden="true" tabindex="-1"></a>  coords[i,<span class="op">:</span>] <span class="op">=</span> point</span>
+<span id="cb33-27"><a href="przykłady-w-języku-julia-2.html#cb33-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">push!</span>(cols, col[ind])</span>
+<span id="cb33-28"><a href="przykłady-w-języku-julia-2.html#cb33-28" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb33-29"><a href="przykłady-w-języku-julia-2.html#cb33-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-30"><a href="przykłady-w-języku-julia-2.html#cb33-30" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(coords[<span class="op">:</span>,<span class="fl">1</span>], coords[<span class="op">:</span>,<span class="fl">2</span>], color<span class="op">=</span>cols,</span>
+<span id="cb33-31"><a href="przykłady-w-języku-julia-2.html#cb33-31" aria-hidden="true" tabindex="-1"></a>      legend<span class="op">=:</span><span class="cn">false</span>, markersize<span class="op">=</span><span class="fl">1</span>, axis<span class="op">=</span><span class="cn">nothing</span>,</span>
+<span id="cb33-32"><a href="przykłady-w-języku-julia-2.html#cb33-32" aria-hidden="true" tabindex="-1"></a>      markerstrokecolor<span class="op">=</span>cols)</span></code></pre></div>
+<p><img src="images/julia_40_01b.png" /></p>
+</div>
+<div id="liść-klonu-2" class="section level3 hasAnchor" number="3.6.3">
+<h3><span class="header-section-number">3.6.3</span> Liść klonu<a href="przykłady-w-języku-julia-2.html#liść-klonu-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb34"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb34-1"><a href="przykłady-w-języku-julia-2.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Kolejne transformacje zapisujemy jako macierze 3x3 przekształceń</span></span>
+<span id="cb34-2"><a href="przykłady-w-języku-julia-2.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># liniowych. Przez co zapis jest bardziej kompaktowy.</span></span>
+<span id="cb34-3"><a href="przykłady-w-języku-julia-2.html#cb34-3" aria-hidden="true" tabindex="-1"></a>affines <span class="op">=</span> [[<span class="fl">0.14</span>  <span class="fl">0.01</span>  <span class="op">-</span><span class="fl">0.08</span>; <span class="fl">0.0</span>  <span class="fl">0.51</span>  <span class="op">-</span><span class="fl">1.31</span>; <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span>],</span>
+<span id="cb34-4"><a href="przykłady-w-języku-julia-2.html#cb34-4" aria-hidden="true" tabindex="-1"></a>      [<span class="fl">0.43</span>   <span class="fl">0.52</span>   <span class="fl">1.49</span>; <span class="op">-</span><span class="fl">0.45</span>  <span class="fl">0.5</span>  <span class="op">-</span><span class="fl">0.75</span> ; <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span>],</span>
+<span id="cb34-5"><a href="przykłady-w-języku-julia-2.html#cb34-5" aria-hidden="true" tabindex="-1"></a>      [<span class="fl">0.45</span>  <span class="op">-</span><span class="fl">0.49</span>  <span class="op">-</span><span class="fl">1.62</span>;  <span class="fl">0.47</span>  <span class="fl">0.47</span>  <span class="op">-</span><span class="fl">0.74</span>; <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span>],</span>
+<span id="cb34-6"><a href="przykłady-w-języku-julia-2.html#cb34-6" aria-hidden="true" tabindex="-1"></a>      [<span class="fl">0.49</span>   <span class="fl">0.0</span>    <span class="fl">0.02</span>;  <span class="fl">0.0</span>   <span class="fl">0.51</span>  <span class="fl">1.62</span> ; <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span>]]</span>
+<span id="cb34-7"><a href="przykłady-w-języku-julia-2.html#cb34-7" aria-hidden="true" tabindex="-1"></a>probs <span class="op">=</span> [<span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>]</span>
+<span id="cb34-8"><a href="przykłady-w-języku-julia-2.html#cb34-8" aria-hidden="true" tabindex="-1"></a>col <span class="op">=</span> [<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>]</span>
+<span id="cb34-9"><a href="przykłady-w-języku-julia-2.html#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="przykłady-w-języku-julia-2.html#cb34-10" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="fl">200000</span></span>
+<span id="cb34-11"><a href="przykłady-w-języku-julia-2.html#cb34-11" aria-hidden="true" tabindex="-1"></a>point <span class="op">=</span> [<span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span>]<span class="ch">&#39;</span></span>
+<span id="cb34-12"><a href="przykłady-w-języku-julia-2.html#cb34-12" aria-hidden="true" tabindex="-1"></a>coords <span class="op">=</span> <span class="fu">zeros</span>(N, <span class="fl">2</span>)</span>
+<span id="cb34-13"><a href="przykłady-w-języku-julia-2.html#cb34-13" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> <span class="dt">String</span>[]</span>
+<span id="cb34-14"><a href="przykłady-w-języku-julia-2.html#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="przykłady-w-języku-julia-2.html#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>N  </span>
+<span id="cb34-16"><a href="przykłady-w-języku-julia-2.html#cb34-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># W przeciwieństwie do poprzednich rozdziałów, tutaj nie</span></span>
+<span id="cb34-17"><a href="przykłady-w-języku-julia-2.html#cb34-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># korzystamy z rekurencji. Iteracyjnie liczymy pozycje dla </span></span>
+<span id="cb34-18"><a href="przykłady-w-języku-julia-2.html#cb34-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># N skoków a później wszystkie wyznaczone punkty rysujemy </span></span>
+<span id="cb34-19"><a href="przykłady-w-języku-julia-2.html#cb34-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># jedną instrukcją scatter.</span></span>
+<span id="cb34-20"><a href="przykłady-w-języku-julia-2.html#cb34-20" aria-hidden="true" tabindex="-1"></a>  ind <span class="op">=</span> <span class="fu">sample</span>(<span class="fl">1</span><span class="op">:</span><span class="fu">length</span>(probs), <span class="fu">Weights</span>(probs))</span>
+<span id="cb34-21"><a href="przykłady-w-języku-julia-2.html#cb34-21" aria-hidden="true" tabindex="-1"></a>  point <span class="op">=</span> affines[ind[<span class="fl">1</span>]] <span class="op">*</span> point</span>
+<span id="cb34-22"><a href="przykłady-w-języku-julia-2.html#cb34-22" aria-hidden="true" tabindex="-1"></a>  coords[i,<span class="op">:</span>] <span class="op">=</span> point[<span class="fl">1</span><span class="op">:</span><span class="fl">2</span>]</span>
+<span id="cb34-23"><a href="przykłady-w-języku-julia-2.html#cb34-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">push!</span>(cols, col[ind])</span>
+<span id="cb34-24"><a href="przykłady-w-języku-julia-2.html#cb34-24" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb34-25"><a href="przykłady-w-języku-julia-2.html#cb34-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-26"><a href="przykłady-w-języku-julia-2.html#cb34-26" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(coords[<span class="op">:</span>,<span class="fl">1</span>], coords[<span class="op">:</span>,<span class="fl">2</span>], color<span class="op">=</span>cols,</span>
+<span id="cb34-27"><a href="przykłady-w-języku-julia-2.html#cb34-27" aria-hidden="true" tabindex="-1"></a>  legend<span class="op">=:</span><span class="cn">false</span>, markersize<span class="op">=</span><span class="fl">1</span>, axis<span class="op">=</span><span class="cn">nothing</span>,</span>
+<span id="cb34-28"><a href="przykłady-w-języku-julia-2.html#cb34-28" aria-hidden="true" tabindex="-1"></a>  markerstrokecolor<span class="op">=</span>cols)</span></code></pre></div>
+<p><img src="images/julia_40_03b.png" /></p>
+</div>
+<div id="spirala-2" class="section level3 hasAnchor" number="3.6.4">
+<h3><span class="header-section-number">3.6.4</span> Spirala<a href="przykłady-w-języku-julia-2.html#spirala-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Transformacje tworzące spiralę.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb35-1"><a href="przykłady-w-języku-julia-2.html#cb35-1" aria-hidden="true" tabindex="-1"></a>affines <span class="op">=</span> [</span>
+<span id="cb35-2"><a href="przykłady-w-języku-julia-2.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  [<span class="fl">0.7878</span> <span class="op">-</span><span class="fl">0.4242</span> <span class="fl">1.7586</span>; <span class="fl">0.2424</span> <span class="fl">0.8598</span> <span class="fl">1.408</span>; <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span>],</span>
+<span id="cb35-3"><a href="przykłady-w-języku-julia-2.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  [<span class="op">-</span><span class="fl">0.1212</span> <span class="fl">0.2575</span> <span class="op">-</span><span class="fl">6.7216</span>; <span class="fl">0.1515</span> <span class="fl">0.0530</span> <span class="fl">1.3772</span>; <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span>],</span>
+<span id="cb35-4"><a href="przykłady-w-języku-julia-2.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  [<span class="fl">0.1818</span> <span class="op">-</span><span class="fl">0.1363</span>  <span class="fl">6.0861</span>; <span class="fl">0.0909</span> <span class="fl">0.1818</span> <span class="fl">1.5680</span>; <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1</span>]]</span>
+<span id="cb35-5"><a href="przykłady-w-języku-julia-2.html#cb35-5" aria-hidden="true" tabindex="-1"></a>probs <span class="op">=</span> [<span class="fl">0.9</span>, <span class="fl">0.05</span>, <span class="fl">0.05</span>]</span></code></pre></div>
+<p><img src="images/julia_40_04b.png" /></p>
+
 </div>
 </div>
-<div id="trójkąt-sierpińskiego-2" class="section level3 hasAnchor" number="1.5.2">
-<h3><span class="header-section-number">1.5.2</span> Trójkąt Sierpińskiego<a href="przykłady-w-języku-r.html#trójkąt-sierpińskiego-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Czas na kultowy trójkąt Sierpińskiego. Aby go narysować, wykorzystamy rekurencyjną funkcję <code>sierpinski()</code>, która przyjmuje trzy argumenty: <code>x</code> – miejsce, od którego należy rysować fraktal, <code>scale</code> – informację o wielkości fraktala oraz <code>depth</code> – aktualny poziom zagnieżdżenia fraktala.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="przykłady-w-języku-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a>triangle <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, scale) {</span>
-<span id="cb5-2"><a href="przykłady-w-języku-r.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polygon</span>(x <span class="sc">+</span> scale<span class="sc">*</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>), </span>
-<span id="cb5-3"><a href="przykłady-w-języku-r.html#cb5-3" aria-hidden="true" tabindex="-1"></a>          y <span class="sc">+</span> scale<span class="sc">*</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">/</span><span class="dv">2</span>), <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-4"><a href="przykłady-w-języku-r.html#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-5"><a href="przykłady-w-języku-r.html#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="przykłady-w-języku-r.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Rekurencyjna funkcja do rysowania trójkąta Sierpińskiego. </span></span>
-<span id="cb5-7"><a href="przykłady-w-języku-r.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Jeżeli depth=1, to rysujemy trójkąt, używając funkcji triangle(), </span></span>
-<span id="cb5-8"><a href="przykłady-w-języku-r.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># jeżeli depth&gt;1, to rysujemy trzy trójkąty obok siebie.</span></span>
-<span id="cb5-9"><a href="przykłady-w-języku-r.html#cb5-9" aria-hidden="true" tabindex="-1"></a>sierpinski <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, scale, <span class="at">depth =</span> <span class="dv">1</span>) { </span>
-<span id="cb5-10"><a href="przykłady-w-języku-r.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (depth <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb5-11"><a href="przykłady-w-języku-r.html#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">triangle</span>(x, y, scale)</span>
-<span id="cb5-12"><a href="przykłady-w-języku-r.html#cb5-12" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb5-13"><a href="przykłady-w-języku-r.html#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sierpinski</span>(x, y, scale<span class="sc">/</span><span class="dv">2</span>, depth<span class="dv">-1</span>)</span>
-<span id="cb5-14"><a href="przykłady-w-języku-r.html#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sierpinski</span>(x<span class="sc">+</span>scale<span class="sc">/</span><span class="dv">2</span>, y, scale<span class="sc">/</span><span class="dv">2</span>, depth<span class="dv">-1</span>)</span>
-<span id="cb5-15"><a href="przykłady-w-języku-r.html#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sierpinski</span>(x<span class="sc">+</span>scale<span class="sc">/</span><span class="dv">4</span>, y<span class="sc">+</span><span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">*</span>scale<span class="sc">/</span><span class="dv">4</span>,scale<span class="sc">/</span><span class="dv">2</span>,depth<span class="dv">-1</span>)</span>
-<span id="cb5-16"><a href="przykłady-w-języku-r.html#cb5-16" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-17"><a href="przykłady-w-języku-r.html#cb5-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-18"><a href="przykłady-w-języku-r.html#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="przykłady-w-języku-r.html#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb5-20"><a href="przykłady-w-języku-r.html#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">sierpinski</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>, <span class="at">depth =</span> <span class="dv">6</span>)</span></code></pre></div>
-<div class="figure">
-<img src="images/r_20_02.png" alt="" />
-<p class="caption">Wynik wykonania powyższych instrukcji</p>
-</div>
-</div>
-<div id="dywan-sierpińskiego-2" class="section level3 hasAnchor" number="1.5.3">
-<h3><span class="header-section-number">1.5.3</span> Dywan Sierpińskiego<a href="przykłady-w-języku-r.html#dywan-sierpińskiego-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Konstrukcja fraktala zaproponowana przez Wacława Sierpińskiego może być powtórzona dla innych kształtów.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="przykłady-w-języku-r.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rekurencyjna funkcja do rysowania dywanu. </span></span>
-<span id="cb6-2"><a href="przykłady-w-języku-r.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># W zależności od aktualnej głębokości albo rysuje kwadrat </span></span>
-<span id="cb6-3"><a href="przykłady-w-języku-r.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># albo, rekurencyjnie ośmiokrotnie wywołuje samą siebie</span></span>
-<span id="cb6-4"><a href="przykłady-w-języku-r.html#cb6-4" aria-hidden="true" tabindex="-1"></a>carpet <span class="ot">=</span> <span class="cf">function</span>(x, y, scale, <span class="at">depth =</span> <span class="dv">1</span>) { </span>
-<span id="cb6-5"><a href="przykłady-w-języku-r.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (depth <span class="sc">==</span> <span class="dv">1</span>) {</span>
-<span id="cb6-6"><a href="przykłady-w-języku-r.html#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rect</span>(x, y, x <span class="sc">+</span> scale, y <span class="sc">+</span> scale, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb6-7"><a href="przykłady-w-języku-r.html#cb6-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb6-8"><a href="przykłady-w-języku-r.html#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-9"><a href="przykłady-w-języku-r.html#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-10"><a href="przykłady-w-języku-r.html#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-11"><a href="przykłady-w-języku-r.html#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-12"><a href="przykłady-w-języku-r.html#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-13"><a href="przykłady-w-języku-r.html#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-14"><a href="przykłady-w-języku-r.html#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-15"><a href="przykłady-w-języku-r.html#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)  </span>
-<span id="cb6-16"><a href="przykłady-w-języku-r.html#cb6-16" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb6-17"><a href="przykłady-w-języku-r.html#cb6-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-18"><a href="przykłady-w-języku-r.html#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="przykłady-w-języku-r.html#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb6-20"><a href="przykłady-w-języku-r.html#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="fu">carpet</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>, <span class="at">depth =</span> <span class="dv">4</span>)</span></code></pre></div>
-<div class="figure">
-<img src="images/r_20_03.png" alt="" />
-<p class="caption">Wynik wykonania powyższych instrukcji</p>
-</div>
-</div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="przykłady-w-języku-python.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="przykłady-w-języku-julia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="przykłady-w-języku-r-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kieszonkowy-atlas-fraktali.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

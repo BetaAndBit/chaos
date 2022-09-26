@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.5 Przykłady w języku R | Gra w chaos</title>
-  <meta name="description" content="1.5 Przykłady w języku R | Gra w chaos" />
+  <title>3.2 Gra w Chaos | Gra w chaos</title>
+  <meta name="description" content="3.2 Gra w Chaos | Gra w chaos" />
   <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.5 Przykłady w języku R | Gra w chaos" />
+  <meta property="og:title" content="3.2 Gra w Chaos | Gra w chaos" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/rozkladowka_00.png" />
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.5 Przykłady w języku R | Gra w chaos" />
+  <meta name="twitter:title" content="3.2 Gra w Chaos | Gra w chaos" />
   
   
   <meta name="twitter:image" content="/images/rozkladowka_00.png" />
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="przykłady-w-języku-python.html"/>
-<link rel="next" href="przykłady-w-języku-julia.html"/>
+<link rel="prev" href="hugo-steinhaus.html"/>
+<link rel="next" href="zastosowania.html"/>
 <script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -307,94 +307,172 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="przykłady-w-języku-r" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> Przykłady w języku R<a href="przykłady-w-języku-r.html#przykłady-w-języku-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Drogi Czytelniku, możesz opisywane fraktale odtworzyć na swoim komputerze, wystarczy tylko zainstalowany interpreter języka R, który można bezpłatnie pobrać i zainstalować ze strony [<a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>]. Nie jest niezbędna wcześniejsza znajomość tego języka, choć oczywiście byłaby przydatna.
-Poniżej kilka informacji, które pomogą w zrozumieniu tego kodu.</p>
+<div id="gra-w-chaos-1" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Gra w Chaos<a href="gra-w-chaos-1.html#gra-w-chaos-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sposób generowania fraktali przedstawiony w poprzednim rozdziale opiera się na rekurencji. Składanie transformacji powoduje, że liczba obiektów, które musimy narysować, rośnie wykładniczo. W przypadku paproci, która składa się z czterech transformacji, wygenerowanie paproci na głębokości 10 wymaga narysowania <span class="math inline">\(4^{10}\)</span> punktów (ponad milion). A 10 poziomów to bardzo mało, jeżeli chcemy uzyskać atrakcyjną grafikę w wysokiej rozdzielczości.
+Gdybyśmy chcieli wykonać 56 iteracji dla dywanu Sierpińskiego, to musielibyśmy narysować <span class="math inline">\(8^{56} &gt; 10^{50}\)</span> punktów, czyli więcej niż jest atomów na całej Ziemi!</p>
+<p>Okazuje się, że fraktale oparte na składaniu kontrakcji można wygenerować w bardziej kontrolowany sposób. Co więcej, okaże się, że będzie on bazował na generowaniu losowych ruchów.</p>
+<p>Czytelniku, to będzie niesamowite! Powtarzanie wielokrotnie losowych ruchów będzie nas prowadziło nieustannie do niezmiennie stałych figur geometrycznych. Okazuje się, że nawet długie losowe trajektorie prowadzić mogą do przewidywalnych wzorców, i to właśnie będzie gra w chaos.</p>
+<div id="gra-w-chaos-i-trójkąty" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Gra w chaos i trójkąty<a href="gra-w-chaos-1.html#gra-w-chaos-i-trójkąty" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zacznijmy od prostego przykładu, który będzie uogólnioną metodą konstrukcji trójkąta Sierpińskiego. Prześledźmy następujący algorytm.</p>
 <ol style="list-style-type: decimal">
-<li>Poniższe przykłady korzystają z podstawowej biblioteki graficznej dla R, czyli <code>graphics</code>. Nie trzeba jej wczytywać, ponieważ jest dostępna od razu po uruchomieniu R. Funkcja <code>plot.new()</code> tworzy pusty wykres. Jest on wypełniany przez użycie funkcji <code>polygon()</code> do rysowania wypełnionych wielokątów, tutaj trójkąta i kwadratu.</li>
-<li>R to język dla matematyków i statystyków, więc większość operacji matematycznych jest dostępna od razu po uruchomieniu konsoli, tak jak funkcja <code>sqrt()</code> potrzebna do wyliczenia wysokości trójkąta równobocznego.</li>
-<li>Program R działa natywnie na wektorach, co znaczy, że możemy używać arytmetycznych operatorów takich jak <code>+</code> czy <code>/</code> zarówno do liczb, jak i do wektorów.</li>
-<li>Aby kod był bardziej czytelny, korzystamy z rekurencji, a więc konstrukcji, w której funkcja sama się wywołuje. Nowe funkcje definiuje się z użyciem słowa kluczowego <code>function</code>. Przedstawione funkcje mają argument <code>depth</code>, określający, ile jeszcze razy funkcja ma wywołać samą siebie.</li>
+<li>Wybierz trzy dowolne niewspółliniowe punkty na płaszczyźnie. To będą wierzchołki A, B i C trójkąta Sierpińskiego.</li>
+<li>Wybierz dowolny punkt na płaszczyźnie. To będzie pozycja naszego <em>pióra</em> rysującego fraktal.</li>
+<li>Wybierz losowo wierzchołek A, B lub C i przesuń pióro o połowę w kierunku wybranego wierzchołka. Powtarzaj to losowanie i przesuwanie w nieskończoność (lub wystarczająco długo).</li>
 </ol>
-<div id="kurz-cantora-2" class="section level3 hasAnchor" number="1.5.1">
-<h3><span class="header-section-number">1.5.1</span> Kurz Cantora<a href="przykłady-w-języku-r.html#kurz-cantora-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Rysowanie fraktali rozpocznijmy od kurzu Cantora. Wykorzystamy do tego rekurencyjną funkcję <code>dust</code>, która przyjmuje trzy argumenty: <code>x</code> – miejsce, od którego należy rysować fraktal, <code>scale</code> – informację o wielkości fraktala oraz <code>depth</code> – aktualny poziom zagnieżdżenia fraktala.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="przykłady-w-języku-r.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rekurencyjna funkcja do rysowania kurzu. Jeżeli depth=1 </span></span>
-<span id="cb4-2"><a href="przykłady-w-języku-r.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to rysuje odcinek, jeżeli depth&gt;1 to rysujemy dwa </span></span>
-<span id="cb4-3"><a href="przykłady-w-języku-r.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># kurze Cantora obok siebie.</span></span>
-<span id="cb4-4"><a href="przykłady-w-języku-r.html#cb4-4" aria-hidden="true" tabindex="-1"></a>dust <span class="ot">=</span> <span class="cf">function</span>(x, y, scale, <span class="at">depth =</span> <span class="dv">1</span>) { </span>
-<span id="cb4-5"><a href="przykłady-w-języku-r.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (depth <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb4-6"><a href="przykłady-w-języku-r.html#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(<span class="fu">c</span>(x, x <span class="sc">+</span> scale), <span class="fu">c</span>(y, y))</span>
-<span id="cb4-7"><a href="przykłady-w-języku-r.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb4-8"><a href="przykłady-w-języku-r.html#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dust</span>(x, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb4-9"><a href="przykłady-w-języku-r.html#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dust</span>(x <span class="sc">+</span> scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb4-10"><a href="przykłady-w-języku-r.html#cb4-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-11"><a href="przykłady-w-języku-r.html#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-12"><a href="przykłady-w-języku-r.html#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="przykłady-w-języku-r.html#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Czyścimy ekran i zaczynamy rysowanie kurzu.</span></span>
-<span id="cb4-14"><a href="przykłady-w-języku-r.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>() </span>
-<span id="cb4-15"><a href="przykłady-w-języku-r.html#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dust</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>, <span class="at">depth =</span> <span class="dv">4</span>)</span></code></pre></div>
 <div class="figure">
-<img src="images/r_20_01.png" alt="" />
-<p class="caption">Wynik wykonania powyższych instrukcji</p>
+<img src="images/python_40_07.png" alt="" />
+<p class="caption">Trojkąt złożony ze 100 000 punktów w grze w chaos</p>
 </div>
+<p>Okazuje się, że gdy będziemy śledzić pozycję pióra, naszym oczom ukaże się trójkąt Sierpińskiego!</p>
 </div>
-<div id="trójkąt-sierpińskiego-2" class="section level3 hasAnchor" number="1.5.2">
-<h3><span class="header-section-number">1.5.2</span> Trójkąt Sierpińskiego<a href="przykłady-w-języku-r.html#trójkąt-sierpińskiego-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Czas na kultowy trójkąt Sierpińskiego. Aby go narysować, wykorzystamy rekurencyjną funkcję <code>sierpinski()</code>, która przyjmuje trzy argumenty: <code>x</code> – miejsce, od którego należy rysować fraktal, <code>scale</code> – informację o wielkości fraktala oraz <code>depth</code> – aktualny poziom zagnieżdżenia fraktala.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="przykłady-w-języku-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a>triangle <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, scale) {</span>
-<span id="cb5-2"><a href="przykłady-w-języku-r.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polygon</span>(x <span class="sc">+</span> scale<span class="sc">*</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>), </span>
-<span id="cb5-3"><a href="przykłady-w-języku-r.html#cb5-3" aria-hidden="true" tabindex="-1"></a>          y <span class="sc">+</span> scale<span class="sc">*</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">/</span><span class="dv">2</span>), <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-4"><a href="przykłady-w-języku-r.html#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-5"><a href="przykłady-w-języku-r.html#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="przykłady-w-języku-r.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Rekurencyjna funkcja do rysowania trójkąta Sierpińskiego. </span></span>
-<span id="cb5-7"><a href="przykłady-w-języku-r.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Jeżeli depth=1, to rysujemy trójkąt, używając funkcji triangle(), </span></span>
-<span id="cb5-8"><a href="przykłady-w-języku-r.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># jeżeli depth&gt;1, to rysujemy trzy trójkąty obok siebie.</span></span>
-<span id="cb5-9"><a href="przykłady-w-języku-r.html#cb5-9" aria-hidden="true" tabindex="-1"></a>sierpinski <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, scale, <span class="at">depth =</span> <span class="dv">1</span>) { </span>
-<span id="cb5-10"><a href="przykłady-w-języku-r.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (depth <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb5-11"><a href="przykłady-w-języku-r.html#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">triangle</span>(x, y, scale)</span>
-<span id="cb5-12"><a href="przykłady-w-języku-r.html#cb5-12" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb5-13"><a href="przykłady-w-języku-r.html#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sierpinski</span>(x, y, scale<span class="sc">/</span><span class="dv">2</span>, depth<span class="dv">-1</span>)</span>
-<span id="cb5-14"><a href="przykłady-w-języku-r.html#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sierpinski</span>(x<span class="sc">+</span>scale<span class="sc">/</span><span class="dv">2</span>, y, scale<span class="sc">/</span><span class="dv">2</span>, depth<span class="dv">-1</span>)</span>
-<span id="cb5-15"><a href="przykłady-w-języku-r.html#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sierpinski</span>(x<span class="sc">+</span>scale<span class="sc">/</span><span class="dv">4</span>, y<span class="sc">+</span><span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">*</span>scale<span class="sc">/</span><span class="dv">4</span>,scale<span class="sc">/</span><span class="dv">2</span>,depth<span class="dv">-1</span>)</span>
-<span id="cb5-16"><a href="przykłady-w-języku-r.html#cb5-16" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-17"><a href="przykłady-w-języku-r.html#cb5-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-18"><a href="przykłady-w-języku-r.html#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="przykłady-w-języku-r.html#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb5-20"><a href="przykłady-w-języku-r.html#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">sierpinski</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>, <span class="at">depth =</span> <span class="dv">6</span>)</span></code></pre></div>
+<div id="co-tu-się-dzieje" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Co tu się dzieje?<a href="gra-w-chaos-1.html#co-tu-się-dzieje" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zauważ, Drogi Czytelniku, że przesuwanie pióra o połowę odległości w kierunku wybranego wierzchołka jest równoznaczne z wykonaniem transformacji -&gt; pomniejsz obraz o 1/2 i przesuń w kierunku wybranego wierzchołka.</p>
+<p>Tak więc w rzeczywistości w losowy sposób wykonujemy jedną z transformacji: (1) pomniejsz 2-krotnie i przesuń w kierunku wierzchołka A, (2) pomniejsz 2-krotnie i przesuń w kierunku wierzchołka B lub (3) pomniejsz 2-krotnie i przesuń w kierunku wierzchołka C.</p>
+<p>W poprzednim rozdziale takie transformacje już wykorzystywaliśmy do budowy trójkąta Sierpińskiego. Ale stosowaliśmy jednocześnie wszystkie trzy, składając taką sumę transformacji wielokrotnie.</p>
+<p>Okazuje się, że nie musimy wykonywać tych transformacji jednocześnie, wystarczy wylosować jedną i powtarzać to losowanie w nieskończoność.</p>
+</div>
+<div id="gra-w-chaos-i-fraktale" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Gra w Chaos i fraktale<a href="gra-w-chaos-1.html#gra-w-chaos-i-fraktale" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Algorytm generowania z fraktali z użyciem gry w chaos polega na przekształcaniu jednego punktu (pióra) iteracyjnie przez losową wybraną transformację z pewnego zbioru transformacji. Każda transformacja musi być kontrakcją (w przykładach ograniczymy się do przekształceń afinicznych).</p>
+<p><strong>Algorytm konstrukcji fraktali oparty na grze w chaos.</strong></p>
+<ol style="list-style-type: decimal">
+<li>Wybierz punkt początkowy dla pióra.</li>
+<li>Ze zbioru transformacji zwężających wylosuj jedną transformację i przekształć współrzędne pióra zgodnie z tą transformacją.</li>
+<li>Narysuj współrzędną pióra na ekranie.</li>
+<li>Wróć do kroku 2.</li>
+</ol>
+<p>Pokażemy, jak ten algorytm działa na przykładzie konstrukcji paproci Barnsleya, ale dla wygody najpierw przedstawimy alternatywny sposób zapisu transformacji afinicznych.</p>
+</div>
+<div id="przekształcenia-afiniczne" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Przekształcenia afiniczne<a href="gra-w-chaos-1.html#przekształcenia-afiniczne" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>W poprzednim rozdziale przekształcenia afiniczne definiowaliśmy przez dowolne złożenie trzech rodzajów transformacji – przesunięcia, obrotu oraz skalowania (w tym odbicia pionowego lub poziomego), przy czym skalowanie musiało mieć skalę mniejszą niż 1 co do wartości bezwzględnej, aby było zwężające. Taka reprezentacja jest wygodna dla ludzi, ponieważ łatwo na jej podstawie wyobrazić sobie, co się dzieje z wyjściowymi figurami. Okazuje się jednak, że dla komputera znacznie wygodniejszą reprezentacją przekształcenia afinicznego jest postać macierzowa transformacji.</p>
+<p>W zapisie macierzowym każdą transformację afiniczną <span class="math inline">\((x&#39;, y&#39;) = f(x, y)\)</span> w przestrzeni dwuwymiarowej można przedstawić za pomocą sześciu liczb <span class="math inline">\((a, b, c, d, e, f)\)</span>.</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+x&#39; \\
+y&#39;
+\end{bmatrix} =
+\begin{bmatrix}
+a  &amp;   b  \\
+d  &amp;   e  
+\end{bmatrix}
+\begin{bmatrix}
+x  \\
+y  
+\end{bmatrix}  +
+\begin{bmatrix}
+c \\
+f
+\end{bmatrix} =
+\begin{bmatrix}
+a x + b y + c  \\
+d x + e y + f
+\end{bmatrix}.
+\]</span></p>
+<p>Jeżeli znamy podstawy algebry macierzowej, to z reprezentacji opartej na obrotach, przesunięciach i skalowaniu możemy łatwo wyliczyć współczynniki <span class="math inline">\(a\)</span>–<span class="math inline">\(f\)</span>. Kilka przykładów odpowiadających sobie reprezentacji przekształceń afinicznych znajduje się w kolejnym rozdziale.</p>
+<p>Teraz jednak zobaczmy, jak przy użyciu gry w chaos skonstruować paproć.</p>
+</div>
+<div id="paprocie-i-chaos" class="section level3 hasAnchor" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Paprocie i chaos<a href="gra-w-chaos-1.html#paprocie-i-chaos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Tabela 1 przedstawia cztery transformacje afiniczne zapisane za pomocą notacji macierzowej.</p>
+<table>
+<colgroup>
+<col width="28%" />
+<col width="14%" />
+<col width="14%" />
+<col width="6%" />
+<col width="14%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>e</th>
+<th>f</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(T_1\)</span>: łodyżka</td>
+<td>0,00</td>
+<td>0,00</td>
+<td>0</td>
+<td>0,00</td>
+<td>0,16</td>
+<td>0,00</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T_2\)</span>: góra</td>
+<td>0,85</td>
+<td>0,04</td>
+<td>0</td>
+<td>$-$0,04</td>
+<td>0,85</td>
+<td>1,60</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T_3\)</span>: lewy liść</td>
+<td>0,20</td>
+<td>$-$0,26</td>
+<td>0</td>
+<td>0,23</td>
+<td>0,22</td>
+<td>0,80</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T_4\)</span>: prawy liść</td>
+<td>$-$0,15</td>
+<td>0,28</td>
+<td>0</td>
+<td>0,26</td>
+<td>0,24</td>
+<td>0,44</td>
+</tr>
+</tbody>
+</table>
+<p>[Współczynniki transformacji składających się na paproć Barnsleya]</p>
+<p>Aby narysować paproć z poniższego rysunku, wystarczy wziąć losowy punkt, a następnie 100 000 razy powtórzyć trzy kroki: wylosować jedną z transformacji z tej tabeli, stosując prawdopodobieństwa losowania 1%, 79%, 10%, 10% dla kolejnych transformacji, przekształcić współrzędne punktu wylosowaną transformacją, narysować punkt na wykresie.</p>
 <div class="figure">
-<img src="images/r_20_02.png" alt="" />
-<p class="caption">Wynik wykonania powyższych instrukcji</p>
+<img src="images/python_40_01.png" alt="" />
+<p class="caption">Ilustracja czterech transformacji (obrysowanych czerwonymi prostokątami) na bazie paproci Barnsleya</p>
 </div>
-</div>
-<div id="dywan-sierpińskiego-2" class="section level3 hasAnchor" number="1.5.3">
-<h3><span class="header-section-number">1.5.3</span> Dywan Sierpińskiego<a href="przykłady-w-języku-r.html#dywan-sierpińskiego-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Konstrukcja fraktala zaproponowana przez Wacława Sierpińskiego może być powtórzona dla innych kształtów.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="przykłady-w-języku-r.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rekurencyjna funkcja do rysowania dywanu. </span></span>
-<span id="cb6-2"><a href="przykłady-w-języku-r.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># W zależności od aktualnej głębokości albo rysuje kwadrat </span></span>
-<span id="cb6-3"><a href="przykłady-w-języku-r.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># albo, rekurencyjnie ośmiokrotnie wywołuje samą siebie</span></span>
-<span id="cb6-4"><a href="przykłady-w-języku-r.html#cb6-4" aria-hidden="true" tabindex="-1"></a>carpet <span class="ot">=</span> <span class="cf">function</span>(x, y, scale, <span class="at">depth =</span> <span class="dv">1</span>) { </span>
-<span id="cb6-5"><a href="przykłady-w-języku-r.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (depth <span class="sc">==</span> <span class="dv">1</span>) {</span>
-<span id="cb6-6"><a href="przykłady-w-języku-r.html#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rect</span>(x, y, x <span class="sc">+</span> scale, y <span class="sc">+</span> scale, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb6-7"><a href="przykłady-w-języku-r.html#cb6-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb6-8"><a href="przykłady-w-języku-r.html#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-9"><a href="przykłady-w-języku-r.html#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-10"><a href="przykłady-w-języku-r.html#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-11"><a href="przykłady-w-języku-r.html#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-12"><a href="przykłady-w-języku-r.html#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-13"><a href="przykłady-w-języku-r.html#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-14"><a href="przykłady-w-języku-r.html#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-15"><a href="przykłady-w-języku-r.html#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)  </span>
-<span id="cb6-16"><a href="przykłady-w-języku-r.html#cb6-16" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb6-17"><a href="przykłady-w-języku-r.html#cb6-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-18"><a href="przykłady-w-języku-r.html#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="przykłady-w-języku-r.html#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb6-20"><a href="przykłady-w-języku-r.html#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="fu">carpet</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>, <span class="at">depth =</span> <span class="dv">4</span>)</span></code></pre></div>
+<p>Przy okazji widać, że mamy olbrzymią redukcję informacji – taką piękną paproć opisaliśmy wyłącznie z użyciem 24 liczb. Ta obserwacja stała się fundamentem kompresji fraktalnej, dziedziny, która zamierzała zmniejszyć istotnie opis graficznych figur, stosując ich reprezentację fraktalną.</p>
 <div class="figure">
-<img src="images/r_20_03.png" alt="" />
-<p class="caption">Wynik wykonania powyższych instrukcji</p>
+<img src="images/paproc_1.png" alt="" />
+<p class="caption">Częściej losujemy lewy i prawy liść, rzadziej górę</p>
 </div>
+<div class="figure">
+<img src="images/paproc_2.png" alt="" />
+<p class="caption">Częściej losujemy łodyżkę, znacznie rzadziej liście</p>
+</div>
+<div class="figure">
+<img src="images/paproc_3.png" alt="" />
+<p class="caption">Nie losujemy łodyżki</p>
+</div>
+<p>Wybór punktu <span class="math inline">\(x_0\)</span> nie ma znaczenia, ale jeżeli bardzo odstaje od fraktala, to z przyczyn wizualnych warto pominąć kilka pierwszych kroków gry w chaos, tak by żadne punkty za bardzo nie odstawały od głównego obrazu.</p>
+<p>Jaką rolę odgrywają prawdopodobieństwa w tworzeniu fraktala?</p>
+<p>Zauważmy, że prawdopodobieństwo wylosowania łodyżki jest mniejsze niż głównej części paproci, również dlatego, że łodyżka zajmuje mało miejsca i nie ma co marnować czasu, losując punkty z łodyżki.</p>
+<p>Na marginesie możemy przyjrzeć się trzem różnym paprociom Barnsleya, które składają się z tych samych transformacji, przedstawionych w tabeli 1, ale w których zastosowano różne prawdopodobieństwa.
+Ogólny zarys każdej z tych paproci jest podobny, ale widzimy, że sterując prawdopodobieństwami, możemy otrzymać mniej lub bardziej ażurowe konstrukcje.</p>
+</div>
+<div id="bardziej-formalnie" class="section level3 hasAnchor" number="3.2.6">
+<h3><span class="header-section-number">3.2.6</span> Bardziej formalnie<a href="gra-w-chaos-1.html#bardziej-formalnie" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Jeżeli już mamy zbudowaną intuicję, jak działa gra w chaos, to warto zapisać to, co się wydarzyło, bardziej formalnie.</p>
+<p>Mamy zbiór <span class="math inline">\(K\)</span> przekształceń <span class="math inline">\(f_i:R^2 \rightarrow R^2\)</span>, które są przekształceniami zwężającymi, czyli spełniającymi warunek:</p>
+<p><span class="math display">\[
+\exists_{\lambda &lt; 1}\forall_{x, y} \lambda d(x,y) \geq d(f(x), f(y)).
+\]</span></p>
+<p>Mamy wektor <span class="math inline">\(K\)</span> prawdopodobieństw wylosowania kolejnych przekształceń <span class="math inline">\(\pi_i \geq 0\)</span>. Prawdopodobieństwa sumują się do 1, czyli <span class="math inline">\(\sum_{i=1}^K \pi_i = 1\)</span>.</p>
+<p>Ciąg punktów <span class="math inline">\(x_0\)</span>, <span class="math inline">\(f_{a_1}(x_0)\)</span>, <span class="math inline">\(f^2(x_0) = f_{a_2}(f_{a_1}(x_0))\)</span>, <span class="math inline">\(f^3(x_0) = f_{a_3}(f_{a_2}(f_{a_1}(x_0)))\)</span>, … tworzy obraz fraktala. Symbol <span class="math inline">\(a_i\)</span> oznacza i-tą wylosowaną wartość ze zbioru <span class="math inline">\(1...K\)</span> przy losowaniu z prawdopodobieństwem <span class="math inline">\(\pi_1, ..., \pi_K\)</span>.</p>
+<p>Wybór punktu <span class="math inline">\(x_0\)</span> nie ma znaczenia.</p>
 </div>
 </div>
             </section>
@@ -402,8 +480,8 @@ Poniżej kilka informacji, które pomogą w zrozumieniu tego kodu.</p>
           </div>
         </div>
       </div>
-<a href="przykłady-w-języku-python.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="przykłady-w-języku-julia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="hugo-steinhaus.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="zastosowania.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

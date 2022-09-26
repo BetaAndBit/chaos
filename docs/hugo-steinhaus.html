@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.5 Przykłady w języku R | Gra w chaos</title>
-  <meta name="description" content="1.5 Przykłady w języku R | Gra w chaos" />
+  <title>3.1 Hugo Steinhaus | Gra w chaos</title>
+  <meta name="description" content="3.1 Hugo Steinhaus | Gra w chaos" />
   <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.5 Przykłady w języku R | Gra w chaos" />
+  <meta property="og:title" content="3.1 Hugo Steinhaus | Gra w chaos" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/rozkladowka_00.png" />
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.5 Przykłady w języku R | Gra w chaos" />
+  <meta name="twitter:title" content="3.1 Hugo Steinhaus | Gra w chaos" />
   
   
   <meta name="twitter:image" content="/images/rozkladowka_00.png" />
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="przykłady-w-języku-python.html"/>
-<link rel="next" href="przykłady-w-języku-julia.html"/>
+<link rel="prev" href="gra-w-chaos.html"/>
+<link rel="next" href="gra-w-chaos-1.html"/>
 <script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -307,103 +307,35 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="przykłady-w-języku-r" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> Przykłady w języku R<a href="przykłady-w-języku-r.html#przykłady-w-języku-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Drogi Czytelniku, możesz opisywane fraktale odtworzyć na swoim komputerze, wystarczy tylko zainstalowany interpreter języka R, który można bezpłatnie pobrać i zainstalować ze strony [<a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>]. Nie jest niezbędna wcześniejsza znajomość tego języka, choć oczywiście byłaby przydatna.
-Poniżej kilka informacji, które pomogą w zrozumieniu tego kodu.</p>
-<ol style="list-style-type: decimal">
-<li>Poniższe przykłady korzystają z podstawowej biblioteki graficznej dla R, czyli <code>graphics</code>. Nie trzeba jej wczytywać, ponieważ jest dostępna od razu po uruchomieniu R. Funkcja <code>plot.new()</code> tworzy pusty wykres. Jest on wypełniany przez użycie funkcji <code>polygon()</code> do rysowania wypełnionych wielokątów, tutaj trójkąta i kwadratu.</li>
-<li>R to język dla matematyków i statystyków, więc większość operacji matematycznych jest dostępna od razu po uruchomieniu konsoli, tak jak funkcja <code>sqrt()</code> potrzebna do wyliczenia wysokości trójkąta równobocznego.</li>
-<li>Program R działa natywnie na wektorach, co znaczy, że możemy używać arytmetycznych operatorów takich jak <code>+</code> czy <code>/</code> zarówno do liczb, jak i do wektorów.</li>
-<li>Aby kod był bardziej czytelny, korzystamy z rekurencji, a więc konstrukcji, w której funkcja sama się wywołuje. Nowe funkcje definiuje się z użyciem słowa kluczowego <code>function</code>. Przedstawione funkcje mają argument <code>depth</code>, określający, ile jeszcze razy funkcja ma wywołać samą siebie.</li>
-</ol>
-<div id="kurz-cantora-2" class="section level3 hasAnchor" number="1.5.1">
-<h3><span class="header-section-number">1.5.1</span> Kurz Cantora<a href="przykłady-w-języku-r.html#kurz-cantora-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Rysowanie fraktali rozpocznijmy od kurzu Cantora. Wykorzystamy do tego rekurencyjną funkcję <code>dust</code>, która przyjmuje trzy argumenty: <code>x</code> – miejsce, od którego należy rysować fraktal, <code>scale</code> – informację o wielkości fraktala oraz <code>depth</code> – aktualny poziom zagnieżdżenia fraktala.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="przykłady-w-języku-r.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rekurencyjna funkcja do rysowania kurzu. Jeżeli depth=1 </span></span>
-<span id="cb4-2"><a href="przykłady-w-języku-r.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to rysuje odcinek, jeżeli depth&gt;1 to rysujemy dwa </span></span>
-<span id="cb4-3"><a href="przykłady-w-języku-r.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># kurze Cantora obok siebie.</span></span>
-<span id="cb4-4"><a href="przykłady-w-języku-r.html#cb4-4" aria-hidden="true" tabindex="-1"></a>dust <span class="ot">=</span> <span class="cf">function</span>(x, y, scale, <span class="at">depth =</span> <span class="dv">1</span>) { </span>
-<span id="cb4-5"><a href="przykłady-w-języku-r.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (depth <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb4-6"><a href="przykłady-w-języku-r.html#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(<span class="fu">c</span>(x, x <span class="sc">+</span> scale), <span class="fu">c</span>(y, y))</span>
-<span id="cb4-7"><a href="przykłady-w-języku-r.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb4-8"><a href="przykłady-w-języku-r.html#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dust</span>(x, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb4-9"><a href="przykłady-w-języku-r.html#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dust</span>(x <span class="sc">+</span> scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb4-10"><a href="przykłady-w-języku-r.html#cb4-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-11"><a href="przykłady-w-języku-r.html#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-12"><a href="przykłady-w-języku-r.html#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="przykłady-w-języku-r.html#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Czyścimy ekran i zaczynamy rysowanie kurzu.</span></span>
-<span id="cb4-14"><a href="przykłady-w-języku-r.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>() </span>
-<span id="cb4-15"><a href="przykłady-w-języku-r.html#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dust</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>, <span class="at">depth =</span> <span class="dv">4</span>)</span></code></pre></div>
+<div id="hugo-steinhaus" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Hugo Steinhaus<a href="hugo-steinhaus.html#hugo-steinhaus" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>Między duchem a materią pośredniczy matematyka. H. Steinhaus</em></p>
+<p>Hugo Steinhaus urodził się w 1887 roku w Jaśle. Od dziecka był błyskotliwy, przejawiał olbrzymi talent do języków i nauk ścisłych. Rodzina chciała zrobić z niego inżyniera, ale jego bardziej pociągała matematyka. I dobrze, ponieważ to jeden z najpłodniejszych polskich matematyków XX wieku.</p>
+<p><em>Dlaczego ludzie uczą się matematyki? Aby nauczać matematyki innych. H. Steinhaus</em></p>
+<p>Po ukończeniu gimnazjum rozpoczął studia na Uniwersytecie Lwowskim. Po roku przniósł się na Uniwersytet w Getyndze, będącej wtedy najważniejszym ośrodkiem matematycznym w Europie. W Getyndze uczył się pod kierunkiem wybitnych matematyków, w tym <a href="https://pl.wikipedia.org/wiki/David_Hilbert">Davida Hilberta</a>, u którego obronił pracę doktorską, i <a href="https://pl.wikipedia.org/wiki/Felix_Klein">Felixa Kleina</a>. Ścieżki wielkich umysłów często się przecinają, Steinhaus w Getyndze poznał np. Wacława Sierpińskiego.</p>
+<p>Po powrocie do Polski kontynuował badania naukowe to w Jaśle, to w Krakowie z przerwą na służbę w wojsku podczas I wojny światowej. W roku 1916 dokonał swojego największego odkrycia naukowego (jego własne słowa), mianowicie odkrył Stefana Banacha. Tak się złożyło, że Banach razem z Ottonem Nikodymem, czekając na swojego przyjaciela Witolda Wilkosza, rozmawiali o całkach Lebesgue’a. Zainteresowało to Steinhausa, przechodzącego nieopodal. Zaskoczyło go to, że w tak nietypowym miejscu usłyszał zaangażowane rozmowy o bardzo zaawansowanej matematyce. Podczas spotkania Steinhaus podzielił się z młodzieńcami problemem matematycznym, nad którym akurat pracował. Ku jego zaskoczeniu po kilku dniach Stefan Banach zgłosił się do niego z rozwiązaniem, które ostatecznie wspólnie opublikowali. Był to pierwszy artykuł Banacha i początek bardzo interesującej przyjaźni. Przyjaźni bardzo różnych osobowości. Banach lubił zabawę, nie dbał o konwenanse, Steinhaus był abstynentem, purystą językowym, zawsze pod krawatem. Jednak łączyła ich wspólna pasja i miłość do matematyki.</p>
+<p>Razem ze Banachem stworzyli lwowską szkołę matematyczną, która w szczytowym momencie zrzeszała ponad 20 wybitnych matematyków.</p>
+<p>Jeszcze we Lwowie Steinhaus zachęcał studentów matematyki do zajmowania się zastosowaniami matematyki. Często powtarzając, że ,,Matematyk zrobi to lepiej’’, zachęcał studentów, by mierzyli się z problemami z innych dziedzin, ponieważ często ścisły sposób myślenia pomaga w rozwiązywaniu najróżniejszych problemów.</p>
+<p>Sam dawał też świadectwo temu twierdzeniu. Chętnie współpracował z biologami, lekarzami, ekonomami i badaczami innych specjalizacji. Przykładowo, już po przeprowadzce do Wrocławia, współpraca z <a href="https://pl.wikipedia.org/wiki/Ludwik_Hirszfeld">Ludwikiem Hirszfeldem</a> doprowadziła do opracowania matematycznej teorii dochodzenia ojcostwa. We współpracy z dr. Rozenzweigiem badał optymalną taryfę za energię elektryczną z perspektywy producenta energii. Wynalazł i opatentował <em>introwizor</em> -– przyrząd do lokalizacji przedmiotów z użyciem promieniowania rentgenowskiego. Wynalazł <em>longimetr</em> – proste urządzenie do oszacowania długości nieregularnych krzywych, które znalazło wiele zastosowań w geografii.</p>
 <div class="figure">
-<img src="images/r_20_01.png" alt="" />
-<p class="caption">Wynik wykonania powyższych instrukcji</p>
+<img src="images/longimeter.png" alt="" />
+<p class="caption">Przyrząd służący do szacowania długości krzywych. Przezroczystą folię kładzie się na krzywej i zlicza się liczbę przecięć krzywej z liniami siatek, tak otrzymuje się oszacowanie długości w określonej jednostce.</p>
 </div>
-</div>
-<div id="trójkąt-sierpińskiego-2" class="section level3 hasAnchor" number="1.5.2">
-<h3><span class="header-section-number">1.5.2</span> Trójkąt Sierpińskiego<a href="przykłady-w-języku-r.html#trójkąt-sierpińskiego-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Czas na kultowy trójkąt Sierpińskiego. Aby go narysować, wykorzystamy rekurencyjną funkcję <code>sierpinski()</code>, która przyjmuje trzy argumenty: <code>x</code> – miejsce, od którego należy rysować fraktal, <code>scale</code> – informację o wielkości fraktala oraz <code>depth</code> – aktualny poziom zagnieżdżenia fraktala.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="przykłady-w-języku-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a>triangle <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, scale) {</span>
-<span id="cb5-2"><a href="przykłady-w-języku-r.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polygon</span>(x <span class="sc">+</span> scale<span class="sc">*</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>), </span>
-<span id="cb5-3"><a href="przykłady-w-języku-r.html#cb5-3" aria-hidden="true" tabindex="-1"></a>          y <span class="sc">+</span> scale<span class="sc">*</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">/</span><span class="dv">2</span>), <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-4"><a href="przykłady-w-języku-r.html#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-5"><a href="przykłady-w-języku-r.html#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="przykłady-w-języku-r.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Rekurencyjna funkcja do rysowania trójkąta Sierpińskiego. </span></span>
-<span id="cb5-7"><a href="przykłady-w-języku-r.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Jeżeli depth=1, to rysujemy trójkąt, używając funkcji triangle(), </span></span>
-<span id="cb5-8"><a href="przykłady-w-języku-r.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># jeżeli depth&gt;1, to rysujemy trzy trójkąty obok siebie.</span></span>
-<span id="cb5-9"><a href="przykłady-w-języku-r.html#cb5-9" aria-hidden="true" tabindex="-1"></a>sierpinski <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, scale, <span class="at">depth =</span> <span class="dv">1</span>) { </span>
-<span id="cb5-10"><a href="przykłady-w-języku-r.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (depth <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb5-11"><a href="przykłady-w-języku-r.html#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">triangle</span>(x, y, scale)</span>
-<span id="cb5-12"><a href="przykłady-w-języku-r.html#cb5-12" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb5-13"><a href="przykłady-w-języku-r.html#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sierpinski</span>(x, y, scale<span class="sc">/</span><span class="dv">2</span>, depth<span class="dv">-1</span>)</span>
-<span id="cb5-14"><a href="przykłady-w-języku-r.html#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sierpinski</span>(x<span class="sc">+</span>scale<span class="sc">/</span><span class="dv">2</span>, y, scale<span class="sc">/</span><span class="dv">2</span>, depth<span class="dv">-1</span>)</span>
-<span id="cb5-15"><a href="przykłady-w-języku-r.html#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sierpinski</span>(x<span class="sc">+</span>scale<span class="sc">/</span><span class="dv">4</span>, y<span class="sc">+</span><span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">*</span>scale<span class="sc">/</span><span class="dv">4</span>,scale<span class="sc">/</span><span class="dv">2</span>,depth<span class="dv">-1</span>)</span>
-<span id="cb5-16"><a href="przykłady-w-języku-r.html#cb5-16" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-17"><a href="przykłady-w-języku-r.html#cb5-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-18"><a href="przykłady-w-języku-r.html#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="przykłady-w-języku-r.html#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb5-20"><a href="przykłady-w-języku-r.html#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">sierpinski</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>, <span class="at">depth =</span> <span class="dv">6</span>)</span></code></pre></div>
-<div class="figure">
-<img src="images/r_20_02.png" alt="" />
-<p class="caption">Wynik wykonania powyższych instrukcji</p>
-</div>
-</div>
-<div id="dywan-sierpińskiego-2" class="section level3 hasAnchor" number="1.5.3">
-<h3><span class="header-section-number">1.5.3</span> Dywan Sierpińskiego<a href="przykłady-w-języku-r.html#dywan-sierpińskiego-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Konstrukcja fraktala zaproponowana przez Wacława Sierpińskiego może być powtórzona dla innych kształtów.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="przykłady-w-języku-r.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rekurencyjna funkcja do rysowania dywanu. </span></span>
-<span id="cb6-2"><a href="przykłady-w-języku-r.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># W zależności od aktualnej głębokości albo rysuje kwadrat </span></span>
-<span id="cb6-3"><a href="przykłady-w-języku-r.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># albo, rekurencyjnie ośmiokrotnie wywołuje samą siebie</span></span>
-<span id="cb6-4"><a href="przykłady-w-języku-r.html#cb6-4" aria-hidden="true" tabindex="-1"></a>carpet <span class="ot">=</span> <span class="cf">function</span>(x, y, scale, <span class="at">depth =</span> <span class="dv">1</span>) { </span>
-<span id="cb6-5"><a href="przykłady-w-języku-r.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (depth <span class="sc">==</span> <span class="dv">1</span>) {</span>
-<span id="cb6-6"><a href="przykłady-w-języku-r.html#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rect</span>(x, y, x <span class="sc">+</span> scale, y <span class="sc">+</span> scale, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb6-7"><a href="przykłady-w-języku-r.html#cb6-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb6-8"><a href="przykłady-w-języku-r.html#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-9"><a href="przykłady-w-języku-r.html#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-10"><a href="przykłady-w-języku-r.html#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-11"><a href="przykłady-w-języku-r.html#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-12"><a href="przykłady-w-języku-r.html#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-13"><a href="przykłady-w-języku-r.html#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-14"><a href="przykłady-w-języku-r.html#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-15"><a href="przykłady-w-języku-r.html#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carpet</span>(x<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>scale<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, scale<span class="sc">/</span><span class="dv">3</span>, depth <span class="sc">-</span> <span class="dv">1</span>)  </span>
-<span id="cb6-16"><a href="przykłady-w-języku-r.html#cb6-16" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb6-17"><a href="przykłady-w-języku-r.html#cb6-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-18"><a href="przykłady-w-języku-r.html#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="przykłady-w-języku-r.html#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb6-20"><a href="przykłady-w-języku-r.html#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="fu">carpet</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>, <span class="at">depth =</span> <span class="dv">4</span>)</span></code></pre></div>
-<div class="figure">
-<img src="images/r_20_03.png" alt="" />
-<p class="caption">Wynik wykonania powyższych instrukcji</p>
-</div>
-</div>
+<p>We Wrocławiu pełnił funkcję kierownika działu zastosowań przyrodniczych i gospodarczych Instytutu Matematycznego PAN.
+Swoją pracownię nazwał ,,przychodnią matematyczną’‘, do której każdy może się zgłosić ze swoimi ,,chorobami matematycznymi’’ po poradę.
+Szacuje się, że ponad połowa z jego ponad 200 artykułów dotyczy zastosowań matematyki.</p>
+<p>Steinhaus był też znanym aforystą. Wiele z jego aforyzmów, które nazywano hugonotkami, przeszło do historii. Można je było znaleźć między innymi w czasopiśmie ,,Problemy’‘, w rubryce <em>Cicer cum caule</em> (łac. groch z kapustą), prowadzonej przez Juliana Tuwima. Legenda głosi, że gdy Tuwim pierwszy raz usłyszał aforyzm ,,Kula u nogi – Ziemia’’ z podziwu uklęknął przed Steinhausem.</p>
+<p><em>Geniusz – gen i już. H. Steinhaus</em></p>
+<p>Interesowała go też popularyzacja matematyki. Jeszcze w okresie międzywojennym napisał <em>Kalejdoskop matematyczny</em>, popularnonaukową książkę mającą pokazać różne oblicza matematyki. Książka ta doczekała się wielu wydań i tłumaczeń.</p>
+<p>Hugo Steinhaus inspirował matematyków nawet po śmierci. Przykładowo w roku 1990 na Politechnice Wrocławskiej powstało Centrum im. Hugona Steinhausa, promujące i rozwijające zastosowania matematyki w innych dziedzinach nauki. Steinhaus był też promotorem bardzo wielu aktywnych naukowców, którzy z kolei byli promotorami wielu kolejnych naukowców. Dziś w jego ,,<a href="https://www.genealogy.math.ndsu.nodak.edu">matematycznym drzewie genealogicznym</a>’’ znajduje się ponad 2940 matematyków, co jest niebywale wysoką liczbą jak na tak krótki czas. Jednym z ,,matematycznych potomków’’ Steinhausa jest też autor tej książki.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="przykłady-w-języku-python.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="przykłady-w-języku-julia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="gra-w-chaos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="gra-w-chaos-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
