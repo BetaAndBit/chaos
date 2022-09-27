@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Rozdział 5 Zalaczniki | Gra w chaos</title>
   <meta name="description" content="Rozdział 5 Zalaczniki | Gra w chaos" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Rozdział 5 Zalaczniki | Gra w chaos" />
   <meta property="og:type" content="book" />
-  
   <meta property="og:image" content="/images/rozkladowka_00.png" />
   
   
@@ -23,17 +22,17 @@
 
 
 
-<meta name="date" content="2022-09-21" />
+<meta name="date" content="2022-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="podsumowanie.html"/>
-<link rel="next" href="bibliografia.html"/>
-<script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<link rel="prev" href="wybrane-fraktale.html"/>
+<link rel="next" href="przykłady-w-julia.html"/>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,9 +48,18 @@
 
 
 
-
 <link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections/anchor-sections.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-5650686-12"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-5650686-12');
+</script>
 
 
 <style type="text/css">
@@ -119,6 +127,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
@@ -133,122 +163,166 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./"><h3>Gra w chaos</h3> Beta i Bit w krainie fraktali</a></li>
+<li><a href="./"><h3>Gra w chaos</h3></a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#okładka" id="toc-okładka">Okładka</a></li>
-<li><a href="jak-czytać-tę-książkę.html#jak-czytać-tę-książkę" id="toc-jak-czytać-tę-książkę">Jak czytać tę książkę?</a></li>
-<li><a href="witajcie-fraktale.html#witajcie-fraktale" id="toc-witajcie-fraktale"><span class="toc-section-number">1</span> Witajcie, fraktale!</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Okładka</a></li>
+<li class="chapter" data-level="" data-path="jak-czytać-tę-książkę.html"><a href="jak-czytać-tę-książkę.html"><i class="fa fa-check"></i>Jak czytać tę książkę?</a></li>
+<li class="chapter" data-level="1" data-path="witajcie-fraktale.html"><a href="witajcie-fraktale.html"><i class="fa fa-check"></i><b>1</b> Witajcie, fraktale!</a>
 <ul>
-<li><a href="witajcie-fraktale.html#wacław-sierpiński" id="toc-wacław-sierpiński"><span class="toc-section-number">1.1</span> Wacław Sierpiński</a></li>
-<li><a href="witajcie-fraktale.html#kurz-cantora" id="toc-kurz-cantora"><span class="toc-section-number">1.2</span> Kurz Cantora</a></li>
-<li><a href="witajcie-fraktale.html#trójkąt-sierpińskiego" id="toc-trójkąt-sierpińskiego"><span class="toc-section-number">1.3</span> Trójkąt Sierpińskiego</a></li>
-<li><a href="witajcie-fraktale.html#wymiar-topologiczny" id="toc-wymiar-topologiczny"><span class="toc-section-number">1.4</span> Wymiar topologiczny</a></li>
-<li><a href="witajcie-fraktale.html#wymiar-minkowskiego-czyli-fraktalny-wymiar-pudełkowy" id="toc-wymiar-minkowskiego-czyli-fraktalny-wymiar-pudełkowy"><span class="toc-section-number">1.5</span> Wymiar Minkowskiego, czyli fraktalny wymiar pudełkowy</a></li>
-<li><a href="witajcie-fraktale.html#dywan-sierpińskiego" id="toc-dywan-sierpińskiego"><span class="toc-section-number">1.6</span> Dywan Sierpińskiego</a></li>
-<li><a href="witajcie-fraktale.html#przykłady-w-języku-python" id="toc-przykłady-w-języku-python"><span class="toc-section-number">1.7</span> Przykłady w języku Python</a>
+<li class="chapter" data-level="1.1" data-path="wacław-sierpiński.html"><a href="wacław-sierpiński.html"><i class="fa fa-check"></i><b>1.1</b> Wacław Sierpiński</a></li>
+<li class="chapter" data-level="1.2" data-path="witajcie-fraktale-1.html"><a href="witajcie-fraktale-1.html"><i class="fa fa-check"></i><b>1.2</b> Witajcie, fraktale!</a>
 <ul>
-<li><a href="witajcie-fraktale.html#kurz-cantora-1" id="toc-kurz-cantora-1"><span class="toc-section-number">1.7.1</span> Kurz Cantora</a></li>
-<li><a href="witajcie-fraktale.html#trójkąt-sierpińskiego-1" id="toc-trójkąt-sierpińskiego-1"><span class="toc-section-number">1.7.2</span> Trójkąt Sierpińskiego</a></li>
-<li><a href="witajcie-fraktale.html#dywan-sierpińskiego-1" id="toc-dywan-sierpińskiego-1"><span class="toc-section-number">1.7.3</span> Dywan Sierpińskiego</a></li>
+<li class="chapter" data-level="1.2.1" data-path="witajcie-fraktale-1.html"><a href="witajcie-fraktale-1.html#kurz-cantora"><i class="fa fa-check"></i><b>1.2.1</b> Kurz Cantora</a></li>
+<li class="chapter" data-level="1.2.2" data-path="witajcie-fraktale-1.html"><a href="witajcie-fraktale-1.html#trójkąt-sierpińskiego"><i class="fa fa-check"></i><b>1.2.2</b> Trójkąt Sierpińskiego</a></li>
 </ul></li>
-<li><a href="witajcie-fraktale.html#przykłady-w-języku-r" id="toc-przykłady-w-języku-r"><span class="toc-section-number">1.8</span> Przykłady w języku R</a>
+<li class="chapter" data-level="1.3" data-path="ale-dlaczego-to-działa.html"><a href="ale-dlaczego-to-działa.html"><i class="fa fa-check"></i><b>1.3</b> Ale dlaczego to działa?</a>
 <ul>
-<li><a href="witajcie-fraktale.html#kurz-cantora-2" id="toc-kurz-cantora-2"><span class="toc-section-number">1.8.1</span> Kurz Cantora</a></li>
-<li><a href="witajcie-fraktale.html#trójkąt-sierpińskiego-2" id="toc-trójkąt-sierpińskiego-2"><span class="toc-section-number">1.8.2</span> Trójkąt Sierpińskiego</a></li>
-<li><a href="witajcie-fraktale.html#dywan-sierpińskiego-2" id="toc-dywan-sierpińskiego-2"><span class="toc-section-number">1.8.3</span> Dywan Sierpińskiego</a></li>
+<li class="chapter" data-level="1.3.1" data-path="ale-dlaczego-to-działa.html"><a href="ale-dlaczego-to-działa.html#wymiar-topologiczny"><i class="fa fa-check"></i><b>1.3.1</b> Wymiar topologiczny</a></li>
+<li class="chapter" data-level="1.3.2" data-path="ale-dlaczego-to-działa.html"><a href="ale-dlaczego-to-działa.html#wymiar-minkowskiego-czyli-fraktalny-wymiar-pudełkowy"><i class="fa fa-check"></i><b>1.3.2</b> Wymiar Minkowskiego, czyli fraktalny wymiar pudełkowy</a></li>
+<li class="chapter" data-level="1.3.3" data-path="ale-dlaczego-to-działa.html"><a href="ale-dlaczego-to-działa.html#dywan-sierpińskiego"><i class="fa fa-check"></i><b>1.3.3</b> Dywan Sierpińskiego</a></li>
 </ul></li>
-<li><a href="witajcie-fraktale.html#przykłady-w-języku-julia" id="toc-przykłady-w-języku-julia"><span class="toc-section-number">1.9</span> Przykłady w języku Julia</a>
+<li class="chapter" data-level="1.4" data-path="przykłady-w-języku-python.html"><a href="przykłady-w-języku-python.html"><i class="fa fa-check"></i><b>1.4</b> Przykłady w języku Python</a>
 <ul>
-<li><a href="witajcie-fraktale.html#kurz-cantora-3" id="toc-kurz-cantora-3"><span class="toc-section-number">1.9.1</span> Kurz Cantora</a></li>
-<li><a href="witajcie-fraktale.html#trójkąt-sierpińskiego-3" id="toc-trójkąt-sierpińskiego-3"><span class="toc-section-number">1.9.2</span> Trójkąt Sierpińskiego</a></li>
-<li><a href="witajcie-fraktale.html#dywan-sierpińskiego-3" id="toc-dywan-sierpińskiego-3"><span class="toc-section-number">1.9.3</span> Dywan Sierpińskiego</a></li>
+<li class="chapter" data-level="1.4.1" data-path="przykłady-w-języku-python.html"><a href="przykłady-w-języku-python.html#kurz-cantora-1"><i class="fa fa-check"></i><b>1.4.1</b> Kurz Cantora</a></li>
+<li class="chapter" data-level="1.4.2" data-path="przykłady-w-języku-python.html"><a href="przykłady-w-języku-python.html#trójkąt-sierpińskiego-1"><i class="fa fa-check"></i><b>1.4.2</b> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="1.4.3" data-path="przykłady-w-języku-python.html"><a href="przykłady-w-języku-python.html#dywan-sierpińskiego-1"><i class="fa fa-check"></i><b>1.4.3</b> Dywan Sierpińskiego</a></li>
 </ul></li>
+<li class="chapter" data-level="1.5" data-path="przykłady-w-języku-r.html"><a href="przykłady-w-języku-r.html"><i class="fa fa-check"></i><b>1.5</b> Przykłady w języku R</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="przykłady-w-języku-r.html"><a href="przykłady-w-języku-r.html#kurz-cantora-2"><i class="fa fa-check"></i><b>1.5.1</b> Kurz Cantora</a></li>
+<li class="chapter" data-level="1.5.2" data-path="przykłady-w-języku-r.html"><a href="przykłady-w-języku-r.html#trójkąt-sierpińskiego-2"><i class="fa fa-check"></i><b>1.5.2</b> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="1.5.3" data-path="przykłady-w-języku-r.html"><a href="przykłady-w-języku-r.html#dywan-sierpińskiego-2"><i class="fa fa-check"></i><b>1.5.3</b> Dywan Sierpińskiego</a></li>
 </ul></li>
-<li><a href="misja-druga.html#misja-druga" id="toc-misja-druga"><span class="toc-section-number">2</span> Misja druga</a>
+<li class="chapter" data-level="1.6" data-path="przykłady-w-języku-julia.html"><a href="przykłady-w-języku-julia.html"><i class="fa fa-check"></i><b>1.6</b> Przykłady w języku Julia</a>
 <ul>
-<li><a href="misja-druga.html#stefan-banach" id="toc-stefan-banach"><span class="toc-section-number">2.1</span> Stefan Banach</a></li>
-<li><a href="misja-druga.html#fraktal-czyli-punkt-stały" id="toc-fraktal-czyli-punkt-stały"><span class="toc-section-number">2.2</span> Fraktal, czyli punkt stały</a>
-<ul>
-<li><a href="misja-druga.html#smoki-i-paprocie" id="toc-smoki-i-paprocie"><span class="toc-section-number">2.2.1</span> Smoki i paprocie</a></li>
-<li><a href="misja-druga.html#ale-dlaczego-to-działa" id="toc-ale-dlaczego-to-działa"><span class="toc-section-number">2.2.2</span> Ale dlaczego to działa?</a></li>
-</ul></li>
-<li><a href="misja-druga.html#przykłady-w-python" id="toc-przykłady-w-python"><span class="toc-section-number">2.3</span> Przykłady w Python</a>
-<ul>
-<li><a href="misja-druga.html#trójkąt-sierpińskiego-4" id="toc-trójkąt-sierpińskiego-4"><span class="toc-section-number">2.3.1</span> Trójkąt Sierpińskiego</a></li>
-<li><a href="misja-druga.html#spirala" id="toc-spirala"><span class="toc-section-number">2.3.2</span> Spirala</a></li>
-<li><a href="misja-druga.html#paproć" id="toc-paproć"><span class="toc-section-number">2.3.3</span> Paproć</a></li>
-<li><a href="misja-druga.html#pięciokąt-sierpińskiego-1" id="toc-pięciokąt-sierpińskiego-1"><span class="toc-section-number">2.3.4</span> Pięciokąt Sierpińskiego</a></li>
-<li><a href="misja-druga.html#smok-heighwaya-1" id="toc-smok-heighwaya-1"><span class="toc-section-number">2.3.5</span> Smok Heighwaya</a></li>
-<li><a href="misja-druga.html#symetryczne-drzewo-binarne-drzewo-pitagorasa" id="toc-symetryczne-drzewo-binarne-drzewo-pitagorasa"><span class="toc-section-number">2.3.6</span> Symetryczne drzewo binarne / drzewo Pitagorasa</a></li>
-<li><a href="misja-druga.html#mcworters-pentigree" id="toc-mcworters-pentigree"><span class="toc-section-number">2.3.7</span> McWorter’s Pentigree</a></li>
-</ul></li>
-<li><a href="misja-druga.html#przykłady-w-r" id="toc-przykłady-w-r"><span class="toc-section-number">2.4</span> Przykłady w R</a>
-<ul>
-<li><a href="misja-druga.html#trójkąt-sierpińskiego-5" id="toc-trójkąt-sierpińskiego-5"><span class="toc-section-number">2.4.1</span> Trójkąt Sierpińskiego</a></li>
-<li><a href="misja-druga.html#spirala-1" id="toc-spirala-1"><span class="toc-section-number">2.4.2</span> Spirala</a></li>
-<li><a href="misja-druga.html#paproć-1" id="toc-paproć-1"><span class="toc-section-number">2.4.3</span> Paproć</a></li>
-<li><a href="misja-druga.html#pięciokąt-sierpińskiego-2" id="toc-pięciokąt-sierpińskiego-2"><span class="toc-section-number">2.4.4</span> Pięciokąt Sierpińskiego</a></li>
-<li><a href="misja-druga.html#smok-heighwaya-2" id="toc-smok-heighwaya-2"><span class="toc-section-number">2.4.5</span> Smok Heighwaya</a></li>
-<li><a href="misja-druga.html#symetryczne-drzewo-binarne-drzewo-pitagorasa-1" id="toc-symetryczne-drzewo-binarne-drzewo-pitagorasa-1"><span class="toc-section-number">2.4.6</span> Symetryczne drzewo binarne / drzewo Pitagorasa</a></li>
-<li><a href="misja-druga.html#mcworters-pentigree-1" id="toc-mcworters-pentigree-1"><span class="toc-section-number">2.4.7</span> McWorter’s Pentigree</a></li>
+<li class="chapter" data-level="1.6.1" data-path="przykłady-w-języku-julia.html"><a href="przykłady-w-języku-julia.html#kurz-cantora-3"><i class="fa fa-check"></i><b>1.6.1</b> Kurz Cantora</a></li>
+<li class="chapter" data-level="1.6.2" data-path="przykłady-w-języku-julia.html"><a href="przykłady-w-języku-julia.html#trójkąt-sierpińskiego-3"><i class="fa fa-check"></i><b>1.6.2</b> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="1.6.3" data-path="przykłady-w-języku-julia.html"><a href="przykłady-w-języku-julia.html#dywan-sierpińskiego-3"><i class="fa fa-check"></i><b>1.6.3</b> Dywan Sierpińskiego</a></li>
 </ul></li>
 </ul></li>
-<li><a href="misja-trzecia.html#misja-trzecia" id="toc-misja-trzecia"><span class="toc-section-number">3</span> Misja trzecia</a>
+<li class="chapter" data-level="2" data-path="fraktal-czyli-punkt-stały.html"><a href="fraktal-czyli-punkt-stały.html"><i class="fa fa-check"></i><b>2</b> Fraktal, czyli punkt stały</a>
 <ul>
-<li><a href="misja-trzecia.html#hugo-steinhaus" id="toc-hugo-steinhaus"><span class="toc-section-number">3.1</span> Hugo Steinhaus</a></li>
-<li><a href="misja-trzecia.html#gra-w-chaos" id="toc-gra-w-chaos"><span class="toc-section-number">3.2</span> Gra w Chaos</a>
+<li class="chapter" data-level="2.1" data-path="stefan-banach.html"><a href="stefan-banach.html"><i class="fa fa-check"></i><b>2.1</b> Stefan Banach</a></li>
+<li class="chapter" data-level="2.2" data-path="fraktal-czyli-punkt-stały-1.html"><a href="fraktal-czyli-punkt-stały-1.html"><i class="fa fa-check"></i><b>2.2</b> Fraktal, czyli punkt stały</a>
 <ul>
-<li><a href="misja-trzecia.html#trójkąt-sierpińskiego-na-losowo" id="toc-trójkąt-sierpińskiego-na-losowo"><span class="toc-section-number">3.2.1</span> Trójkąt Sierpińskiego na losowo</a></li>
-<li><a href="misja-trzecia.html#gra-w-chaos-i-trójkąt" id="toc-gra-w-chaos-i-trójkąt"><span class="toc-section-number">3.2.2</span> Gra w Chaos i trójkąt</a></li>
-<li><a href="misja-trzecia.html#gra-w-chaos-i-fraktale" id="toc-gra-w-chaos-i-fraktale"><span class="toc-section-number">3.2.3</span> Gra w Chaos i fraktale</a></li>
-<li><a href="misja-trzecia.html#gra-w-chaos-i-genetyka" id="toc-gra-w-chaos-i-genetyka"><span class="toc-section-number">3.2.4</span> Gra w Chaos i genetyka</a></li>
+<li class="chapter" data-level="2.2.1" data-path="fraktal-czyli-punkt-stały-1.html"><a href="fraktal-czyli-punkt-stały-1.html#smoki-i-paprocie"><i class="fa fa-check"></i><b>2.2.1</b> Smoki i paprocie</a></li>
+<li class="chapter" data-level="2.2.2" data-path="fraktal-czyli-punkt-stały-1.html"><a href="fraktal-czyli-punkt-stały-1.html#pięciokąt-sierpińskiego-ang.-sierpiński-pentagon"><i class="fa fa-check"></i><b>2.2.2</b> Pięciokąt Sierpińskiego (ang. Sierpiński pentagon)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="fraktal-czyli-punkt-stały-1.html"><a href="fraktal-czyli-punkt-stały-1.html#drzewo-pitagorasa"><i class="fa fa-check"></i><b>2.2.3</b> Drzewo Pitagorasa</a></li>
+<li class="chapter" data-level="2.2.4" data-path="fraktal-czyli-punkt-stały-1.html"><a href="fraktal-czyli-punkt-stały-1.html#smok-heighwaya"><i class="fa fa-check"></i><b>2.2.4</b> Smok Heighwaya</a></li>
+<li class="chapter" data-level="2.2.5" data-path="fraktal-czyli-punkt-stały-1.html"><a href="fraktal-czyli-punkt-stały-1.html#paproć-bernseya"><i class="fa fa-check"></i><b>2.2.5</b> Paproć Bernseya</a></li>
 </ul></li>
-<li><a href="misja-trzecia.html#przykłady-w-r-1" id="toc-przykłady-w-r-1"><span class="toc-section-number">3.3</span> Przykłady w R</a>
+<li class="chapter" data-level="2.3" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html"><i class="fa fa-check"></i><b>2.3</b> Ale dlaczego to działa?</a>
 <ul>
-<li><a href="misja-trzecia.html#trójkąt-sierpińskiego-po-raz-kolejny." id="toc-trójkąt-sierpińskiego-po-raz-kolejny."><span class="toc-section-number">3.3.1</span> Trójkąt Sierpińskiego po raz kolejny.</a></li>
+<li class="chapter" data-level="2.3.1" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#przestrzeń-metryczna"><i class="fa fa-check"></i><b>2.3.1</b> Przestrzeń metryczna</a></li>
+<li class="chapter" data-level="2.3.2" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#odległość-hausdorffa"><i class="fa fa-check"></i><b>2.3.2</b> Odległość Hausdorffa</a></li>
+<li class="chapter" data-level="2.3.3" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#ciąg-cauchyego"><i class="fa fa-check"></i><b>2.3.3</b> Ciąg Cauchy’ego</a></li>
+<li class="chapter" data-level="2.3.4" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#przestrzeń-zupełna"><i class="fa fa-check"></i><b>2.3.4</b> Przestrzeń zupełna</a></li>
+<li class="chapter" data-level="2.3.5" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#kontrakcja"><i class="fa fa-check"></i><b>2.3.5</b> Kontrakcja</a></li>
+<li class="chapter" data-level="2.3.6" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#przekształcenie-afiniczne"><i class="fa fa-check"></i><b>2.3.6</b> Przekształcenie afiniczne</a></li>
+<li class="chapter" data-level="2.3.7" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#twierdzenie-hutchinsona"><i class="fa fa-check"></i><b>2.3.7</b> Twierdzenie Hutchinsona</a></li>
+<li class="chapter" data-level="2.3.8" data-path="ale-dlaczego-to-działa-1.html"><a href="ale-dlaczego-to-działa-1.html#twierdzenie-banacha-o-punkcie-stałym"><i class="fa fa-check"></i><b>2.3.8</b> Twierdzenie Banacha o punkcie stałym</a></li>
 </ul></li>
-<li><a href="misja-trzecia.html#przykłady-w-python-1" id="toc-przykłady-w-python-1"><span class="toc-section-number">3.4</span> Przykłady w Python</a>
+<li class="chapter" data-level="2.4" data-path="przykłady-w-języku-python-1.html"><a href="przykłady-w-języku-python-1.html"><i class="fa fa-check"></i><b>2.4</b> Przykłady w języku Python</a>
 <ul>
-<li><a href="misja-trzecia.html#paproć-barnsleya" id="toc-paproć-barnsleya"><span class="toc-section-number">3.4.1</span> Paproć Barnsleya</a></li>
-<li><a href="misja-trzecia.html#drzewo" id="toc-drzewo"><span class="toc-section-number">3.4.2</span> Drzewo</a></li>
-<li><a href="misja-trzecia.html#maple-leaf" id="toc-maple-leaf"><span class="toc-section-number">3.4.3</span> Maple Leaf</a></li>
-<li><a href="misja-trzecia.html#spirala-2" id="toc-spirala-2"><span class="toc-section-number">3.4.4</span> Spirala</a></li>
-<li><a href="misja-trzecia.html#ifs-mandelbrot-like" id="toc-ifs-mandelbrot-like"><span class="toc-section-number">3.4.5</span> IFS Mandelbrot-like</a></li>
-<li><a href="misja-trzecia.html#ifs-tree" id="toc-ifs-tree"><span class="toc-section-number">3.4.6</span> IFS Tree</a></li>
-<li><a href="misja-trzecia.html#gra-w-chaos-i-trójkąt-1" id="toc-gra-w-chaos-i-trójkąt-1"><span class="toc-section-number">3.4.7</span> Gra w Chaos i trójkąt</a></li>
+<li class="chapter" data-level="2.4.1" data-path="przykłady-w-języku-python-1.html"><a href="przykłady-w-języku-python-1.html#trójkąt-sierpińskiego-4"><i class="fa fa-check"></i><b>2.4.1</b> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="2.4.2" data-path="przykłady-w-języku-python-1.html"><a href="przykłady-w-języku-python-1.html#pięciokąt-sierpińskiego"><i class="fa fa-check"></i><b>2.4.2</b> Pięciokąt Sierpińskiego</a></li>
+<li class="chapter" data-level="2.4.3" data-path="przykłady-w-języku-python-1.html"><a href="przykłady-w-języku-python-1.html#smok-heighwaya-1"><i class="fa fa-check"></i><b>2.4.3</b> Smok Heighwaya</a></li>
+<li class="chapter" data-level="2.4.4" data-path="przykłady-w-języku-python-1.html"><a href="przykłady-w-języku-python-1.html#drzewo-pitagorasa-1"><i class="fa fa-check"></i><b>2.4.4</b> Drzewo Pitagorasa</a></li>
 </ul></li>
+<li class="chapter" data-level="2.5" data-path="przykłady-w-języku-r-1.html"><a href="przykłady-w-języku-r-1.html"><i class="fa fa-check"></i><b>2.5</b> Przykłady w języku R</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="przykłady-w-języku-r-1.html"><a href="przykłady-w-języku-r-1.html#trójkąt-sierpińskiego-5"><i class="fa fa-check"></i><b>2.5.1</b> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="2.5.2" data-path="przykłady-w-języku-r-1.html"><a href="przykłady-w-języku-r-1.html#pięciokąt-sierpińskiego-1"><i class="fa fa-check"></i><b>2.5.2</b> Pięciokąt Sierpińskiego</a></li>
+<li class="chapter" data-level="2.5.3" data-path="przykłady-w-języku-r-1.html"><a href="przykłady-w-języku-r-1.html#smok-heighwaya-2"><i class="fa fa-check"></i><b>2.5.3</b> Smok Heighwaya</a></li>
+<li class="chapter" data-level="2.5.4" data-path="przykłady-w-języku-r-1.html"><a href="przykłady-w-języku-r-1.html#symetryczne-drzewo-binarne-drzewo-pitagorasa"><i class="fa fa-check"></i><b>2.5.4</b> Symetryczne drzewo binarne / drzewo Pitagorasa</a></li>
 </ul></li>
-<li><a href="podsumowanie.html#podsumowanie" id="toc-podsumowanie"><span class="toc-section-number">4</span> Podsumowanie</a>
+<li class="chapter" data-level="2.6" data-path="przykłady-w-języku-julia-1.html"><a href="przykłady-w-języku-julia-1.html"><i class="fa fa-check"></i><b>2.6</b> Przykłady w języku Julia</a>
 <ul>
-<li><a href="podsumowanie.html#story" id="toc-story"><span class="toc-section-number">4.1</span> Story</a></li>
-<li><a href="podsumowanie.html#wybrane-fraktale" id="toc-wybrane-fraktale"><span class="toc-section-number">4.2</span> Wybrane fraktale</a>
-<ul>
-<li><a href="podsumowanie.html#trójkąt-sierpińskiego-6" id="toc-trójkąt-sierpińskiego-6"><span class="toc-section-number">4.2.1</span> Trójkąt Sierpińskiego</a></li>
-<li><a href="podsumowanie.html#spirala-3" id="toc-spirala-3"><span class="toc-section-number">4.2.2</span> Spirala</a></li>
-<li><a href="podsumowanie.html#smok" id="toc-smok"><span class="toc-section-number">4.2.3</span> Smok</a></li>
-<li><a href="podsumowanie.html#paproć-barnsleya-1" id="toc-paproć-barnsleya-1"><span class="toc-section-number">4.2.4</span> Paproć Barnsley’a</a></li>
-<li><a href="podsumowanie.html#liść-klonu" id="toc-liść-klonu"><span class="toc-section-number">4.2.5</span> Liść klonu</a></li>
-<li><a href="podsumowanie.html#drzewo-1" id="toc-drzewo-1"><span class="toc-section-number">4.2.6</span> Drzewo</a></li>
-</ul></li>
-</ul></li>
-<li><a href="zalaczniki.html#zalaczniki" id="toc-zalaczniki"><span class="toc-section-number">5</span> Zalaczniki</a>
-<ul>
-<li><a href="zalaczniki.html#przykłady-w-julia" id="toc-przykłady-w-julia"><span class="toc-section-number">5.1</span> Przykłady w Julia</a></li>
-<li><a href="zalaczniki.html#przykłady-w-r-2" id="toc-przykłady-w-r-2"><span class="toc-section-number">5.2</span> Przykłady w R</a>
-<ul>
-<li><a href="zalaczniki.html#dywan-sierpińskiego-w-r" id="toc-dywan-sierpińskiego-w-r"><span class="toc-section-number">5.2.1</span> Dywan Sierpińskiego w R</a></li>
-</ul></li>
-<li><a href="zalaczniki.html#przykłady-w-r-3" id="toc-przykłady-w-r-3"><span class="toc-section-number">5.3</span> Przykłady w R</a>
-<ul>
-<li><a href="zalaczniki.html#smok-heighwaya-3" id="toc-smok-heighwaya-3"><span class="toc-section-number">5.3.1</span> Smok Heighwaya</a></li>
-<li><a href="zalaczniki.html#do-it-yourself" id="toc-do-it-yourself"><span class="toc-section-number">5.3.2</span> Do It Yourself!</a></li>
-<li><a href="zalaczniki.html#paproć-barnsleya-2" id="toc-paproć-barnsleya-2"><span class="toc-section-number">5.3.3</span> Paproć Barnsleya</a></li>
+<li class="chapter" data-level="2.6.1" data-path="przykłady-w-języku-julia-1.html"><a href="przykłady-w-języku-julia-1.html#trójkąt-sierpińskiego-6"><i class="fa fa-check"></i><b>2.6.1</b> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="2.6.2" data-path="przykłady-w-języku-julia-1.html"><a href="przykłady-w-języku-julia-1.html#pięciokąt-sierpińskiego-2"><i class="fa fa-check"></i><b>2.6.2</b> Pięciokąt Sierpińskiego</a></li>
+<li class="chapter" data-level="2.6.3" data-path="przykłady-w-języku-julia-1.html"><a href="przykłady-w-języku-julia-1.html#smok-heighwaya-3"><i class="fa fa-check"></i><b>2.6.3</b> Smok Heighwaya</a></li>
+<li class="chapter" data-level="2.6.4" data-path="przykłady-w-języku-julia-1.html"><a href="przykłady-w-języku-julia-1.html#drzewo-pitagorasa-2"><i class="fa fa-check"></i><b>2.6.4</b> Drzewo Pitagorasa</a></li>
 </ul></li>
 </ul></li>
-<li><a href="bibliografia.html#bibliografia" id="toc-bibliografia">Bibliografia</a></li>
+<li class="chapter" data-level="3" data-path="gra-w-chaos.html"><a href="gra-w-chaos.html"><i class="fa fa-check"></i><b>3</b> Gra w chaos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="hugo-steinhaus.html"><a href="hugo-steinhaus.html"><i class="fa fa-check"></i><b>3.1</b> Hugo Steinhaus</a></li>
+<li class="chapter" data-level="3.2" data-path="gra-w-chaos-1.html"><a href="gra-w-chaos-1.html"><i class="fa fa-check"></i><b>3.2</b> Gra w Chaos</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="gra-w-chaos-1.html"><a href="gra-w-chaos-1.html#gra-w-chaos-i-trójkąty"><i class="fa fa-check"></i><b>3.2.1</b> Gra w chaos i trójkąty</a></li>
+<li class="chapter" data-level="3.2.2" data-path="gra-w-chaos-1.html"><a href="gra-w-chaos-1.html#co-tu-się-dzieje"><i class="fa fa-check"></i><b>3.2.2</b> Co tu się dzieje?</a></li>
+<li class="chapter" data-level="3.2.3" data-path="gra-w-chaos-1.html"><a href="gra-w-chaos-1.html#gra-w-chaos-i-fraktale"><i class="fa fa-check"></i><b>3.2.3</b> Gra w Chaos i fraktale</a></li>
+<li class="chapter" data-level="3.2.4" data-path="gra-w-chaos-1.html"><a href="gra-w-chaos-1.html#przekształcenia-afiniczne"><i class="fa fa-check"></i><b>3.2.4</b> Przekształcenia afiniczne</a></li>
+<li class="chapter" data-level="3.2.5" data-path="gra-w-chaos-1.html"><a href="gra-w-chaos-1.html#paprocie-i-chaos"><i class="fa fa-check"></i><b>3.2.5</b> Paprocie i chaos</a></li>
+<li class="chapter" data-level="3.2.6" data-path="gra-w-chaos-1.html"><a href="gra-w-chaos-1.html#bardziej-formalnie"><i class="fa fa-check"></i><b>3.2.6</b> Bardziej formalnie</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="zastosowania.html"><a href="zastosowania.html"><i class="fa fa-check"></i><b>3.3</b> Zastosowania</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="zastosowania.html"><a href="zastosowania.html#gra-w-chaos-i-genetyka"><i class="fa fa-check"></i><b>3.3.1</b> Gra w chaos i genetyka</a></li>
+<li class="chapter" data-level="3.3.2" data-path="zastosowania.html"><a href="zastosowania.html#gra-w-chaos-i-muzyka"><i class="fa fa-check"></i><b>3.3.2</b> Gra w chaos i muzyka</a></li>
+<li class="chapter" data-level="3.3.3" data-path="zastosowania.html"><a href="zastosowania.html#wymiar-fraktalny-mózgu"><i class="fa fa-check"></i><b>3.3.3</b> Wymiar fraktalny mózgu</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="przykłady-w-języku-python-2.html"><a href="przykłady-w-języku-python-2.html"><i class="fa fa-check"></i><b>3.4</b> Przykłady w języku Python</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="przykłady-w-języku-python-2.html"><a href="przykłady-w-języku-python-2.html#trójkąt-sierpińskiego-raz-jeszcze"><i class="fa fa-check"></i><b>3.4.1</b> Trójkąt Sierpińskiego raz jeszcze</a></li>
+<li class="chapter" data-level="3.4.2" data-path="przykłady-w-języku-python-2.html"><a href="przykłady-w-języku-python-2.html#paproć-barnsleya"><i class="fa fa-check"></i><b>3.4.2</b> Paproć Barnsleya</a></li>
+<li class="chapter" data-level="3.4.3" data-path="przykłady-w-języku-python-2.html"><a href="przykłady-w-języku-python-2.html#liść-klonu"><i class="fa fa-check"></i><b>3.4.3</b> Liść klonu</a></li>
+<li class="chapter" data-level="3.4.4" data-path="przykłady-w-języku-python-2.html"><a href="przykłady-w-języku-python-2.html#spirala"><i class="fa fa-check"></i><b>3.4.4</b> Spirala</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="przykłady-w-języku-r-2.html"><a href="przykłady-w-języku-r-2.html"><i class="fa fa-check"></i><b>3.5</b> Przykłady w języku R</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="przykłady-w-języku-r-2.html"><a href="przykłady-w-języku-r-2.html#trójkąt-sierpińskiego-raz-jeszcze-1"><i class="fa fa-check"></i><b>3.5.1</b> Trójkąt Sierpińskiego raz jeszcze</a></li>
+<li class="chapter" data-level="3.5.2" data-path="przykłady-w-języku-r-2.html"><a href="przykłady-w-języku-r-2.html#paproć-barnsleya-1"><i class="fa fa-check"></i><b>3.5.2</b> Paproć Barnsleya</a></li>
+<li class="chapter" data-level="3.5.3" data-path="przykłady-w-języku-r-2.html"><a href="przykłady-w-języku-r-2.html#liść-klonu-1"><i class="fa fa-check"></i><b>3.5.3</b> Liść klonu</a></li>
+<li class="chapter" data-level="3.5.4" data-path="przykłady-w-języku-r-2.html"><a href="przykłady-w-języku-r-2.html#spirala-1"><i class="fa fa-check"></i><b>3.5.4</b> Spirala</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="przykłady-w-języku-julia-2.html"><a href="przykłady-w-języku-julia-2.html"><i class="fa fa-check"></i><b>3.6</b> Przykłady w języku Julia</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="przykłady-w-języku-julia-2.html"><a href="przykłady-w-języku-julia-2.html#trójkąt-sierpińskiego-raz-jeszcze-2"><i class="fa fa-check"></i><b>3.6.1</b> Trójkąt Sierpińskiego raz jeszcze</a></li>
+<li class="chapter" data-level="3.6.2" data-path="przykłady-w-języku-julia-2.html"><a href="przykłady-w-języku-julia-2.html#paproć-barnsleya-2"><i class="fa fa-check"></i><b>3.6.2</b> Paproć Barnsleya</a></li>
+<li class="chapter" data-level="3.6.3" data-path="przykłady-w-języku-julia-2.html"><a href="przykłady-w-języku-julia-2.html#liść-klonu-2"><i class="fa fa-check"></i><b>3.6.3</b> Liść klonu</a></li>
+<li class="chapter" data-level="3.6.4" data-path="przykłady-w-języku-julia-2.html"><a href="przykłady-w-języku-julia-2.html#spirala-2"><i class="fa fa-check"></i><b>3.6.4</b> Spirala</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="kieszonkowy-atlas-fraktali.html"><a href="kieszonkowy-atlas-fraktali.html"><i class="fa fa-check"></i><b>4</b> Kieszonkowy atlas fraktali</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="paproć-barnsleya-3.html"><a href="paproć-barnsleya-3.html"><i class="fa fa-check"></i><b>4.1</b> Paproć Barnsleya</a></li>
+<li class="chapter" data-level="4.2" data-path="liść-klonu-3.html"><a href="liść-klonu-3.html"><i class="fa fa-check"></i><b>4.2</b> Liść klonu</a></li>
+<li class="chapter" data-level="4.3" data-path="pięciokrotka-mcwortera-ang.-mcworters-pentigree.html"><a href="pięciokrotka-mcwortera-ang.-mcworters-pentigree.html"><i class="fa fa-check"></i><b>4.3</b> Pięciokrotka McWortera (ang. McWorter’s pentigree)</a></li>
+<li class="chapter" data-level="4.4" data-path="drzewa.html"><a href="drzewa.html"><i class="fa fa-check"></i><b>4.4</b> Drzewa</a></li>
+<li class="chapter" data-level="4.5" data-path="spirala-3.html"><a href="spirala-3.html"><i class="fa fa-check"></i><b>4.5</b> Spirala</a></li>
+<li class="chapter" data-level="4.6" data-path="wielokąty-sierpińskiego.html"><a href="wielokąty-sierpińskiego.html"><i class="fa fa-check"></i><b>4.6</b> Wielokąty Sierpińskiego</a></li>
+<li class="chapter" data-level="4.7" data-path="smoki.html"><a href="smoki.html"><i class="fa fa-check"></i><b>4.7</b> Smoki</a></li>
+<li class="chapter" data-level="4.8" data-path="sky-is-the-limit.html"><a href="sky-is-the-limit.html"><i class="fa fa-check"></i><b>4.8</b> Sky is the limit</a></li>
+<li class="chapter" data-level="4.9" data-path="story.html"><a href="story.html"><i class="fa fa-check"></i><b>4.9</b> Story</a></li>
+<li class="chapter" data-level="4.10" data-path="wybrane-fraktale.html"><a href="wybrane-fraktale.html"><i class="fa fa-check"></i><b>4.10</b> Wybrane fraktale</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="wybrane-fraktale.html"><a href="wybrane-fraktale.html#trójkąt-sierpińskiego-7"><i class="fa fa-check"></i><b>4.10.1</b> Trójkąt Sierpińskiego</a></li>
+<li class="chapter" data-level="4.10.2" data-path="wybrane-fraktale.html"><a href="wybrane-fraktale.html#spirala-4"><i class="fa fa-check"></i><b>4.10.2</b> Spirala</a></li>
+<li class="chapter" data-level="4.10.3" data-path="wybrane-fraktale.html"><a href="wybrane-fraktale.html#smok"><i class="fa fa-check"></i><b>4.10.3</b> Smok</a></li>
+<li class="chapter" data-level="4.10.4" data-path="wybrane-fraktale.html"><a href="wybrane-fraktale.html#paproć-barnsleya-4"><i class="fa fa-check"></i><b>4.10.4</b> Paproć Barnsley’a</a></li>
+<li class="chapter" data-level="4.10.5" data-path="wybrane-fraktale.html"><a href="wybrane-fraktale.html#liść-klonu-4"><i class="fa fa-check"></i><b>4.10.5</b> Liść klonu</a></li>
+<li class="chapter" data-level="4.10.6" data-path="wybrane-fraktale.html"><a href="wybrane-fraktale.html#drzewo"><i class="fa fa-check"></i><b>4.10.6</b> Drzewo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="zalaczniki.html"><a href="zalaczniki.html"><i class="fa fa-check"></i><b>5</b> Zalaczniki</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="przykłady-w-julia.html"><a href="przykłady-w-julia.html"><i class="fa fa-check"></i><b>5.1</b> Przykłady w Julia</a></li>
+<li class="chapter" data-level="5.2" data-path="przykłady-w-r.html"><a href="przykłady-w-r.html"><i class="fa fa-check"></i><b>5.2</b> Przykłady w R</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="przykłady-w-r.html"><a href="przykłady-w-r.html#dywan-sierpińskiego-w-r"><i class="fa fa-check"></i><b>5.2.1</b> Dywan Sierpińskiego w R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="przykłady-w-r-1.html"><a href="przykłady-w-r-1.html"><i class="fa fa-check"></i><b>5.3</b> Przykłady w R</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="przykłady-w-r-1.html"><a href="przykłady-w-r-1.html#smok-heighwaya-4"><i class="fa fa-check"></i><b>5.3.1</b> Smok Heighwaya</a></li>
+<li class="chapter" data-level="5.3.2" data-path="przykłady-w-r-1.html"><a href="przykłady-w-r-1.html#do-it-yourself"><i class="fa fa-check"></i><b>5.3.2</b> Do It Yourself!</a></li>
+<li class="chapter" data-level="5.3.3" data-path="przykłady-w-r-1.html"><a href="przykłady-w-r-1.html#paproć-barnsleya-5"><i class="fa fa-check"></i><b>5.3.3</b> Paproć Barnsleya</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliografia.html"><a href="bibliografia.html"><i class="fa fa-check"></i>Bibliografia</a></li>
 <li class="divider"></li>
-<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+<li><a href="https://www.mi2.ai/beta-bit.html" target="_blank">Inne pozycje z serii Beta i Bit</a></li>
 
 </ul>
 
@@ -267,394 +341,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="zalaczniki" class="section level1" number="5">
-<h1><span class="header-section-number">Rozdział 5</span> Zalaczniki</h1>
-<div id="przykłady-w-julia" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Przykłady w Julia</h2>
-<div class="sourceCode" id="cb40"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb40-1"><a href="zalaczniki.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb40-2"><a href="zalaczniki.html#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="zalaczniki.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">trojkat</span>(x, y, bok)</span>
-<span id="cb40-4"><a href="zalaczniki.html#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [(x<span class="op">+</span>bok<span class="op">*</span><span class="fl">0</span>,y<span class="op">+</span>bok<span class="op">*</span><span class="fl">0</span>),(x<span class="op">+</span>bok<span class="op">*</span><span class="fl">1</span>,y<span class="op">+</span>bok<span class="op">*</span><span class="fl">0</span>),(x<span class="op">+</span>bok<span class="op">*</span><span class="fl">1</span><span class="op">/</span><span class="fl">2</span>,<span class="fu">y+bok*sqrt</span>(<span class="fl">2</span>)<span class="op">/</span><span class="fl">2</span>),(x<span class="op">+</span>bok<span class="op">*</span><span class="fl">0</span>,y<span class="op">+</span>bok<span class="op">*</span><span class="fl">0</span>)]</span>
-<span id="cb40-5"><a href="zalaczniki.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb40-6"><a href="zalaczniki.html#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-7"><a href="zalaczniki.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># czyścimy ekran</span></span>
-<span id="cb40-8"><a href="zalaczniki.html#cb40-8" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> <span class="fl">0.05</span></span>
-<span id="cb40-9"><a href="zalaczniki.html#cb40-9" aria-hidden="true" tabindex="-1"></a>Plots.<span class="fu">plot</span>(<span class="fl">0</span>,xlim<span class="op">=</span>(<span class="fl">0</span><span class="op">-</span>E,<span class="fl">1</span><span class="op">+</span>E),ylim<span class="op">=</span>(<span class="fl">0</span><span class="op">-</span>E,<span class="fl">1</span><span class="op">+</span>E<span class="op">-</span><span class="fl">0.1</span>))</span>
-<span id="cb40-10"><a href="zalaczniki.html#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-11"><a href="zalaczniki.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">rysuj_uszczelke</span>(x, y, szerokosc, iteracja)</span>
-<span id="cb40-12"><a href="zalaczniki.html#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> iteracja <span class="op">==</span> <span class="fl">0</span></span>
-<span id="cb40-13"><a href="zalaczniki.html#cb40-13" aria-hidden="true" tabindex="-1"></a>      Plots.<span class="fu">plot!</span>(<span class="fu">trojkat</span>(x, y, szerokosc), seriestype<span class="op">=:</span>shape, color<span class="op">=:</span>black, legend<span class="op">=:</span><span class="cn">false</span>)</span>
-<span id="cb40-14"><a href="zalaczniki.html#cb40-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span></span>
-<span id="cb40-15"><a href="zalaczniki.html#cb40-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rysuj_uszczelke</span>(x, y, szerokosc <span class="op">/</span> <span class="fl">2</span>, iteracja <span class="op">-</span> <span class="fl">1</span>)</span>
-<span id="cb40-16"><a href="zalaczniki.html#cb40-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rysuj_uszczelke</span>(x<span class="op">+</span>szerokosc <span class="op">/</span> <span class="fl">2</span>, y, szerokosc <span class="op">/</span> <span class="fl">2</span>, iteracja <span class="op">-</span> <span class="fl">1</span>)</span>
-<span id="cb40-17"><a href="zalaczniki.html#cb40-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rysuj_uszczelke</span>(x<span class="op">+</span>szerokosc <span class="op">/</span> <span class="fl">4</span>, <span class="fu">y+sqrt</span>(<span class="fl">3</span>)<span class="op">*</span>szerokosc<span class="op">/</span><span class="fl">4</span>, szerokosc <span class="op">/</span> <span class="fl">2</span>, iteracja <span class="op">-</span> <span class="fl">1</span>)</span>
-<span id="cb40-18"><a href="zalaczniki.html#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
-<span id="cb40-19"><a href="zalaczniki.html#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="fu">current</span>()</span>
-<span id="cb40-20"><a href="zalaczniki.html#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb40-21"><a href="zalaczniki.html#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-22"><a href="zalaczniki.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="fu">rysuj_uszczelke</span>(<span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">5</span>)</span></code></pre></div>
-<figure>
-<center>
-<img alt="png" src="images/uszczelka_5_jl.png">
-</center>
-</figure>
-<div class="sourceCode" id="cb41"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb41-1"><a href="zalaczniki.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb41-2"><a href="zalaczniki.html#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="zalaczniki.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># czyścimy ekran</span></span>
-<span id="cb41-4"><a href="zalaczniki.html#cb41-4" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> <span class="fl">0.05</span></span>
-<span id="cb41-5"><a href="zalaczniki.html#cb41-5" aria-hidden="true" tabindex="-1"></a>Plots.<span class="fu">plot</span>(<span class="fl">0</span>,xlim<span class="op">=</span>(<span class="fl">0</span><span class="op">-</span>E,<span class="fl">1</span><span class="op">+</span>E),ylim<span class="op">=</span>(<span class="fl">0</span><span class="op">-</span>E,<span class="fl">1</span><span class="op">+</span>E<span class="op">-</span><span class="fl">0.1</span>))</span>
-<span id="cb41-6"><a href="zalaczniki.html#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-7"><a href="zalaczniki.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">rysuj_uszczelke</span>(x, y, szerokosc, iteracja)</span>
-<span id="cb41-8"><a href="zalaczniki.html#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> iteracja <span class="op">==</span> <span class="fl">0</span></span>
-<span id="cb41-9"><a href="zalaczniki.html#cb41-9" aria-hidden="true" tabindex="-1"></a>      Plots.<span class="fu">scatter!</span>([x], [y], markerstrokecolor<span class="op">=:</span>white, markersize<span class="op">=</span><span class="fl">3</span>, color<span class="op">=:</span>black, legend<span class="op">=:</span><span class="cn">false</span>)</span>
-<span id="cb41-10"><a href="zalaczniki.html#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span></span>
-<span id="cb41-11"><a href="zalaczniki.html#cb41-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_uszczelke</span>(x, y, szerokosc<span class="op">/</span><span class="fl">2</span>, iteracja <span class="op">-</span> <span class="fl">1</span>)</span>
-<span id="cb41-12"><a href="zalaczniki.html#cb41-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_uszczelke</span>(x<span class="op">+</span>szerokosc<span class="op">/</span><span class="fl">2</span>, y, szerokosc<span class="op">/</span><span class="fl">2</span>, iteracja <span class="op">-</span> <span class="fl">1</span>)</span>
-<span id="cb41-13"><a href="zalaczniki.html#cb41-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_uszczelke</span>(x<span class="op">+</span>szerokosc<span class="op">/</span><span class="fl">4</span>, <span class="fu">y+sqrt</span>(<span class="fl">3</span>)<span class="op">*</span>szerokosc<span class="op">/</span><span class="fl">4</span>, szerokosc<span class="op">/</span><span class="fl">2</span>, iteracja <span class="op">-</span> <span class="fl">1</span>)</span>
-<span id="cb41-14"><a href="zalaczniki.html#cb41-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
-<span id="cb41-15"><a href="zalaczniki.html#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="fu">current</span>()</span>
-<span id="cb41-16"><a href="zalaczniki.html#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb41-17"><a href="zalaczniki.html#cb41-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-18"><a href="zalaczniki.html#cb41-18" aria-hidden="true" tabindex="-1"></a><span class="fu">rysuj_uszczelke</span>(<span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">8</span>)</span></code></pre></div>
-<figure>
-<center>
-<img alt="png" src="images/uszczelka_8_jl.png">
-</center>
-</figure>
-</div>
-<div id="przykłady-w-r-2" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Przykłady w R</h2>
-<p>W programie R nie ma funkcji rysującej trójkąty, więc musimy ją najpierw zdefiniować. Do tego celu używamy funkcji <code>polygon</code>, która rysuje wypełnione zamknięte wielokąty. Na jej bazie definiujemy funkcje <code>trojkat</code> rysującą trójkąt równoboczny o boku <code>bok</code> zaczepiony lewym dolnym rogiem w punkcie <code>(x, y)</code>.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="zalaczniki.html#cb42-1" aria-hidden="true" tabindex="-1"></a>trojkat <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, bok) {</span>
-<span id="cb42-2"><a href="zalaczniki.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polygon</span>(x <span class="sc">+</span> bok<span class="sc">*</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>), </span>
-<span id="cb42-3"><a href="zalaczniki.html#cb42-3" aria-hidden="true" tabindex="-1"></a>          y <span class="sc">+</span> bok<span class="sc">*</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">/</span><span class="dv">2</span>), </span>
-<span id="cb42-4"><a href="zalaczniki.html#cb42-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb42-5"><a href="zalaczniki.html#cb42-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Przetestujmy tę funkcję. Najpierw funkcją <code>plot.new</code> otworzymy nowy obszar do rysowania o wymiarach 1x1 a następnie narysujemy trójkąt o boku 1.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="zalaczniki.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb43-2"><a href="zalaczniki.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">trojkat</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-21-1.svg" width="576" /></p>
-<p>Jeżeli chcielibyśmy narysować drugi krok konstrukcji trójkąta Sierpińskiego to musielibyśmy wywołać funkcję <code>trojkat</code> trzy razy.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="zalaczniki.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb44-2"><a href="zalaczniki.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">trojkat</span>(<span class="dv">0</span>,    <span class="dv">0</span>, <span class="fl">0.5</span>)</span>
-<span id="cb44-3"><a href="zalaczniki.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">trojkat</span>(<span class="fl">0.5</span>,  <span class="dv">0</span>, <span class="fl">0.5</span>)</span>
-<span id="cb44-4"><a href="zalaczniki.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">trojkat</span>(<span class="fl">0.25</span>, <span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>, <span class="fl">0.5</span>)</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-22-1.svg" width="576" /></p>
-<p>Aby narysować trzeci krok należałoby wywołać tę funkcję <span class="math inline">\(3^2\)</span> razy.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="zalaczniki.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb45-2"><a href="zalaczniki.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">trojkat</span>(<span class="dv">0</span>,    <span class="dv">0</span>,         <span class="fl">0.25</span>)</span>
-<span id="cb45-3"><a href="zalaczniki.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">trojkat</span>(<span class="fl">0.25</span>, <span class="dv">0</span>,         <span class="fl">0.25</span>)</span>
-<span id="cb45-4"><a href="zalaczniki.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">trojkat</span>(<span class="fl">0.125</span>,<span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">/</span><span class="dv">8</span>, <span class="fl">0.25</span>)</span>
-<span id="cb45-5"><a href="zalaczniki.html#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-6"><a href="zalaczniki.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">trojkat</span>(<span class="fl">0.5</span>,   <span class="dv">0</span>,         <span class="fl">0.25</span>)</span>
-<span id="cb45-7"><a href="zalaczniki.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="fu">trojkat</span>(<span class="fl">0.75</span>,  <span class="dv">0</span>,         <span class="fl">0.25</span>)</span>
-<span id="cb45-8"><a href="zalaczniki.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="fu">trojkat</span>(<span class="fl">0.625</span>, <span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">/</span><span class="dv">8</span>, <span class="fl">0.25</span>)</span>
-<span id="cb45-9"><a href="zalaczniki.html#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-10"><a href="zalaczniki.html#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="fu">trojkat</span>(<span class="fl">0.25</span>,  <span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>, <span class="fl">0.25</span>)</span>
-<span id="cb45-11"><a href="zalaczniki.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="fu">trojkat</span>(<span class="fl">0.50</span>,  <span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>, <span class="fl">0.25</span>)</span>
-<span id="cb45-12"><a href="zalaczniki.html#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="fu">trojkat</span>(<span class="fl">0.375</span>,<span class="dv">3</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">/</span><span class="dv">8</span>, <span class="fl">0.25</span>)</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-23-1.svg" width="576" /></p>
-<p>Rysowanie kolejnych kroków kopiując linijki z funkcją <code>trojkat</code> byłoby niepraktyczne. Znacznie lepiej wykorzystać rekurencje. Poniżej tworzymy funkcje <code>fraktal_trojkat</code>, która w kroku 0 rysuje w trójkąt o zadanym boku a w innych krokach wywoluje się z poleceniem narysowani trzech miejszych fraktali o boku będącym połową wyjściowego.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="zalaczniki.html#cb46-1" aria-hidden="true" tabindex="-1"></a>fraktal_trojkat <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, bok, <span class="at">krok =</span> <span class="dv">0</span>) {</span>
-<span id="cb46-2"><a href="zalaczniki.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (krok <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb46-3"><a href="zalaczniki.html#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">trojkat</span>(x, y, bok)</span>
-<span id="cb46-4"><a href="zalaczniki.html#cb46-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb46-5"><a href="zalaczniki.html#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fraktal_trojkat</span>(x, y, bok<span class="sc">/</span><span class="dv">2</span>, krok <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb46-6"><a href="zalaczniki.html#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fraktal_trojkat</span>(x<span class="sc">+</span>bok<span class="sc">/</span><span class="dv">2</span>, y, bok<span class="sc">/</span><span class="dv">2</span>, krok <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb46-7"><a href="zalaczniki.html#cb46-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fraktal_trojkat</span>(x<span class="sc">+</span>bok<span class="sc">/</span><span class="dv">4</span>, y<span class="sc">+</span><span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">*</span>bok<span class="sc">/</span><span class="dv">4</span>, bok<span class="sc">/</span><span class="dv">2</span>, krok <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb46-8"><a href="zalaczniki.html#cb46-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb46-9"><a href="zalaczniki.html#cb46-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Wypróbujmy ją!</p>
-<p>Może na początek ustawmy 5 iteracji, przez co narysujemy <span class="math inline">\(3^5 = 243\)</span> trójkątów.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="zalaczniki.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb47-2"><a href="zalaczniki.html#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="zalaczniki.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fraktal_trojkat</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">bok =</span> <span class="dv">1</span>, <span class="at">krok =</span> <span class="dv">5</span>)</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-25-1.svg" width="576" /></p>
-<p><strong>Bardzo bardzo mały trójkąt wygląda jak punkt</strong></p>
-<p>Zamiast rysować trójkąt wystarczy narysować jeden punkt, bo trójkąty po pewnym czasie i tak są strasznie małe.</p>
-<p>Tyle, że trójkąt Sierpińskiego składająca się z <span class="math inline">\(243\)</span> punktów jest dosyć dziurawa. Dlatego sprawdzimy jak wygląda dla 8 iteracji.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="zalaczniki.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb48-2"><a href="zalaczniki.html#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="zalaczniki.html#cb48-3" aria-hidden="true" tabindex="-1"></a>fraktal_punkt <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, bok, <span class="at">krok =</span> <span class="dv">0</span>) {</span>
-<span id="cb48-4"><a href="zalaczniki.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (krok <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb48-5"><a href="zalaczniki.html#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">points</span>(x, y, <span class="at">pch=</span><span class="st">&quot;.&quot;</span>, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb48-6"><a href="zalaczniki.html#cb48-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb48-7"><a href="zalaczniki.html#cb48-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fraktal_punkt</span>(x, y, bok<span class="sc">/</span><span class="dv">2</span>, krok <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb48-8"><a href="zalaczniki.html#cb48-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fraktal_punkt</span>(x<span class="sc">+</span>bok<span class="sc">/</span><span class="dv">2</span>, y, bok<span class="sc">/</span><span class="dv">2</span>, krok <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb48-9"><a href="zalaczniki.html#cb48-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fraktal_punkt</span>(x<span class="sc">+</span>bok<span class="sc">/</span><span class="dv">4</span>, y<span class="sc">+</span><span class="fu">sqrt</span>(<span class="dv">3</span>)<span class="sc">*</span>bok<span class="sc">/</span><span class="dv">4</span>, bok<span class="sc">/</span><span class="dv">2</span>, krok <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb48-10"><a href="zalaczniki.html#cb48-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb48-11"><a href="zalaczniki.html#cb48-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb48-12"><a href="zalaczniki.html#cb48-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-13"><a href="zalaczniki.html#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="fu">fraktal_punkt</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">bok =</span> <span class="dv">1</span>, <span class="at">krok =</span> <span class="dv">8</span>)</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-26-1.svg" width="576" /></p>
-<p>Ile punktów narysowaliśmy?</p>
-<div id="dywan-sierpińskiego-w-r" class="section level3" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Dywan Sierpińskiego w R</h3>
-<p>Prace z fraktalami rozpoczniemy od utkania <a href="https://pl.wikipedia.org/wiki/Dywan_Sierpi%C5%84skiego">Dywanu Sierpińskiego</a>. Zaczniemy od jego zubożonej wersji, którą trochę łatwiej opisać na początku, a później pokażemy przepis na kompletny dywan.</p>
-<p>Jest to dobry fraktal na początek, wystarczy:</p>
-<ol style="list-style-type: decimal">
-<li>narysować kwadrat</li>
-<li>pomniejszyć rysunek 3 razy</li>
-<li>skopiować 4 razy w cztery rogi kwadratu</li>
-<li>z otrzymanym rysunkiem wrócić do kroku 2</li>
-</ol>
-<p>i tak w nieskończoność.</p>
-<p>Pierwsze trzy iteracje powyższego schematu przedstawione są na rysunku poniżej.</p>
-<div class="figure">
-<img src="images/fraktale_01.png" alt="" />
-<p class="caption">images/fraktale_01.png</p>
-</div>
-<p>Ok, spróbujmy to zrobić w R.</p>
-<div id="narysuj-mi-kwadrat" class="section level4" number="5.2.1.1">
-<h4><span class="header-section-number">5.2.1.1</span> Narysuj mi kwadrat</h4>
-<p>Zacznijmy od narysowania kwadratu.</p>
-<p>Pierwsza linijka poniższego przykładu tworzy pusty obszar do rysowania o wymiarach [0,1]x[0,1].</p>
-<p>Druga linijka zawiera instrukcje <code>rect()</code>, która rysuje czarny kwadrat rozpięty od punktu (0,0) do (1,1).</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="zalaczniki.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># czyścimy ekran</span></span>
-<span id="cb49-2"><a href="zalaczniki.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>, <span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb49-3"><a href="zalaczniki.html#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-4"><a href="zalaczniki.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-27-1.svg" width="672" /></p>
-<p>W drugiej iteracji ten kwadrat jest trzykrotnie pomniejszany do wymiarów 1/3 x 1/3 i rysowany w czterech rogach. Mamy do narysowania cztery kwadraty i możemy to zrobić w poniższy sposób.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="zalaczniki.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># czyścimy ekran</span></span>
-<span id="cb50-2"><a href="zalaczniki.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>, <span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb50-3"><a href="zalaczniki.html#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="zalaczniki.html#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb50-5"><a href="zalaczniki.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb50-6"><a href="zalaczniki.html#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb50-7"><a href="zalaczniki.html#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-28-1.svg" width="672" /></p>
-<p>W trzeciej iteracji w miejsce każdego z tych czterech kwadratów rysujemy kolejne 4 kwadraty trzykrotnie pomniejszone.</p>
-<p>W sumie będzie to 16 kwadratów, sporo ale jeszcze damy radę to zapisać.</p>
-<p>Można to zrobić tak</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="zalaczniki.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># czyścimy ekran</span></span>
-<span id="cb51-2"><a href="zalaczniki.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>, <span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb51-3"><a href="zalaczniki.html#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-4"><a href="zalaczniki.html#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-5"><a href="zalaczniki.html#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-6"><a href="zalaczniki.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-7"><a href="zalaczniki.html#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-8"><a href="zalaczniki.html#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-9"><a href="zalaczniki.html#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-10"><a href="zalaczniki.html#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-11"><a href="zalaczniki.html#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-12"><a href="zalaczniki.html#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-13"><a href="zalaczniki.html#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-14"><a href="zalaczniki.html#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-15"><a href="zalaczniki.html#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-16"><a href="zalaczniki.html#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-17"><a href="zalaczniki.html#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-18"><a href="zalaczniki.html#cb51-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-19"><a href="zalaczniki.html#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-20"><a href="zalaczniki.html#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-21"><a href="zalaczniki.html#cb51-21" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb51-22"><a href="zalaczniki.html#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">0</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">9</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">+</span><span class="dv">2</span><span class="sc">/</span><span class="dv">9</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-29-1.svg" width="672" /></p>
-<p>Aby narysować dywan sierpińskiego musimy tę procedurę powtórzyć przynajmniej kilka razy, co wymaga narysowania tysięcy, a często jeszcze większej liczby, kwadratów.</p>
-<p>Przy takiej liczbie kwadratów kopiowanie kolejnych linijek z wywołaniem funkcji <code>rect</code> nie ma sensu.</p>
-</div>
-<div id="rekurencja" class="section level4" number="5.2.1.2">
-<h4><span class="header-section-number">5.2.1.2</span> Rekurencja</h4>
-<p>Zrobimy to sprytniej używając rekurencji, czyli funkcji, która sama siebie wywołuje.</p>
-<p>Skorzystamy z cechy, która nazywa się <em>samopodobieństwem</em>, czyli cały dywan jest podobny do swoich części.</p>
-<p>Poniższy przykład przedstawia bardzo sprytną funkcję <code>rysuj_dywan()</code>. Ma ona kilka ciekawych argumentów. Pierwsze dwa <code>x</code> i <code>y</code> wskazują w którym miejscu ma być rysowany dywan, trzeci <code>szerokosc</code> określa szerokość rysowanego dywanu, a ostatni <code>iteracja</code> określa ile iteracji powyższego algorytmu powinniśmy wykonać by narysować dywan.</p>
-<p>Jeżeli funkcja <code>rysuj_dywan()</code> zostanie wywołana z argumentem <code>iteracja = 0</code> to narysuje sam kwadrat. Ale jeżeli zostanie wykonana z innym argumentem to narysuje cztery dywany zaczepione w rogach kwadratu o szerokości <span class="math inline">\(1/3\)</span> wyjściowego dywanu.</p>
-<p>Zobaczmy co z tego wyjdzie!</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="zalaczniki.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># czyścimy ekran</span></span>
-<span id="cb52-2"><a href="zalaczniki.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>, <span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb52-3"><a href="zalaczniki.html#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-4"><a href="zalaczniki.html#cb52-4" aria-hidden="true" tabindex="-1"></a>rysuj_dywan <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, szerokosc, <span class="at">iteracja =</span> <span class="dv">0</span>) {</span>
-<span id="cb52-5"><a href="zalaczniki.html#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (iteracja <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb52-6"><a href="zalaczniki.html#cb52-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rect</span>(x, y, x <span class="sc">+</span> szerokosc, y <span class="sc">+</span> szerokosc, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb52-7"><a href="zalaczniki.html#cb52-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb52-8"><a href="zalaczniki.html#cb52-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x, y, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb52-9"><a href="zalaczniki.html#cb52-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb52-10"><a href="zalaczniki.html#cb52-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x, y<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb52-11"><a href="zalaczniki.html#cb52-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb52-12"><a href="zalaczniki.html#cb52-12" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb52-13"><a href="zalaczniki.html#cb52-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb52-14"><a href="zalaczniki.html#cb52-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-15"><a href="zalaczniki.html#cb52-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rysuj_dywan</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">szerokosc =</span> <span class="dv">1</span>, <span class="at">iteracja =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-30-1.svg" width="672" /></p>
-<p>Możemy teraz w prosty sposób narysować kolejne iteracje małym nakładem kodu.</p>
-<p>Na trzecim poziomie będzie to <span class="math inline">\(4^3 = 64\)</span> kwadratów.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="zalaczniki.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># czyścimy ekran</span></span>
-<span id="cb53-2"><a href="zalaczniki.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>, <span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb53-3"><a href="zalaczniki.html#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-4"><a href="zalaczniki.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rysuj_dywan</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">szerokosc =</span> <span class="dv">1</span>, <span class="at">iteracja =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-31-1.svg" width="672" /></p>
-<p>Zobaczmy jak będzie ta figura wyglądała dla piątej iteracji. Mamy już do czynienia z <span class="math inline">\(4^5 = 2^10 = 1024\)</span> kwadratami.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="zalaczniki.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># czyścimy ekran</span></span>
-<span id="cb54-2"><a href="zalaczniki.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>, <span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb54-3"><a href="zalaczniki.html#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="zalaczniki.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rysuj_dywan</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">szerokosc =</span> <span class="dv">1</span>, <span class="at">iteracja =</span> <span class="dv">5</span>)</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-32-1.svg" width="672" /></p>
-</div>
-<div id="prawdziwy-dywan" class="section level4" number="5.2.1.3">
-<h4><span class="header-section-number">5.2.1.3</span> Prawdziwy dywan</h4>
-<p>Widzimy już jak działa rekurencja oraz co się dzieje w kolejnych iteracjach. Jesteśmy gotowi do narysowania pełnego dywanu Sierpińskiego.</p>
-<p>Różnica jest taka, że w każdym kroku, zamiast czterech kwadratów w rogach, będziemy rysować 8 kwadratów ,,po obwodzie’’ dużego kwadratu.</p>
-<p>W poniższej funkcji w każdym kroku z <code>iteracja</code> różnym od 0, rysujemy 8 mniejszych dywanów.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="zalaczniki.html#cb55-1" aria-hidden="true" tabindex="-1"></a>rysuj_dywan <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, szerokosc, <span class="at">iteracja =</span> <span class="dv">0</span>) {</span>
-<span id="cb55-2"><a href="zalaczniki.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (iteracja <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb55-3"><a href="zalaczniki.html#cb55-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rect</span>(x, y, x <span class="sc">+</span> szerokosc, y <span class="sc">+</span> szerokosc, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb55-4"><a href="zalaczniki.html#cb55-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb55-5"><a href="zalaczniki.html#cb55-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x, y, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb55-6"><a href="zalaczniki.html#cb55-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, y, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb55-7"><a href="zalaczniki.html#cb55-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb55-8"><a href="zalaczniki.html#cb55-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x, y<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb55-9"><a href="zalaczniki.html#cb55-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb55-10"><a href="zalaczniki.html#cb55-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x, y<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb55-11"><a href="zalaczniki.html#cb55-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb55-12"><a href="zalaczniki.html#cb55-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb55-13"><a href="zalaczniki.html#cb55-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb55-14"><a href="zalaczniki.html#cb55-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Rysowanie dywanu dla pięciu iteracji może trochę trwać, ponieważ składa się z <span class="math inline">\(8^5 = 2^15 = 32768\)</span> kwadratów.</p>
-<p>Ale warto chwilę poczekać by uzyskać taki wynik.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="zalaczniki.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># czyścimy ekran</span></span>
-<span id="cb56-2"><a href="zalaczniki.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>, <span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb56-3"><a href="zalaczniki.html#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-4"><a href="zalaczniki.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rysuj_dywan</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">szerokosc =</span> <span class="dv">1</span>, <span class="at">iteracja =</span> <span class="dv">5</span>)</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-34-1.svg" width="672" /></p>
-<p>Oczywiście możemy zwiększać liczbę iteracji, ale zmiany na obrazku przestają być zauważalne.</p>
-</div>
-<div id="bardzo-bardzo-mały-kwadrat-wygląda-jak-punkt" class="section level4" number="5.2.1.4">
-<h4><span class="header-section-number">5.2.1.4</span> Bardzo bardzo mały kwadrat wygląda jak punkt</h4>
-<p>Zauważmy, że narysowany kwadrat bardzo szybko maleje. Maleje wręcz z wykładniczą prędkością. Więc po wielu iteracjach nie musimy rysować kwadratu, wystarczy, że narysujemy punkt, mniej zachodu.</p>
-<p>Sprawdźmy czy tak faktycznie jest. Zmienimy funkcję <code>rysuj_dywan()</code> by w finalnej iteracji rysowała punkt.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="zalaczniki.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># czyścimy ekran</span></span>
-<span id="cb57-2"><a href="zalaczniki.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>, <span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb57-3"><a href="zalaczniki.html#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-4"><a href="zalaczniki.html#cb57-4" aria-hidden="true" tabindex="-1"></a>rysuj_dywan <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, szerokosc, <span class="at">iteracja =</span> <span class="dv">0</span>) {</span>
-<span id="cb57-5"><a href="zalaczniki.html#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (iteracja <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb57-6"><a href="zalaczniki.html#cb57-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">points</span>(x, y, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">pch=</span><span class="st">&quot;.&quot;</span>)</span>
-<span id="cb57-7"><a href="zalaczniki.html#cb57-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb57-8"><a href="zalaczniki.html#cb57-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x, y, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb57-9"><a href="zalaczniki.html#cb57-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, y, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb57-10"><a href="zalaczniki.html#cb57-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb57-11"><a href="zalaczniki.html#cb57-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x, y<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb57-12"><a href="zalaczniki.html#cb57-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb57-13"><a href="zalaczniki.html#cb57-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x, y<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb57-14"><a href="zalaczniki.html#cb57-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb57-15"><a href="zalaczniki.html#cb57-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rysuj_dywan</span>(x<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, y<span class="sc">+</span>szerokosc<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, szerokosc<span class="sc">/</span><span class="dv">3</span>, iteracja <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb57-16"><a href="zalaczniki.html#cb57-16" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb57-17"><a href="zalaczniki.html#cb57-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb57-18"><a href="zalaczniki.html#cb57-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-19"><a href="zalaczniki.html#cb57-19" aria-hidden="true" tabindex="-1"></a><span class="fu">rysuj_dywan</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">szerokosc =</span> <span class="dv">1</span>, <span class="at">iteracja =</span> <span class="dv">5</span>)</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-35-1.svg" width="672" /></p>
-<p>Tada!</p>
-<p>Również otrzymujemy dywan, trochę bardziej dziurawy.</p>
-<p>W zależności od rozdzielczości ekranu warto zwiększyć liczbę iteracji do sześciu lub siedmiu, by dywan się ,,nasycił’’.</p>
-</div>
-</div>
-</div>
-<div id="przykłady-w-r-3" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Przykłady w R</h2>
-<p>Ok, czas to zapisać w R.</p>
-<p>Obiekt <code>trans</code> będzie listą czterech transformacji a <code>prob</code> będzie prawdopodobieństwem z jakim kolejne transformacje powinny być losowane.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="zalaczniki.html#cb58-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">50000</span></span>
-<span id="cb58-2"><a href="zalaczniki.html#cb58-2" aria-hidden="true" tabindex="-1"></a>point <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb58-3"><a href="zalaczniki.html#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-4"><a href="zalaczniki.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># transformacje</span></span>
-<span id="cb58-5"><a href="zalaczniki.html#cb58-5" aria-hidden="true" tabindex="-1"></a>trans <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb58-6"><a href="zalaczniki.html#cb58-6" aria-hidden="true" tabindex="-1"></a>trans[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>( <span class="fl">0.85</span>,  <span class="fl">0.04</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.04</span>, <span class="fl">0.85</span>, <span class="fl">1.6</span>),  <span class="dv">2</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb58-7"><a href="zalaczniki.html#cb58-7" aria-hidden="true" tabindex="-1"></a>trans[[<span class="dv">2</span>]] <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.15</span>,  <span class="fl">0.28</span>, <span class="dv">0</span>,  <span class="fl">0.26</span>, <span class="fl">0.24</span>, <span class="fl">0.44</span>), <span class="dv">2</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb58-8"><a href="zalaczniki.html#cb58-8" aria-hidden="true" tabindex="-1"></a>trans[[<span class="dv">3</span>]] <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>( <span class="fl">0.20</span>, <span class="sc">-</span><span class="fl">0.26</span>, <span class="dv">0</span>,  <span class="fl">0.23</span>, <span class="fl">0.22</span>, <span class="fl">1.6</span>),  <span class="dv">2</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb58-9"><a href="zalaczniki.html#cb58-9" aria-hidden="true" tabindex="-1"></a>trans[[<span class="dv">4</span>]] <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>( <span class="dv">0</span>,     <span class="dv">0</span>,    <span class="dv">0</span>,  <span class="dv">0</span>,    <span class="fl">0.16</span>, <span class="dv">0</span>),    <span class="dv">2</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb58-10"><a href="zalaczniki.html#cb58-10" aria-hidden="true" tabindex="-1"></a>prob <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.07</span>, <span class="fl">0.07</span>, <span class="fl">0.01</span>)</span>
-<span id="cb58-11"><a href="zalaczniki.html#cb58-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-12"><a href="zalaczniki.html#cb58-12" aria-hidden="true" tabindex="-1"></a><span class="co"># czyścimy ekran</span></span>
-<span id="cb58-13"><a href="zalaczniki.html#cb58-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.5</span>,<span class="dv">3</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">12</span>), <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>, <span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb58-14"><a href="zalaczniki.html#cb58-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-15"><a href="zalaczniki.html#cb58-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
-<span id="cb58-16"><a href="zalaczniki.html#cb58-16" aria-hidden="true" tabindex="-1"></a>  los <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(trans), <span class="dv">1</span>, <span class="at">prob =</span> prob)</span>
-<span id="cb58-17"><a href="zalaczniki.html#cb58-17" aria-hidden="true" tabindex="-1"></a>  point <span class="ot">&lt;-</span> trans[[los]] <span class="sc">%*%</span> <span class="fu">c</span>(point, <span class="dv">1</span>)</span>
-<span id="cb58-18"><a href="zalaczniki.html#cb58-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(point[<span class="dv">1</span>], point[<span class="dv">2</span>], <span class="at">pch =</span> <span class="st">&quot;.&quot;</span>, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb58-19"><a href="zalaczniki.html#cb58-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-36-1.svg" width="672" /></p>
-<div id="smok-heighwaya-3" class="section level3" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Smok Heighwaya</h3>
-<p>Dobierając różne transformacje uzyskamy bardzo różne fraktale.</p>
-<p>Przykładowo Smok Heighwaya to złożenie dwóch transformacji</p>
-<ol style="list-style-type: decimal">
-<li><span class="math inline">\(x&#39; = -0.4x -1\)</span>, <span class="math inline">\(y&#39; = -0.4y + 0.1\)</span></li>
-<li><span class="math inline">\(x&#39; = 0.76x -0.4y\)</span>, <span class="math inline">\(y&#39; = 0.4x + 0.76y\)</span></li>
-</ol>
-<p>A tutaj kod w R. Wystarczy zmienić opis transformacji a druga część kodu pozostaje bez zmian.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="zalaczniki.html#cb59-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">100000</span></span>
-<span id="cb59-2"><a href="zalaczniki.html#cb59-2" aria-hidden="true" tabindex="-1"></a>point <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb59-3"><a href="zalaczniki.html#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-4"><a href="zalaczniki.html#cb59-4" aria-hidden="true" tabindex="-1"></a>trans <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb59-5"><a href="zalaczniki.html#cb59-5" aria-hidden="true" tabindex="-1"></a>trans[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>( <span class="sc">-</span><span class="fl">0.4</span>,   <span class="dv">0</span>,  <span class="sc">-</span><span class="dv">1</span>,  <span class="dv">0</span>,  <span class="sc">-</span><span class="fl">0.4</span>,  <span class="fl">0.1</span>),  <span class="dv">2</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb59-6"><a href="zalaczniki.html#cb59-6" aria-hidden="true" tabindex="-1"></a>trans[[<span class="dv">2</span>]] <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(  <span class="fl">0.76</span>, <span class="sc">-</span><span class="fl">0.4</span>, <span class="dv">0</span>,  <span class="fl">0.4</span>, <span class="fl">0.76</span>, <span class="dv">0</span>),    <span class="dv">2</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb59-7"><a href="zalaczniki.html#cb59-7" aria-hidden="true" tabindex="-1"></a>prob <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>)</span>
-<span id="cb59-8"><a href="zalaczniki.html#cb59-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-9"><a href="zalaczniki.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="co"># czyścimy ekran</span></span>
-<span id="cb59-10"><a href="zalaczniki.html#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>,<span class="fl">0.5</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>, <span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb59-11"><a href="zalaczniki.html#cb59-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-12"><a href="zalaczniki.html#cb59-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
-<span id="cb59-13"><a href="zalaczniki.html#cb59-13" aria-hidden="true" tabindex="-1"></a>  los <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(trans), <span class="dv">1</span>, <span class="at">prob =</span> prob)</span>
-<span id="cb59-14"><a href="zalaczniki.html#cb59-14" aria-hidden="true" tabindex="-1"></a>  point <span class="ot">&lt;-</span> trans[[los]] <span class="sc">%*%</span> <span class="fu">c</span>(point, <span class="dv">1</span>)</span>
-<span id="cb59-15"><a href="zalaczniki.html#cb59-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(point[<span class="dv">1</span>], point[<span class="dv">2</span>], <span class="at">pch =</span> <span class="st">&quot;.&quot;</span>, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb59-16"><a href="zalaczniki.html#cb59-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-37-1.svg" width="672" /></p>
-</div>
-<div id="do-it-yourself" class="section level3" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> Do It Yourself!</h3>
-<p>Poszukaj i spróbuj zaimplementować inne fraktale, jak np:</p>
-<ul>
-<li>pentagon Sierpińskiego <a href="https://larryriddle.agnesscott.org/ifs/pentagon/pentagon.htm" class="uri">https://larryriddle.agnesscott.org/ifs/pentagon/pentagon.htm</a></li>
-<li>płatek Kocha <a href="https://larryriddle.agnesscott.org/ifs/ksnow/ksnow.htm" class="uri">https://larryriddle.agnesscott.org/ifs/ksnow/ksnow.htm</a></li>
-<li>McWorter’s Pentigree <a href="https://larryriddle.agnesscott.org/ifs/pentigre/pentigre2.htm" class="uri">https://larryriddle.agnesscott.org/ifs/pentigre/pentigre2.htm</a></li>
-</ul>
-<p>Opisana powyżej metoda konstrukcji fraktali nazywa się systemem funkcji iterowanych (ang. iterated function system, IFS). Składane funkcje nie muszą być przekształceniami afinicznymi, wystarczy by były kontrakcjami. Eksperymentując z innymi przekształceniami można uzyskać bardzo ciekawe wyniki.</p>
-</div>
-<div id="paproć-barnsleya-2" class="section level3" number="5.3.3">
-<h3><span class="header-section-number">5.3.3</span> Paproć Barnsleya</h3>
-<p>Gra w chaos jest bardzo wygodnym sposobem tworzenia fraktali. Możemy zwiększać liczbę kontrakcji, zmieniać ich współczynniki otrzymując bardzo ciekawe efekty.</p>
-<p>Jednym z bardziej znanych fraktali wzorowanych na obiektach botanicznych jest paproć Barnsleya.</p>
-<p>W stosunku do uszczelki wprowadzimy dwie modyfikacje. Będziemy mieli cztery kontrakcje, ale też będziemy losować je z różnymi prawdopodobieństwami. Gdybyśmy mieli nieskończenie wiele czasu, to ta druga zmiana nie byłaby potrzebna, ale dla skończonej liczby kroków odpowiednie dobrane prawdopodobieństwa pozwolą nam szybciej wysycić odpowiednie elementy paproci.</p>
-<p>Kontrakcje dla paproci Barnsleya.</p>
-<ol style="list-style-type: decimal">
-<li><span class="math inline">\(x&#39; = 0.85x + 0.04y\)</span>, <span class="math inline">\(y&#39; = -0.04x + 0.85y + 1.6\)</span> (górna część paproci)</li>
-<li><span class="math inline">\(x&#39; = -0.15x + 0.28y\)</span>, <span class="math inline">\(y&#39; = 0.26x + 0.24y + 0.44\)</span> (lewy listek)</li>
-<li><span class="math inline">\(x&#39; = 0.20x - 0.26y\)</span>, <span class="math inline">\(y&#39; = 0.23x + 0.22y + 1.6\)</span> (prawy listek)</li>
-<li><span class="math inline">\(x&#39; = 0\)</span>, <span class="math inline">\(y&#39; = 0.16y\)</span> (łodyżka)</li>
-</ol>
-<p>Będziemy losować te kontrakcje w proporcjach 85:7:7:1.</p>
-<p>A tutaj mamy kod dla R!</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="zalaczniki.html#cb60-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">50000</span></span>
-<span id="cb60-2"><a href="zalaczniki.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-3"><a href="zalaczniki.html#cb60-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb60-4"><a href="zalaczniki.html#cb60-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb60-5"><a href="zalaczniki.html#cb60-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-6"><a href="zalaczniki.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="co"># czyścimy ekran</span></span>
-<span id="cb60-7"><a href="zalaczniki.html#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.5</span>,<span class="dv">3</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">12</span>), <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>, <span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb60-8"><a href="zalaczniki.html#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
-<span id="cb60-9"><a href="zalaczniki.html#cb60-9" aria-hidden="true" tabindex="-1"></a>  los <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.07</span>, <span class="fl">0.07</span>, <span class="fl">0.01</span>))</span>
-<span id="cb60-10"><a href="zalaczniki.html#cb60-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">switch</span>(los,</span>
-<span id="cb60-11"><a href="zalaczniki.html#cb60-11" aria-hidden="true" tabindex="-1"></a>         <span class="st">&#39;1&#39;</span> <span class="ot">=</span> {x <span class="ot">&lt;-</span>  <span class="fl">0.85</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fl">0.04</span><span class="sc">*</span>y; y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.04</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fl">0.85</span><span class="sc">*</span>y <span class="sc">+</span> <span class="fl">1.6</span>},</span>
-<span id="cb60-12"><a href="zalaczniki.html#cb60-12" aria-hidden="true" tabindex="-1"></a>         <span class="st">&#39;2&#39;</span> <span class="ot">=</span> {x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.15</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fl">0.28</span><span class="sc">*</span>y; y <span class="ot">&lt;-</span>  <span class="fl">0.26</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fl">0.24</span><span class="sc">*</span>y <span class="sc">+</span> <span class="fl">0.44</span>},</span>
-<span id="cb60-13"><a href="zalaczniki.html#cb60-13" aria-hidden="true" tabindex="-1"></a>         <span class="st">&#39;3&#39;</span> <span class="ot">=</span> {x <span class="ot">&lt;-</span>  <span class="fl">0.20</span><span class="sc">*</span>x <span class="sc">-</span> <span class="fl">0.26</span><span class="sc">*</span>y; y <span class="ot">&lt;-</span>  <span class="fl">0.23</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fl">0.22</span><span class="sc">*</span>y <span class="sc">+</span> <span class="fl">1.6</span>},</span>
-<span id="cb60-14"><a href="zalaczniki.html#cb60-14" aria-hidden="true" tabindex="-1"></a>         <span class="st">&#39;4&#39;</span> <span class="ot">=</span> {x <span class="ot">&lt;-</span>  <span class="dv">0</span>;               y <span class="ot">&lt;-</span>  <span class="fl">0.16</span><span class="sc">*</span>y})</span>
-<span id="cb60-15"><a href="zalaczniki.html#cb60-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(x, y, <span class="at">pch =</span> <span class="st">&quot;.&quot;</span>, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb60-16"><a href="zalaczniki.html#cb60-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="book_files/figure-html/unnamed-chunk-38-1.svg" width="672" /></p>
-
-</div>
-</div>
+<div id="zalaczniki" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Rozdział 5</span> Zalaczniki<a href="zalaczniki.html#zalaczniki" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="podsumowanie.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bibliografia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="wybrane-fraktale.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="przykłady-w-julia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -666,8 +365,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": true,
-"facebook": false,
+"github": false,
+"facebook": true,
 "twitter": true,
 "linkedin": false,
 "weibo": false,
@@ -682,8 +381,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/pbiecek/xai_stories_3/edit/master/50-Retro.Rmd",
-"text": "Edycja"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
@@ -693,12 +392,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["book.pdf", "book.epub"],
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection",
 "toc_depth": 3
-},
-"toc_depth": 3
+}
 });
 });
 </script>
@@ -709,7 +411,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
